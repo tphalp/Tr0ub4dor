@@ -4,6 +4,7 @@ require("no_direct.php");
 
 // don't report Database-Errors on Frontend
 error_reporting(E_ERROR); //E_ALL
+
 //Don't cache
 //TODO: REVISIT THIS NO-CACHE METHOD
 header("Cache-Control: no-cache, must-revalidate");

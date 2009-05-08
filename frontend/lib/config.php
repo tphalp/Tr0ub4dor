@@ -12,8 +12,8 @@ header("Expires: -1");
 // Database Access
 define("DB_HOST", "localhost");
 define("DB_NAME", "w3pw");
-define("DB_USER", "w3pw_user");
-define("DB_PASS", "y1p33_1857");
+define("DB_USER", "xxxx");
+define("DB_PASS", "xxxx");
 define("DB_PORT", 3306);
 
 // Misc Constants

@@ -1,24 +1,24 @@
 Version History / Changes
 
-Version 1.50 beta1
+Version 1.50 beta2
 - Timeout event status is moved from the browser status bar to a 
-	div at the top left of the browser window. This div is red to 
-	call attention to the fact that a forced logout is imminent. 
-	It also only shows up after a specified time (default is 30 
-	seconds prior to forced logout). This value can be set in 
-	the config file. The timeout status also has a link to reset 
-	the timer to prevent the forced logout.
+  div at the top left of the browser window. This div is red to 
+  call attention to the fact that a forced logout is imminent. 
+  It also only shows up after a specified time (default is 30 
+  seconds prior to forced logout). This value can be set in 
+  the config file. The timeout status also has a link to reset 
+  the timer to prevent the forced logout.
 - Each page has been reworked to use more modular code.
 - A common database class has been included for simpler db 
-	connections.
+  connections.
 - Output is XHTML 1.0 Transitional compliant.
 - A new system message system has been implemented to make 
-	various messages (such as incorrect login credentials) more 
-	uniform.
--	Added a text-link menu at the bottom of the page, included in 
-	the new footer.
+  various messages (such as incorrect login credentials) more 
+  uniform.
+- Added a text-link menu at the bottom of the page, included in 
+  the new footer.
 - Added helpful links on the "view", "edit", and "delete" pages 
-	that link to the other associated pages for the current item.
+  that link to the other associated pages for the current item.
 - Various visual changes.
 
 Version 1.40

@@ -19,8 +19,8 @@ define("DB_PORT", 3306);
 
 // Misc Constants
 define("SYS_NAME", "w3pw");
-define("DEFAULT_STYLE", "style.css");
-define("DEFAULT_JS", "script.js");
+define("DEFAULT_STYLE", "css/style.css");
+define("DEFAULT_JS", "js/script.js");
 define("TMP_IMPORT_FILE", "w3pw.csv");
 define("TIMEOUT", 120);
 define("TIMEOUT_SHOW", 30);
@@ -30,7 +30,7 @@ $FRM_ACTION = "lib/process_action.php";
 $FRM_LOGIN = "lib/process_login.php";
 $SYSMSG_KEY = md5("%dJ9&".strtolower('test')."(/&k.=".strtoupper('test')."1x&%");
 
-// Path to directory for temporary files
+// Path to directory for temporary files. From the POV of the OS.
 // Be sure that the webserver process has write access!
 $TMP_PATH = "/tmp/";
 

@@ -64,26 +64,13 @@ OUT;
 
     $out__ = <<<OUT
     
-    <script type="text/javascript" src="${port}://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
 OUT;
 
     if ($bit) {
       $out__ .= write_header_jqueryui();
     }
     
-    return $out__;
-
-  } //write_header_jquery()
-
-
-  function write_header_jqueryui() {
-    $port = set_https();
-  
-    $out__ = <<<OUT
-    
-    <script type="text/javascript" src="${port}://ajax.googleapis.com/ajax/libs/jqueryui/1.7/jquery-ui.min.js"></script>
-OUT;
-
     return $out__;
 
   } //write_header_jquery()

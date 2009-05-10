@@ -23,7 +23,7 @@
         <input type="submit" value="Upload" />
 OUT;
 
-  $out__ .= write_footer_main_link("without importing");
+  $out__ .= write_footer_main_link("without importing.");
         
   $out__ .= <<<OUT
   

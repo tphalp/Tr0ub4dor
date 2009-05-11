@@ -59,17 +59,13 @@ OUT;
   } //write_header_meta()
   
 
-  function write_header_jquery($bit = 0) {
+  function write_header_jquery() {
     $port = set_https();
 
     $out__ = <<<OUT
     
     <script type="text/javascript" src="js/jquery-min.js"></script>
 OUT;
-
-    if ($bit) {
-      $out__ .= write_header_jqueryui();
-    }
     
     return $out__;
 

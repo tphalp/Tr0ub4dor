@@ -64,7 +64,7 @@ OUT;
 
     $out__ = <<<OUT
     
-    <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-min.js"></script>
 OUT;
 
     if ($bit) {

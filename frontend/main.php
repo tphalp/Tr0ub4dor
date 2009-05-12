@@ -1,20 +1,20 @@
 <?php
-	session_cache_limiter('nocache');
-	session_start();
-	
+  session_cache_limiter('nocache');
+  session_start();
+  
   require_once("lib/config.php");
   require_once("lib/common_func.php");
   
-	// test if session is ok
+  // test if session is ok
   test_session();
   $out__ = write_header_begin("Main List");
   $out__ .= write_header_jquery();
   $out__ .= write_header_common(); 
   $out__ .= write_header_end();
   $out__ .= write_header_counter();
-	
+  
   //-----------------------------------------------------------------
-	// Delete existing tmp files. This can happen if timout is
+  // Delete existing tmp files. This can happen if timout is
   // reached between the upload steps.
   //-----------------------------------------------------------------
   delete_stray_temp_files($TMP_PATH);
@@ -69,8 +69,8 @@ OUT;
     $pw = de_crypt($entries->pw, $_SESSION['key']);
     $comment = de_crypt($entries->comment, $_SESSION['key']);
     
-		//ALT ROW BACKUP
-		//<td>$itemname</td><td>$host</td><td>$login</td><td>$pw</td><td>$comment</td><td class="link"><a href="view.php?id=$ID">view</a></td><td class="link"><a href="edit.php?id=$ID">edit</a></td><td class="link"><a href="delete.php?id=$ID">delete</a></td></tr>
+    //ALT ROW BACKUP
+    //<td>$itemname</td><td>$host</td><td>$login</td><td>$pw</td><td>$comment</td><td class="link"><a href="view.php?id=$ID">view</a></td><td class="link"><a href="edit.php?id=$ID">edit</a></td><td class="link"><a href="delete.php?id=$ID">delete</a></td></tr>
     $out__ .= <<<OUT
     
               <td>$itemname</td><td>$host</td><td class="link"><a href="view.php?id=$ID">view</a></td><td class="link"><a href="edit.php?id=$ID">edit</a></td><td class="link"><a href="delete.php?id=$ID">delete</a></td></tr>

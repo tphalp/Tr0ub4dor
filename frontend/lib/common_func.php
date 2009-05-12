@@ -19,18 +19,18 @@
  	
   
   function test_session($test_only = 0)	{
-		$out__ = 0;
+    $out__ = 0;
     
     if ((!isset($_SESSION['logged_in'])) || (!$_SESSION['logged_in'] == 1))	{
-			if ($test_only == 0) {
+      if ($test_only == 0) {
         go_home();
       }
-		} else {
+    } else {
       $out__ = 1;
     }
 
     return $out__;
-	} //test_session()
+  } //test_session()
 
   
   function check_referrer($base_domain) {
@@ -86,7 +86,7 @@ OUT;
   function write_header_begin($pg_title) {
     $sys_name = constant("SYS_NAME");
     $style = constant("DEFAULT_STYLE");
-		$script = constant("DEFAULT_JS");
+    $script = constant("DEFAULT_JS");
 //<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
     
     $out__ = <<<OUT
@@ -196,15 +196,15 @@ OUT;
   } //write_footer_onload()
   
   
-	function write_footer_timeout_init() {
+  function write_footer_timeout_init() {
     $timeout = constant("TIMEOUT");
     $timeout_show = constant("TIMEOUT_SHOW");
 
-		$out__ = write_footer_onload("init($timeout, $timeout_show);");
+    $out__ = write_footer_onload("init($timeout, $timeout_show);");
 		
-		return $out__;
+    return $out__;
 		
-	} //write_footer_timeout_init()
+  } //write_footer_timeout_init()
 	
 
   function write_footer_copyright() {

@@ -1,10 +1,10 @@
 <?php 
-	session_start();
+  session_start();
 
   require_once("lib/config.php");
   require_once("lib/common_func.php");
 
-	// Test if session is ok
+  // Test if session is ok
   test_session();
   $out__ = write_header_begin("Import Wallet entries (Step 2)");
   $out__ .= write_header_jquery();

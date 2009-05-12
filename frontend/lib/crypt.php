@@ -2,7 +2,7 @@
   $currscript = "crypt.php";
   require("no_direct.php"); 
 
-	function en_crypt($data, $key) {
+  function en_crypt($data, $key) {
     if (strlen($data) > 0) {
       $td = mcrypt_module_open('rijndael-256', '', 'ecb', '');
       $iv = mcrypt_create_iv (mcrypt_enc_get_iv_size($td), MCRYPT_RAND);
@@ -12,10 +12,10 @@
       mcrypt_module_close($td);
     }
       
-		return $data;
-	}
-	
-	function de_crypt($data, $key) {
+    return $data;
+  }
+  
+  function de_crypt($data, $key) {
     if (strlen($data) > 0) {
       $td = mcrypt_module_open('rijndael-256', '', 'ecb', '');
       $iv = mcrypt_create_iv (mcrypt_enc_get_iv_size($td), MCRYPT_RAND);
@@ -25,6 +25,6 @@
       mcrypt_module_close($td);
     }
     
-		return $data;
-	}
+    return $data;
+  }
 ?>

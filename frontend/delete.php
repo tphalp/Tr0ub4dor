@@ -1,11 +1,11 @@
 <?php
   session_cache_limiter('private_no_expire, must-revalidate');
-	session_start();
+  session_start();
 
   require_once("lib/config.php");
   require_once("lib/common_func.php");
 
-	// test if session is ok
+  // test if session is ok
   test_session();
   $out__ = write_header_begin("View Wallet Entry");
   $out__ .= write_header_jquery();

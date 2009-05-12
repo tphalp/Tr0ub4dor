@@ -1,17 +1,17 @@
 <?php 
-	session_start();
+  session_start();
 
   require_once("lib/config.php");
   require_once("lib/common_func.php");
 
-	// test if session is ok
+  // test if session is ok
   test_session();
   $out__ = write_header_begin("Insert New Wallet Entry");
   $out__ .= write_header_jquery();
   $out__ .= write_header_common(); 
   $out__ .= write_header_end();
   $out__ .= write_header_counter();
-	
+  
   $initial_pw = create_rand_pw($RANDOM_PW_LENGTH);
   //$initial_pw = "";
   

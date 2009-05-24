@@ -16,7 +16,7 @@
   
     <form enctype="multipart/form-data" action="import2.php" method="post">
       <center>
-        <table summary="import table">
+        <table class="action-table" summary="import table">
           <tr><th colspan="2">Upload CSV File with Wallet entries</th></tr>
           <tr><td class="odd">Filename: </td><td class="even"><input type="file" name="csvfile" size="40" /></td></tr>
         </table>

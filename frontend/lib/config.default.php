@@ -3,36 +3,46 @@ $CURR_SCRIPT = "config.php";
 require("no_direct.php"); 
 
 // don't report Database-Errors on Frontend
-error_reporting(E_ERROR); //E_ALL
+error_reporting(E_ERROR);
 
 //Don't cache
 //TODO: REVISIT THIS NO-CACHE METHOD
-header("Cache-Control: no-cache, must-revalidate");
-header("Expires: -1");
+header('Expires: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+header('Cache-Control: no-cache, must-revalidate, max-age=0');
+header('Pragma: no-cache');
 
-// Database Access
+// Database
 define("DB_HOST", "localhost");
 define("DB_NAME", "w3pw");
 define("DB_USER", "xxxx");
 define("DB_PASS", "xxxx");
 define("DB_PORT", 3306);
 
-// Misc Constants
-define("SYS_NAME", "w3pw");
+// Files
 define("DEFAULT_STYLE", "css/style.css");
 define("DEFAULT_JS", "js/script.js");
-define("TMP_IMPORT_FILE", "w3pw.csv");
+$FRM_ACTION = "lib/process_action.php";
+$FRM_LOGIN = "lib/process_login.php";
+
+// Timeout
 define("TIMEOUT", 120);
 define("TIMEOUT_SHOW", 30);
 
-// Misc Variables
-$FRM_ACTION = "lib/process_action.php";
-$FRM_LOGIN = "lib/process_login.php";
-$SYSMSG_KEY = md5("%dJ9&".strtolower('test')."(/&k.=".strtoupper('test')."1x&%");
+//Menu
+define("MENU_ITEMS_TEXT", "main list|insert|import|change master pw|logout");
+define("MENU_ITEMS_URLS", "main.php|insert.php|import.php|chgpass.php|logout.php");
+define("MENU_SHOW_MAIN", "0 1 2 4");
+define("MENU_SHOW_FOOT", "0 1 2 3 4");
+
+// Misc
+define("SYS_NAME", "w3pw"); //System name that you would like to use;
+define("BASE_DOMAIN", "host.yourdomain.com");  // Used when detecting the referrer;
+define("TMP_IMPORT_FILE", "w3pw.csv");  // Temp file names;
+$SYSMSG_KEY = md5("%dJ9&".strtolower('sysmsg')."(/&k.=".strtoupper('sysmsg')."1x&%");
 
 // Path to directory for temporary files. From the POV of the OS.
 // Be sure that the webserver process has write access!
-$TMP_PATH = "/tmp/";
+define("TMP_PATH", "/tmp/");
 
 // String length for random password
 // generated when adding a new entry

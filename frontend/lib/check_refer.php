@@ -1,5 +1,5 @@
 <?php
-  if (!eregi("w3pw.ring0ffire.com", $_SERVER['HTTP_REFERER'])) {
-    header("Location:/");
+  if(isset($_SERVER['HTTP_REFERER']) && !eregi(BASE_DOMAIN, $_SERVER['HTTP_REFERER'])) {
+    go_home();
   }
 ?>

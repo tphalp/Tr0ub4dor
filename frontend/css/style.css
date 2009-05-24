@@ -15,17 +15,11 @@ th {
   font-size: 10px;
 }
 
-a {
-  color: blue;
-}
+a { color: blue; }
 
-tr.odd, td.odd {
-  background-color: #a3a3a3; 
-}
+tr.odd, td.odd { background-color: #a3a3a3; }
 
-tr.even, td.even {
-  background-color: #dddddd;
-}
+tr.even, td.even { background-color: #dddddd; }
 
 tr.odd, td.odd, 
 tr.even, td.even {
@@ -33,9 +27,7 @@ tr.even, td.even {
   text-align: left;
 }
 
-td.link {
-  text-align: center;
-}
+td.link { text-align: center; }
 
 tr.menu { 
   background-color: #667788; 
@@ -43,9 +35,7 @@ tr.menu {
   text-align: center;
 }
 
-tr.menu td {  
-  padding: 5px;
-}
+tr.menu td { padding: 5px; }
 
 a.menu { 
   color: #ffffff; 
@@ -55,13 +45,9 @@ a.menu {
   display: block; 
 }
 
-tr.odd:hover { 
-  background-color: #ff6; 
-}
+tr.odd:hover { background-color: #ff6; }
 
-tr.even:hover { 
-  background-color: #ff6; 
-}
+tr.even:hover { background-color: #ff6; }
 
 h1.update { 
   color: #a8a8a8; 
@@ -73,7 +59,8 @@ h1.update {
   margin: 10px 0 5px;
 }
 
-#timeout { 
+#timeout, 
+#frmmsg { 
   visibility: hidden;
   font-weight: normal;
   margin-left: 2px;
@@ -82,6 +69,7 @@ h1.update {
 #timeout a {
   color: #fff;
   text-decoration: none;
+  font-weight: bold;
 }
 
 #footer {
@@ -106,17 +94,48 @@ h1.update {
   padding: 0 0 10px;
 }
 
+#main-list { 
+  table-layout: fixed;
+  width: 100%;
+}
+
 #main-list a,
-#footer a {
-  text-decoration: none;
+#footer a { text-decoration: none; }
+
+#main-list th.first { width: 140px; }
+
+#main-list th.mt1 { width: 32px; }
+
+#main-list th.mt2 { width: 45px; }
+
+#main-list td, 
+.action-table td { padding: 3px; }
+
+#popup { visibility: hidden; }
+
+.important {
+  display: inline-block;
+  background-color: red;
+  color: #fff;
+  font-weight: bold;
+  padding: 4px;
 }
 
-#popup {
-  visibility: hidden;
+#frmmsg {
+  background-color: green;
+  color: #fff;
+  font-weight: bold;
+  right: 10px;
+  top: 10px;
+  position: absolute;
+  padding: 4px;
+  line-height: 1.5em;
 }
 
-#main-list td {
-  padding: 2px;
+.frm-msg {
+  display: none;
+  color: red;
+  font-weight: bold;
 }
 /*
 ul#header-menu {
@@ -140,10 +159,3 @@ ul#header-menu a:hover {
   color: purple;
 }
 */
-.important {
-  display: inline-block;
-  background-color: red;
-  color: #fff;
-  font-weight: bold;
-  padding: 4px;
-}

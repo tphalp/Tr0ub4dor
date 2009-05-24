@@ -20,13 +20,16 @@ Version 1.50 beta2
 - Added helpful links on the "view", "edit", and "delete" pages 
   that link to the other associated pages for the current item.
 - Various visual changes.
+- Menus are now built from settings in the config file, including 
+  the ability to specify which items should appear at the top or 
+  bottom, or both.
 
 Version 1.40
 - password field is filled with randomly generated string when
   adding a new entry.
 - switch from encrypt() to sha1() and md5() as the password and entry
-  encoding functions, since SHA 1 exists on all platforms. Update script
-  from version 1.30 is provided.
+  encoding functions, since SHA 1 exists on all platforms. Update 
+  script from version 1.30 is provided.
 - Multiple line comments are displayed now correctly
 - highlighting of the current row in the list view
   (thanks to KoS for this feature!)

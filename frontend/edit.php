@@ -12,10 +12,10 @@
   $out__ .= write_header_common(); 
   $out__ .= write_header_end();
   $out__ .= write_header_counter();
-  $db = new Data;
+  $db = get_db_conn();
   
   // Call the stored proc
-  $entries = $db->out_rs_object("call get_wallet_entry(". $_GET['id'] .");", DB_HOST, DB_NAME, DB_USER, DB_PASS);
+  $entries = $db->out_row_object("call get_wallet_entry(". $_GET['id'] .");");
   unset($db);
   
   $wal_item = build_item_array($entries);
@@ -26,7 +26,7 @@
       <input type="hidden" name="action" value="editsave" />
       <input type="hidden" name="ID" value="${_GET['id']}" />
       <center>
-        <table summary="edit entry">
+        <table class="action-table" summary="edit entry">
           <tr><th colspan="2">Edit Wallet entry</th></tr>
           <tr><td class="odd">Entryname: </td><td class="even"><input type="text" name="itemname" size="40" value="${wal_item["name"]}" /></td></tr>
           <tr><td class="odd">Host/URL: </td><td class="even"><input type="text" name="host" size="40" value="${wal_item["host"]}" /></td></tr>

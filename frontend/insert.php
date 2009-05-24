@@ -20,7 +20,7 @@
     <form method="post" action="$FRM_ACTION">
       <input type="hidden" name="action" value="save" />
       <center>
-        <table summary="insert table">
+        <table class="action-table" summary="insert table">
           <tr><th colspan="2">Insert new Wallet entry</th></tr>
           <tr><td class="odd">Entryname: </td><td class="even"><input type="text" id="itemname" name="itemname" size="40" /></td></tr>
           <tr><td class="odd">Host/URL: </td><td class="even"><input type="text" id="host" name="host" size="40" /></td></tr>

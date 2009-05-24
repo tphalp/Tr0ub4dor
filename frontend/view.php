@@ -12,16 +12,16 @@
   $out__ .= write_header_common(); 
   $out__ .= write_header_end();
   $out__ .= write_header_counter();  
-  $db = new Data;
+  $db = get_db_conn();
   
   // Call the stored proc
-  $entries = $db->out_rs_object("call get_wallet_entry(". $_GET['id'] .");", DB_HOST, DB_NAME, DB_USER, DB_PASS);
+  $entries = $db->out_row_object("call get_wallet_entry(". $_GET['id'] .");");
   unset($db);
 
   $wal_item = build_item_array($entries);
        
   $out__ .= <<<OUT
-    <center><table summary="view entry">
+    <center><table class="action-table" summary="view entry">
       <tr><th colspan="2">View Wallet entry</th></tr>
       <tr><td class="odd">Entryname: </td><td class="even">${wal_item["name"]}</td></tr>
       <tr><td class="odd">Host/URL: </td><td class="even">

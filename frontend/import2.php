@@ -16,14 +16,14 @@
 
     if(is_uploaded_file($_FILES['csvfile']['tmp_name'])) {
       // upload successful
-      copy($_FILES['csvfile']['tmp_name'], $TMP_PATH."w3pw.csv");
+      copy($_FILES['csvfile']['tmp_name'], TMP_PATH."w3pw.csv");
       
       // consistency checks - check number of semicolons in each line
       $linecounter = 0;
       $nr_of_delims = 0;
       $errorlines = "";
       
-      $fd = fopen($TMP_PATH."w3pw.csv", "r");
+      $fd = fopen(TMP_PATH."w3pw.csv", "r");
       
       while (!feof($fd)) {
         $buffer = fgets($fd, 4096);
@@ -64,7 +64,7 @@
           <form method="post" action="$FRM_ACTION">
             <input type="hidden" name="action" value="import" />
             <center>
-              <table summary="import table">
+              <table class="action-table" summary="import table">
                 <tr><th colspan="5">Make field assignments</th></tr>
                 <tr class="odd">
 OUT;
@@ -90,7 +90,7 @@ OUT;
         // show first two lines of uploaded data
         $linecounter=0;
       
-        $fd = fopen ($TMP_PATH."w3pw.csv", "r");
+        $fd = fopen (TMP_PATH."w3pw.csv", "r");
 
         while ($data = fgetcsv ($fd, 4096, ";")) {
           $linecounter++;

@@ -1,7 +1,9 @@
 <?php
+  // Necessary includes
   require_once("crypt.php");
   require_once("db.php");
 
+  
   function show_sys_msg($txt, $key) {
     //Forward to sysmessage page
     go_to_url("../sysmsg.php?q=". urlencode(urlencode(base64_encode($txt))));
@@ -34,7 +36,13 @@
 
   
   function check_referrer($base_domain) {
-    if (!eregi($base_domain, $_SERVER['HTTP_REFERER'])) {
+    $bad = TRUE;
+    
+    if (isset($_SERVER['HTTP_REFERER']) && eregi($base_domain, $_SERVER['HTTP_REFERER'])) {
+      $bad = false;
+    }
+
+    if ($bad) {
       go_home();
     }
   } //check_referrer()
@@ -60,8 +68,6 @@ OUT;
   
 
   function write_header_jquery() {
-    $port = set_https();
-
     $out__ = <<<OUT
     
     <script type="text/javascript" src="js/jquery-min.js"></script>
@@ -75,7 +81,7 @@ OUT;
   function write_header_counter() {
     $out__ = <<<OUT
     
-    <span id="timeout" class="important">&nbsp;</span>
+    <span id="timeout" class="important">&nbsp;</span> <span id="frmmsg"></span>
 OUT;
 
     return $out__;
@@ -84,10 +90,9 @@ OUT;
 
   
   function write_header_begin($pg_title) {
-    $sys_name = constant("SYS_NAME");
-    $style = constant("DEFAULT_STYLE");
-    $script = constant("DEFAULT_JS");
-//<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+    $sys_name = SYS_NAME;
+    $style = DEFAULT_STYLE;
+    $script = DEFAULT_JS;
     
     $out__ = <<<OUT
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -116,8 +121,7 @@ OUT;
 
   
   function write_header_common() {
-    $out__ = "";
-    //$out__ .= write_header_timeout();
+    $out__ = '';
     $out__ .= write_header_meta();
 
     return $out__;
@@ -126,30 +130,38 @@ OUT;
 
   
   function write_header_menu($footer = false) {
-    
+    $link = explode("|", MENU_ITEMS_TEXT);
+    $urls = explode("|", MENU_ITEMS_URLS);
+    $out__ = '';
+  
     if (!$footer) {
-    $out__ = <<<OUT
-    
-      <!--<ul id="header-menu">
-        <li><a href="main.php" class="menu">list</a></li>
-        <li><a href="insert.php" class="menu">new entry</a></li>
-        <li><a href="import.php" class="menu">import</a></li>
-        <li><a href="logout.php" class="menu">logout</a></li>
-      </ul>-->
-      <table id="header-menu" summary="menu">
-        <tr class="menu">
-          <td><a href="main.php" class="menu">list</a></td>
-          <td><a href="insert.php" class="menu">new entry</a></td>
-          <td><a href="import.php" class="menu">import</a></td>
-          <td><a href="logout.php" class="menu">logout</a></td>
-        </tr>
-      </table>
-OUT;
+
+      $out__ .= '<table id="header-menu" summary="menu"><tr class="menu">';
+
+      foreach ($link as $index => $text) {
+        if (strpos(MENU_SHOW_MAIN, strval($index)) !== false) {
+          $out__ .= '<td><a href="' . $urls[$index] . '" class="menu">' . $text . '</a></td>';
+        }
+      }
+      
+      $out__ .= '</tr></table>';
+/*
+<ul id="header-menu">
+  <li><a href="main.php" class="menu">list</a></li>
+  <li><a href="insert.php" class="menu">new entry</a></li>
+  <li><a href="import.php" class="menu">import</a></li>
+  <li><a href="logout.php" class="menu">logout</a></li>
+</ul>
+*/
     } else {
-    $out__ = <<<OUT
-<a href="main.php">list</a> | <a href="insert.php">new entry</a> | <a href="import.php">import</a> | <a href="logout.php">logout</a>
-OUT;
     
+      foreach ($link as $index => $text) {
+        if (strpos(MENU_SHOW_FOOT, strval($index)) !== false) {
+          $out__ .= '<a href="' . $urls[$index] . '">' . $text . '</a> | ';
+        }
+      }
+      
+      $out__ = rtrim($out__, " | ");
     }
 
     return $out__;
@@ -194,22 +206,22 @@ OUT;
     return $out__;
   
   } //write_footer_onload()
-  
+
   
   function write_footer_timeout_init() {
     $timeout = constant("TIMEOUT");
     $timeout_show = constant("TIMEOUT_SHOW");
 
-    $out__ = write_footer_onload("init($timeout, $timeout_show);");
+		$out__ = write_footer_onload("init($timeout, $timeout_show);");
 		
-    return $out__;
+		return $out__;
 		
-  } //write_footer_timeout_init()
-	
+	} //write_footer_timeout_init()
 
+  
   function write_footer_copyright() {
-    $menu__ = write_header_menu(true);
-    $sys_name = constant("SYS_NAME");
+    $menu__ = write_header_menu(TRUE);
+    $sys_name = SYS_NAME;
     
     $out__ = <<<OUT
     
@@ -224,7 +236,7 @@ OUT;
   } //write_footer_copyright()
   
 
-  function write_footer_main_link($end_text = "") {
+  function write_footer_main_link($end_text = '') {
     $end_text = strlen($end_text) > 0 ? " " . $end_text : ".";
     
     return "<p>Go back to <a href=\"/main.php\">Main List</a>$end_text</p>";
@@ -302,7 +314,7 @@ OUT;
           $hosturl = "http://" . $link;
       }
 
-      $target = " target=\"$target\"";
+      $target = ' target="' . $target . '"';
       
       $out__ = <<<OUT
 <a href="$hosturl"$target>$link</a>
@@ -316,7 +328,7 @@ OUT;
   
   function create_rand_pw($pw_length) {
   // Create random password, with given length (set in config.php)
-    $out__ = "";
+    $out__ = '';
 
     for ($x=0; $x < $pw_length; $x++) {
       $out__ .= chr(mt_rand(33, 127));
@@ -326,4 +338,17 @@ OUT;
   
   } //create_rand_pw()
 	
+  
+  function get_db_conn() {
+    $db = Data_MySQLi::get_instance(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    
+    if ($db) {
+      return $db;
+    }
+
+    $sysmsg__ = "<br />Ooops - <b>can't connect to the database-server</b>...\n";
+    show_sys_msg($sysmsg__, $SYSMSG_KEY);
+
+  } //get_db_conn()
+  
 ?>

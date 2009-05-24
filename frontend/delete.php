@@ -1,5 +1,5 @@
 <?php
-  session_cache_limiter('private_no_expire, must-revalidate');
+  session_cache_limiter('nocache');
   session_start();
 
   require_once("lib/config.php");
@@ -12,10 +12,10 @@
   $out__ .= write_header_common(); 
   $out__ .= write_header_end();
   $out__ .= write_header_counter();
-  $db = new Data;
+  $db = get_db_conn();
   
   // Call the stored proc
-  $entries = $db->out_rs_object("call get_wallet_entry(". $_GET['id'] .");", DB_HOST, DB_NAME, DB_USER, DB_PASS);
+  $entries = $db->out_row_object("call get_wallet_entry(". $_GET['id'] .");");
   unset($db);
   
   $wal_item = build_item_array($entries);
@@ -26,7 +26,7 @@
       <input type="hidden" name="action" value="reallydelete" />
       <input type="hidden" name="ID" value="${_GET['id']}" />
       <center>
-        <table summary="delete entry">
+        <table class="action-table" summary="delete entry">
           <tr><th colspan="2">Delete Wallet entry</th></tr>
           <tr><td class="odd">Entryname: </td><td class="even">${wal_item["name"]}</td></tr>
           <tr><td class="odd">Host/URL: </td><td class="even">${wal_item["host"]}</td></tr>

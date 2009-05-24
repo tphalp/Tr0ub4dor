@@ -1,12 +1,15 @@
 <?php
   session_start();
-
-  require_once("check_refer.php");
+  
   require_once("config.php");
   require_once("common_func.php");  
+  check_referrer(BASE_DOMAIN);
 
   // session active?
   if (!isset($_SESSION['logged_in'])){
+
+      // Require POST
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') { go_home(); }
 
     // no session active - check pw
     if ($conn = mysql_connect(DB_HOST, DB_USER, DB_PASS))	{
@@ -38,7 +41,6 @@
 
           //Forward to main page
           go_to_url("../main.php");
-          //header("Location:/main.php");
         }
         else
         {      
@@ -50,7 +52,7 @@
       }
       else
       {
-        // cant connect to database
+        // can't connect to database
         session_unset();
         session_destroy();	
         $sysmsg__ = '<br />Ooops - <b>Can\'t connect to the database</b>....Please <a href="/">try again</a>';
@@ -60,7 +62,7 @@
     }
     else
     {
-      // cant connect to the server
+      // can't connect to the server
       session_unset();
       session_destroy();
       $sysmsg__ = '<br />Ooops - <b>Can\'t connect to the database-server</b>...Please try <a href="/">again</a>';
@@ -68,6 +70,5 @@
     }
   } else {
     go_to_url("../main.php");
-    //header("Location:/main.php");
   }
 ?>

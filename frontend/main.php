@@ -1,7 +1,9 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
   session_cache_limiter('nocache');
   session_start();
-  
+
   require_once("lib/config.php");
   require_once("lib/common_func.php");
   
@@ -17,25 +19,26 @@
   // Delete existing tmp files. This can happen if timout is
   // reached between the upload steps.
   //-----------------------------------------------------------------
-  delete_stray_temp_files($TMP_PATH);
+  delete_stray_temp_files(TMP_PATH);
   
   //Output the menu
   $out__ .= write_header_menu();
- 
-  $db = new Data;
-  
-  // Call the stored proc
-  $list = $db->out_result_object("call get_all_from_wallet();", DB_HOST, DB_NAME, DB_USER, DB_PASS);
 
+  $db = get_db_conn();
+
+  // Call the stored proc
+  $list = $db->out_result_object("call get_all_from_wallet();");
   $header_array = array();
   
-  while ($entries = mysqli_fetch_object($list)) {
+  // Loop through to create the array of Entry Names
+  while ($entries = $list->fetch_object()) {
     $header_array[$entries->ID] = de_crypt($entries->itemname, $_SESSION['key']);
   }
   
+  unset($list);
   natcasesort($header_array);
   reset($header_array);
-  
+
   if (count($header_array) == 0) {
     $out__ .= '<p>No passwords found. Click <a href="insert.php">here</a> to enter one.</p>';
   }
@@ -43,41 +46,40 @@
   $counter = 0;
   while( list($ID, $itemname) = each($header_array)) {
     $counter++;
-    $list = $db->out_result_object("call get_wallet_entry(". $ID .");", DB_HOST, DB_NAME, DB_USER, DB_PASS);
-    $entries = mysqli_fetch_object($list);
-    
-    // table header
+    $list = $db->out_result_object('call get_wallet_entry(' . $ID . ');');
+    $entries = $list->fetch_object();
+
+    // write out the table header during the first loop
     if ($counter == 1) {
       $out__ .= <<<OUT
         <center>
-          <table id="main-list" width="100%" style="table-layout:fixed;" summary="view table">
-            <tr><th style="width:140px;">Entryname</th><th>Host/URL</th><th style="width:32px;">&nbsp;</th><th style="width:32px;">&nbsp;</th><th style="width:45px;">&nbsp;</th></tr>
+          <table id="main-list" summary="view table">
+            <tr><th class="first">Entry Name</th><th>Host/URL</th><th class="mt1">&nbsp;</th><th class="mt1">&nbsp;</th><th class="mt2">&nbsp;</th></tr>
 OUT;
     }
-    //ALT HEADER BACKUP
-    //<tr><th style="width:140px;">Entryname</th><th>Host/URL</th><th>Login/Username</th><th>Password</th><th>Comment</th><th style="width:32px;">&nbsp;</th><th style="width:32px;">&nbsp;</th><th style="width:45px;">&nbsp;</th></tr>
-    
-    // show entries
+
+    // do odd/even depending on modulus
     if ($counter % 2 == 0) {
       $out__ .= '<tr class="even">';
     } else {
       $out__ .= '<tr class="odd">';
     }
-    
+
+    // set varaibles with additional record info
     $host = create_web_link(de_crypt($entries->host, $_SESSION['key']));
     $login = de_crypt($entries->login, $_SESSION['key']);
     $pw = de_crypt($entries->pw, $_SESSION['key']);
     $comment = de_crypt($entries->comment, $_SESSION['key']);
     
-    //ALT ROW BACKUP
-    //<td>$itemname</td><td>$host</td><td>$login</td><td>$pw</td><td>$comment</td><td class="link"><a href="view.php?id=$ID">view</a></td><td class="link"><a href="edit.php?id=$ID">edit</a></td><td class="link"><a href="delete.php?id=$ID">delete</a></td></tr>
+    // output the table cells with the record info created above
     $out__ .= <<<OUT
     
               <td>$itemname</td><td>$host</td><td class="link"><a href="view.php?id=$ID">view</a></td><td class="link"><a href="edit.php?id=$ID">edit</a></td><td class="link"><a href="delete.php?id=$ID">delete</a></td></tr>
 OUT;
-  }
+
+  } //while loop
   
-  // table footer
+  // the table closing tag
   if ($counter >= 1) {
     $out__ .= "</table></center>\n";
   }

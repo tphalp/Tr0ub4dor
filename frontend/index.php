@@ -6,7 +6,6 @@
   
   if (test_session(true)) {
     go_to_url("main.php");
-    //header("Location:/main.php");
   }
   
   $out__ = write_header_begin("Login");
@@ -19,7 +18,7 @@
   // Delete existing tmp files. This can happen if timout is
   // reached between the upload steps.
   //-----------------------------------------------------------------
-  delete_stray_temp_files($TMP_PATH);
+  delete_stray_temp_files(TMP_PATH);
 
   // check if mcrypt libraries are installed
   if (MCRYPT_MODE_ECB == "ecb") {
@@ -32,7 +31,7 @@
       
       <form method="post" action="$FRM_LOGIN">
         <center>
-          <table summary="login interface">
+          <table class="action-table" summary="login interface">
             <tr><th colspan="2">$sys_name Login</th></tr>
             <tr><td class="odd">Password: </td><td class="even"><input type="password" name="password" id="password" size="20" /></td></tr>
           </table>
@@ -41,9 +40,6 @@
         </center>
       </form>
 OUT;
-
-      //$out__ .= write_footer_popup_check();
-
     }
   }	else {
     $out__ .= <<<OUT

@@ -4,7 +4,7 @@
   require_once("db.php");
 
   
-  function show_sys_msg($txt, $key) {
+  function show_sys_msg($txt) {
     //Forward to sysmessage page
     go_to_url("../sysmsg.php?q=". urlencode(urlencode(base64_encode($txt))));
   } //show_sys_msg()
@@ -136,23 +136,16 @@ OUT;
   
     if (!$footer) {
 
-      $out__ .= '<table id="header-menu" summary="menu"><tr class="menu">';
+      $out__ .= '<div class="menu-wrap"><div class="menu-container"><ul class="header-menu">';
 
       foreach ($link as $index => $text) {
         if (strpos(MENU_SHOW_MAIN, strval($index)) !== false) {
-          $out__ .= '<td><a href="' . $urls[$index] . '" class="menu">' . $text . '</a></td>';
+          $out__ .= '<li><a href="' . $urls[$index] . '">' . $text . '</a></li>';
         }
       }
       
-      $out__ .= '</tr></table>';
-/*
-<ul id="header-menu">
-  <li><a href="main.php" class="menu">list</a></li>
-  <li><a href="insert.php" class="menu">new entry</a></li>
-  <li><a href="import.php" class="menu">import</a></li>
-  <li><a href="logout.php" class="menu">logout</a></li>
-</ul>
-*/
+      $out__ .= '</ul></div></div>';
+
     } else {
     
       foreach ($link as $index => $text) {
@@ -166,7 +159,7 @@ OUT;
 
     return $out__;
     
-  }
+  } //write_header_menu()
 
 
   function write_footer_end() {    
@@ -262,32 +255,15 @@ OUT;
     }
   
     return $port;
-  }
+  } //set_https()
   
   
   function delete_stray_temp_files($tmp) {
     if (is_file($tmp.TMP_IMPORT_FILE))	{
       unlink($tmp.TMP_IMPORT_FILE);
     }
-  }
-  
-  
-  function build_menu() {
-    $out__ = <<<OUT
+  } //delete_stray_temp_files()
     
-      <center>
-        <table width="100%" style="table-layout:fixed;" summary="menu">
-          <tr class="menu">
-            <td><a href="main.php" class="menu">list</a></td><td><a href="search.php" class="menu">search</a></td><td><a href="insert.php" class="menu">new entry</a></td><td><a href="import.php" class="menu">import</a></td><td><a href="logout.php" class="menu">logout</a></td>
-          </tr>
-        </table>
-      </center>
-OUT;
-
-    return $out__;
-    
-  }
-  
   
   function build_item_array($obj) {
 
@@ -347,7 +323,7 @@ OUT;
     }
 
     $sysmsg__ = "<br />Ooops - <b>can't connect to the database-server</b>...\n";
-    show_sys_msg($sysmsg__, $SYSMSG_KEY);
+    show_sys_msg($sysmsg__);
 
   } //get_db_conn()
   

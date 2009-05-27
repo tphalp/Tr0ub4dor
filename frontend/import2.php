@@ -53,7 +53,7 @@
       if ($errorlines) {
         // data inconsistency
         $sysmsg__ = "Data Inconsistency: Not enough/Too many delimiters in following lines: ". rtrim($errorlines, ",") .".<br /><a href=\"javascript:history.back();\">Try again</a>.";
-        show_sys_msg($sysmsg__, $SYSMSG_KEY);
+        show_sys_msg($sysmsg__);
         
       } else {
         // uploaded file ok - now make filed assignments
@@ -120,12 +120,12 @@ OUT;
     } else {
       // error while uploading
       $sysmsg__ = "Error while uploading file.<br /><a href=\"javascript:history.back();\">Try again</a>.";
-      show_sys_msg($sysmsg__, $SYSMSG_KEY);      
+      show_sys_msg($sysmsg__);      
     }
   } else {
       // error while uploading
       $sysmsg__ = "No file uploaded.<br /><a href=\"import.php\">Try again</a>.";
-      show_sys_msg($sysmsg__, $SYSMSG_KEY);          
+      show_sys_msg($sysmsg__);          
   }
   
   $out__ .= "</center></form>";

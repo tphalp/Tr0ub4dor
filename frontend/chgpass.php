@@ -13,6 +13,8 @@
   $out__ .= write_header_end();
   $out__ .= write_header_counter();
 
+  $sys_name = constant("SYS_NAME");
+
   $out__ .= <<<OUT
   
     <form method="post" action="$FRM_ACTION">
@@ -20,7 +22,7 @@
       <div class="frm-msg"></div>
       <center>
       <table class="action-table" summary="change master pw">
-      <tr><th colspan="2">w3pw Master Password Change</th></tr>
+      <tr><th colspan="2">$sys_name Master Password Change</th></tr>
       <tr><td class="odd">Old Master Password: </td><td class="even"><input type="password" id="pw" name="pw" size="20" /> <span id="pw-msg" class="frm-msg">*</span></td></tr>
       <tr><td class="odd">New Master Password: </td><td class="even"><input type="password" id="newpw" name="newpw" size="20" /> <span id="newpw-msg" class="frm-msg">*</span></td></tr>
       <tr><td class="odd">Confirm New Master Password: </td><td class="even"><input type="password" id="confirm" name="confirm" size="20" /> <span id="confirm-msg" class="frm-msg">*</span></td></tr>

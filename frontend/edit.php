@@ -35,7 +35,6 @@
           <tr><td class="odd">Comment: </td><td class="even"><textarea name="comment" cols="40" rows="6">${wal_item["comment"]}</textarea></td></tr>
         </table>
         <input type="submit" value="Save" />
-        <br /><br />
         <p><a href="view.php?id=${wal_item["id"]}">view</a> | <a href="delete.php?id=${wal_item["id"]}">delete</a></p>
 OUT;
 

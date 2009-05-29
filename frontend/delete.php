@@ -36,12 +36,12 @@
         <span id="confirm-del" class="important">Really delete this entry?</span>
         <br />
         <input type="submit" value="Confirm Delete" /> | <a href="#" onclick="javascript:go_to('main.php');">Cancel</a>
+        <p><a href="view.php?id=${_GET['id']}">view</a> | <a href="edit.php?id=${_GET['id']}">edit</a></p>
 OUT;
 
   $out__ .= write_footer_main_link("without deleting.");
   
   $out__ .= <<<OUT
-        <p><a href="view.php?id=${_GET['id']}">view</a> | <a href="edit.php?id=${_GET['id']}">edit</a></p>
       </center>
     </form>
 OUT;

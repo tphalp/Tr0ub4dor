@@ -46,7 +46,6 @@ OUT;
     </form>
 OUT;
   
-  //$out__ .= write_footer_onload('init();');
   $out__ .= write_footer_timeout_init();
   $out__ .= write_footer_common();  
 

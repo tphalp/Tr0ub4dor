@@ -265,16 +265,24 @@ OUT;
   } //delete_stray_temp_files()
     
   
-  function build_item_array($obj) {
+  function build_item_array($obj, $br = FALSE) {
 
     $out__ = array( "id"      => $obj->ID,
                     "name"    => html_entity_decode(de_crypt($obj->itemname, $_SESSION['key'])),
                     "host"    => html_entity_decode(de_crypt($obj->host, $_SESSION['key'])),
                     "login"   => html_entity_decode(de_crypt($obj->login, $_SESSION['key'])),
                     "pw"      => html_entity_decode(de_crypt($obj->pw, $_SESSION['key'])),
-                    "comment" => html_entity_decode(str_replace("\n", "<br />", de_crypt($obj->comment, $_SESSION['key'])))
-                    );
-  
+                    "comment" => html_entity_decode(de_crypt($obj->comment, $_SESSION['key']))
+                  );
+
+    //------------------------------------------
+    // This handles the need for \n conversion 
+    // to <br /> for certain situations
+    //------------------------------------------
+    if ($br) {
+      $out__["comment"] = nl2br($out__["comment"]);
+    }
+            
     return $out__;
   
   } //build_item_array()

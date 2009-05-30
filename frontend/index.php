@@ -4,7 +4,7 @@
   require_once("lib/config.php");
   require_once("lib/common_func.php");
   
-  if (test_session(true)) {
+  if (test_session(TRUE)) {
     go_to_url("main.php");
   }
   

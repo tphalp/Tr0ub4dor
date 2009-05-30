@@ -76,7 +76,7 @@ elseif ((isset($_POST['step3'])) && ($_POST['step3'] == "true"))
 			if ($crypt_pw == $db_pw)
 			{
 				// try to connect to the 1.40 database
-				if ($conn_new = mysql_connect(DB_HOST, DB_USER, DB_PASS, true))
+				if ($conn_new = mysql_connect(DB_HOST, DB_USER, DB_PASS, TRUE))
 				{
 					if (mysql_select_db(DB_NAME, $conn_new))
 					{

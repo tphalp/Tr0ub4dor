@@ -12,7 +12,7 @@
 
   $out__ = write_header_begin("System Message");
   
-  if (test_session(true)) {
+  if (test_session(TRUE)) {
     $out__ .= write_header_jquery();
     $out__ .= write_header_common();
   }
@@ -27,7 +27,7 @@
     <p>$sysmsg__</p>
 OUT;
   
-  if (test_session(true)) {
+  if (test_session(TRUE)) {
     $out__ .= write_footer_main_link();
     $out__ .= write_footer_timeout_init();
   }

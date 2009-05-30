@@ -39,7 +39,7 @@
     $bad = TRUE;
     
     if (isset($_SERVER['HTTP_REFERER']) && eregi($base_domain, $_SERVER['HTTP_REFERER'])) {
-      $bad = false;
+      $bad = FALSE;
     }
 
     if ($bad) {
@@ -129,7 +129,7 @@ OUT;
   } //write_header_common()
 
   
-  function write_header_menu($footer = false) {
+  function write_header_menu($footer = FALSE) {
     $link = explode("|", MENU_ITEMS_TEXT);
     $urls = explode("|", MENU_ITEMS_URLS);
     $out__ = '';
@@ -139,7 +139,7 @@ OUT;
       $out__ .= '<div class="menu-wrap"><div class="menu-container"><ul class="header-menu">';
 
       foreach ($link as $index => $text) {
-        if (strpos(MENU_SHOW_MAIN, strval($index)) !== false) {
+        if (strpos(MENU_SHOW_MAIN, strval($index)) !== FALSE) {
           $out__ .= '<li><a href="' . $urls[$index] . '">' . $text . '</a></li>';
         }
       }
@@ -149,7 +149,7 @@ OUT;
     } else {
     
       foreach ($link as $index => $text) {
-        if (strpos(MENU_SHOW_FOOT, strval($index)) !== false) {
+        if (strpos(MENU_SHOW_FOOT, strval($index)) !== FALSE) {
           $out__ .= '<a href="' . $urls[$index] . '">' . $text . '</a> | ';
         }
       }
@@ -219,8 +219,8 @@ OUT;
     $out__ = <<<OUT
     
     <div id="footer">
-      <p class="l">$menu__</p>
-      <p class="r">$sys_name | v${_SESSION['version']}</p>
+      <p class="l">${menu__}</p>
+      <p class="r">${sys_name} | v${_SESSION['version']}</p>
     </div>
 OUT;
 

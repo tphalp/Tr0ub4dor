@@ -35,9 +35,10 @@ define("MENU_SHOW_MAIN", "0 1 2 4");
 define("MENU_SHOW_FOOT", "0 1 2 3 4");
 
 // Misc
-define("SYS_NAME", "w3pw"); //System name that you would like to use;
+define("SYS_NAME", "w3pw"); // System name that you would like to use;
 define("BASE_DOMAIN", "host.yourdomain.com");  // Used when detecting the referrer;
 define("TMP_IMPORT_FILE", "w3pw.csv");  // Temp file names;
+define("GROUP_BY", "ALPHA");  // Used for grouping
 
 // Path to directory for temporary files. From the POV of the OS.
 // Be sure that the webserver process has write access!

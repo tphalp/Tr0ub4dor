@@ -5,14 +5,15 @@
   }
 
   td {  
-    font-family: verdana,arial;
     font-size: 10px;
   }
-
-  th {
+  
+  th, tr.header {
     background-color: #000000;
     color: #ffffff;
     font-size: 10px;
+    font-weight: bold;
+    text-align: center;
   }
 
   a { color: blue; }
@@ -33,6 +34,11 @@
 
   tr.even:hover { background-color: #ff6; }
 
+  table#main-list td.group-set {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
   h1.update { 
     color: #a8a8a8; 
     font-size: 48px; 
@@ -127,11 +133,11 @@
   #main-list a,
   #footer a { text-decoration: none; }
 
-  #main-list th.first { width: 140px; }
+  #main-list .first { width: 140px; }
 
-  #main-list th.mt1 { width: 32px; }
+  #main-list .mt1 { width: 32px; }
 
-  #main-list th.mt2 { width: 45px; }
+  #main-list .mt2 { width: 45px; }
 
   #main-list td, 
   .action-table td { padding: 3px; }
@@ -170,4 +176,10 @@
     color: #000;
     padding: 4px;
   }
+  
+  .invis { 
+    visibility: hidden;
+    line-height: 0px;
+  }
+  
   /*-- END: Class elements --*/

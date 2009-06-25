@@ -42,6 +42,7 @@
   }
 
   $counter = 0;
+  $first_char = '';
   while( list($ID, $itemname) = each($header_array)) {
     $counter++;
     $list = $db->out_result_object('call get_wallet_entry(' . $ID . ');');
@@ -49,13 +50,38 @@
 
     // write out the table header during the first loop
     if ($counter == 1) {
-      $out__ .= <<<OUT
-        <center>
-          <table id="main-list" summary="view table">
-            <tr><th class="first">Entry Name</th><th>Host/URL</th><th class="mt1">&nbsp;</th><th class="mt1">&nbsp;</th><th class="mt2">&nbsp;</th></tr>
-OUT;
+      if ( defined('GROUP_BY') ) {
+        $out__ .= '<center><table id="main-list" summary="view table">' . HEADER_HIDDEN;
+      } else {
+        $out__ .= '<center><table id="main-list" summary="view table">' . HEADER_DEFAULT;
+      }
     }
 
+    if ( defined('GROUP_BY') ) {
+      switch (GROUP_BY) {
+        case 'ALPHA':
+          // do grouping
+          switch ( is_numeric(substr($itemname, 0, 1)) ) {
+            case TRUE: 
+              if ( $first_char != '0-9' ) {
+                $first_char = '0-9';
+                $out__ .= '<tr><td colspan="5" class="group-set">' . $first_char . '</td></tr>' . HEADER_DEFAULT;
+              }
+              break;
+            case FALSE:
+              if ( strtoupper( substr($itemname, 0, 1)) != $first_char ) {
+                $first_char = strtoupper( substr($itemname, 0, 1) );
+                $out__ .= '<tr><td colspan="5" class="group-set">' . $first_char . '</td></tr>' . HEADER_DEFAULT;
+              }
+              break;
+              
+          } // switch ( is_numeric(substr($itemname, 0, 1)) )
+          break;
+          
+      } // switch (GROUP_BY)
+      
+    } // isset(GROUP_BY)
+      
     // do odd/even depending on modulus
     if ($counter % 2 == 0) {
       $out__ .= '<tr class="even">';
@@ -63,7 +89,7 @@ OUT;
       $out__ .= '<tr class="odd">';
     }
 
-    // set varaibles with additional record info
+    // set variables with additional record info
     $host = create_web_link(de_crypt($entries->host, $_SESSION['key']));
     $login = de_crypt($entries->login, $_SESSION['key']);
     $pw = de_crypt($entries->pw, $_SESSION['key']);

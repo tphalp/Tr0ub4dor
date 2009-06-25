@@ -18,7 +18,7 @@
   $entries = $db->out_row_object("call get_wallet_entry(". $_GET['id'] .");");
   unset($db);
 
-  $wal_item = build_item_array($entries);
+  $wal_item = build_item_array($entries, TRUE);
        
   $out__ .= <<<OUT
     <center><table class="action-table" summary="view entry">

@@ -4,7 +4,7 @@
   require_once("db.php");
 
   
-  function show_sys_msg($txt, $key) {
+  function show_sys_msg($txt) {
     //Forward to sysmessage page
     go_to_url("../sysmsg.php?q=". urlencode(urlencode(base64_encode($txt))));
   } //show_sys_msg()
@@ -39,7 +39,7 @@
     $bad = TRUE;
     
     if (isset($_SERVER['HTTP_REFERER']) && eregi($base_domain, $_SERVER['HTTP_REFERER'])) {
-      $bad = false;
+      $bad = FALSE;
     }
 
     if ($bad) {
@@ -112,7 +112,7 @@ OUT;
     $out__ = <<<OUT
     
   </head>
-  <body id="$id">
+  <body id="$id"><span id="navtop"></span>
 OUT;
 
     return $out__;
@@ -129,34 +129,27 @@ OUT;
   } //write_header_common()
 
   
-  function write_header_menu($footer = false) {
+  function write_header_menu($footer = FALSE) {
     $link = explode("|", MENU_ITEMS_TEXT);
     $urls = explode("|", MENU_ITEMS_URLS);
     $out__ = '';
   
     if (!$footer) {
 
-      $out__ .= '<table id="header-menu" summary="menu"><tr class="menu">';
+      $out__ .= '<div class="menu-wrap"><div class="menu-container"><ul class="header-menu">';
 
       foreach ($link as $index => $text) {
-        if (strpos(MENU_SHOW_MAIN, strval($index)) !== false) {
-          $out__ .= '<td><a href="' . $urls[$index] . '" class="menu">' . $text . '</a></td>';
+        if (strpos(MENU_SHOW_MAIN, strval($index)) !== FALSE) {
+          $out__ .= '<li><a href="' . $urls[$index] . '">' . $text . '</a></li>';
         }
       }
       
-      $out__ .= '</tr></table>';
-/*
-<ul id="header-menu">
-  <li><a href="main.php" class="menu">list</a></li>
-  <li><a href="insert.php" class="menu">new entry</a></li>
-  <li><a href="import.php" class="menu">import</a></li>
-  <li><a href="logout.php" class="menu">logout</a></li>
-</ul>
-*/
+      $out__ .= '</ul></div></div>';
+
     } else {
     
       foreach ($link as $index => $text) {
-        if (strpos(MENU_SHOW_FOOT, strval($index)) !== false) {
+        if (strpos(MENU_SHOW_FOOT, strval($index)) !== FALSE) {
           $out__ .= '<a href="' . $urls[$index] . '">' . $text . '</a> | ';
         }
       }
@@ -166,7 +159,7 @@ OUT;
 
     return $out__;
     
-  }
+  } //write_header_menu()
 
 
   function write_footer_end() {    
@@ -226,8 +219,8 @@ OUT;
     $out__ = <<<OUT
     
     <div id="footer">
-      <p class="l">$menu__</p>
-      <p class="r">$sys_name | v${_SESSION['version']}</p>
+      <p class="l">${menu__}</p>
+      <p class="r">${sys_name} | v${_SESSION['version']}</p>
     </div>
 OUT;
 
@@ -262,43 +255,34 @@ OUT;
     }
   
     return $port;
-  }
+  } //set_https()
   
   
   function delete_stray_temp_files($tmp) {
     if (is_file($tmp.TMP_IMPORT_FILE))	{
       unlink($tmp.TMP_IMPORT_FILE);
     }
-  }
-  
-  
-  function build_menu() {
-    $out__ = <<<OUT
+  } //delete_stray_temp_files()
     
-      <center>
-        <table width="100%" style="table-layout:fixed;" summary="menu">
-          <tr class="menu">
-            <td><a href="main.php" class="menu">list</a></td><td><a href="search.php" class="menu">search</a></td><td><a href="insert.php" class="menu">new entry</a></td><td><a href="import.php" class="menu">import</a></td><td><a href="logout.php" class="menu">logout</a></td>
-          </tr>
-        </table>
-      </center>
-OUT;
-
-    return $out__;
-    
-  }
   
-  
-  function build_item_array($obj) {
+  function build_item_array($obj, $br = FALSE) {
 
     $out__ = array( "id"      => $obj->ID,
                     "name"    => html_entity_decode(de_crypt($obj->itemname, $_SESSION['key'])),
                     "host"    => html_entity_decode(de_crypt($obj->host, $_SESSION['key'])),
                     "login"   => html_entity_decode(de_crypt($obj->login, $_SESSION['key'])),
                     "pw"      => html_entity_decode(de_crypt($obj->pw, $_SESSION['key'])),
-                    "comment" => html_entity_decode(str_replace("\n", "<br />", de_crypt($obj->comment, $_SESSION['key'])))
-                    );
-  
+                    "comment" => html_entity_decode(de_crypt($obj->comment, $_SESSION['key']))
+                  );
+
+    //------------------------------------------
+    // This handles the need for \n conversion 
+    // to <br /> for certain situations
+    //------------------------------------------
+    if ($br) {
+      $out__["comment"] = nl2br($out__["comment"]);
+    }
+            
     return $out__;
   
   } //build_item_array()
@@ -347,8 +331,23 @@ OUT;
     }
 
     $sysmsg__ = "<br />Ooops - <b>can't connect to the database-server</b>...\n";
-    show_sys_msg($sysmsg__, $SYSMSG_KEY);
+    show_sys_msg($sysmsg__);
 
   } //get_db_conn()
+  
+  
+  function build_nav_links($first_char) {
+    $out__ = '<a href="#nav' . $first_char . '">' . $first_char . '</a>&nbsp;';
+    
+    return $out__;
+  
+  } //build_nav_links()
+
+  function build_group_header($first_char) {
+    $out__ = '<tr><td colspan="5" class="group-set"><span id="nav' . $first_char . '">' . $first_char . '</span><a title="back to top" href="#navtop">' . TOP_LINK . '</a></td></tr>';
+    
+    return $out__;
+  
+  } //build_group_header()
   
 ?>

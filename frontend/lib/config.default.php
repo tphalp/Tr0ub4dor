@@ -35,10 +35,13 @@ define("MENU_SHOW_MAIN", "0 1 2 4");
 define("MENU_SHOW_FOOT", "0 1 2 3 4");
 
 // Misc
-define("SYS_NAME", "w3pw"); //System name that you would like to use;
+define("SYS_NAME", "w3pw"); // System name that you would like to use;
 define("BASE_DOMAIN", "host.yourdomain.com");  // Used when detecting the referrer;
 define("TMP_IMPORT_FILE", "w3pw.csv");  // Temp file names;
-$SYSMSG_KEY = md5("%dJ9&".strtolower('sysmsg')."(/&k.=".strtoupper('sysmsg')."1x&%");
+define("GROUP_BY", "ALPHA");  // Used for grouping
+define("TOP_LINK", "{ top }");
+define("HEADER_HIDDEN", '<tr class="invis"><th class="first">&nbsp;</th><th>&nbsp;/URL</th><th class="mt1">&nbsp;</th><th class="mt1">&nbsp;</th><th class="mt2">&nbsp;</th></tr>');
+define("HEADER_DEFAULT", '<tr class="header"><td>Entry Name</td><td>Host/URL</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>');
 
 // Path to directory for temporary files. From the POV of the OS.
 // Be sure that the webserver process has write access!

@@ -5,14 +5,14 @@
   require_once("lib/common_func.php");
 
   if (isset($_GET['q']) && strlen($_GET['q']) > 0) {
-    $sysmsg__ = base64_decode(urldecode($_GET['q']), $SYSMSG_KEY);
+    $sysmsg__ = base64_decode(urldecode($_GET['q']));
   } else {
     go_home();
   }
 
   $out__ = write_header_begin("System Message");
   
-  if (test_session(true)) {
+  if (test_session(TRUE)) {
     $out__ .= write_header_jquery();
     $out__ .= write_header_common();
   }
@@ -27,7 +27,7 @@
     <p>$sysmsg__</p>
 OUT;
   
-  if (test_session(true)) {
+  if (test_session(TRUE)) {
     $out__ .= write_footer_main_link();
     $out__ .= write_footer_timeout_init();
   }

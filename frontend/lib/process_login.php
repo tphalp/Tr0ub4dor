@@ -46,8 +46,8 @@
         {      
           session_unset();
           session_destroy();
-          $sysmsg__ = '<b>Invalid credentials</b>....Please <a href="/">try again</a>';
-          show_sys_msg($sysmsg__, $SYSMSG_KEY);
+          $sysmsg__ = '<b>Invalid credentials</b>....Please <a href="/">try again</a>.';
+          show_sys_msg($sysmsg__);
         }
       }
       else
@@ -55,8 +55,8 @@
         // can't connect to database
         session_unset();
         session_destroy();	
-        $sysmsg__ = '<br />Ooops - <b>Can\'t connect to the database</b>....Please <a href="/">try again</a>';
-        show_sys_msg($sysmsg__, $sysmsg_key);
+        $sysmsg__ = '<br />Ooops - <b>Can\'t connect to the database</b>....Please <a href="/">try again</a>.';
+        show_sys_msg($sysmsg__);
       }
       mysql_close($conn);
     }
@@ -65,8 +65,8 @@
       // can't connect to the server
       session_unset();
       session_destroy();
-      $sysmsg__ = '<br />Ooops - <b>Can\'t connect to the database-server</b>...Please try <a href="/">again</a>';
-      show_sys_msg($sysmsg__, $SYSMSG_KEY);
+      $sysmsg__ = '<br />Ooops - <b>Can\'t connect to the database-server</b>...Please <a href="/">try again</a>.';
+      show_sys_msg($sysmsg__);
     }
   } else {
     go_to_url("../main.php");

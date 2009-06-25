@@ -1,6 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
   session_cache_limiter('nocache');
   session_start();
 
@@ -43,21 +41,58 @@ ini_set('display_errors', '1');
     $out__ .= '<p>No passwords found. Click <a href="insert.php">here</a> to enter one.</p>';
   }
 
+  // initialize some vars
   $counter = 0;
+  $first_char = '';
+  $nav_links = '';
+  
   while( list($ID, $itemname) = each($header_array)) {
     $counter++;
     $list = $db->out_result_object('call get_wallet_entry(' . $ID . ');');
     $entries = $list->fetch_object();
 
-    // write out the table header during the first loop
-    if ($counter == 1) {
-      $out__ .= <<<OUT
-        <center>
-          <table id="main-list" summary="view table">
-            <tr><th class="first">Entry Name</th><th>Host/URL</th><th class="mt1">&nbsp;</th><th class="mt1">&nbsp;</th><th class="mt2">&nbsp;</th></tr>
-OUT;
+    // write out the table header during the first loop, 
+    // taking into consideration the grouping.
+    if ($counter == 1) {      
+      $out__ .= '<center><table id="main-list" summary="view table">';
+      
+      if ( defined('GROUP_BY') ) {
+        // @@NAV_LINKS will be replaced with the nav links for groups
+        $out__ .= HEADER_HIDDEN . '<tr><td colspan="5">Jump to: @@NAV_LINKS</td></tr>';
+      } else {
+        $out__ .= HEADER_DEFAULT;
+      }
     }
 
+    if ( defined('GROUP_BY') ) {
+      switch (GROUP_BY) {
+        case 'ALPHA':
+          // do grouping
+          switch ( is_numeric(substr($itemname, 0, 1)) ) {
+            case TRUE: 
+              if ( $first_char != '0-9' ) {
+                $first_char = '0-9';
+                $out__ .= build_group_header($first_char);
+                $out__ .= HEADER_DEFAULT;
+                $nav_links .= build_nav_links($first_char);
+              }
+              break;
+            case FALSE:
+              if ( strtoupper( substr($itemname, 0, 1)) != $first_char ) {
+                $first_char = strtoupper( substr($itemname, 0, 1) );
+                $out__ .= build_group_header($first_char);
+                $out__ .= HEADER_DEFAULT;
+                $nav_links .= build_nav_links($first_char);
+              }
+              break;
+              
+          } // switch ( is_numeric(substr($itemname, 0, 1)) )
+          break;
+        
+      } // switch (GROUP_BY)
+      
+    } // isset(GROUP_BY)
+      
     // do odd/even depending on modulus
     if ($counter % 2 == 0) {
       $out__ .= '<tr class="even">';
@@ -65,7 +100,7 @@ OUT;
       $out__ .= '<tr class="odd">';
     }
 
-    // set varaibles with additional record info
+    // set variables with additional record info
     $host = create_web_link(de_crypt($entries->host, $_SESSION['key']));
     $login = de_crypt($entries->login, $_SESSION['key']);
     $pw = de_crypt($entries->pw, $_SESSION['key']);
@@ -78,6 +113,8 @@ OUT;
 OUT;
 
   } //while loop
+  
+  $out__ = str_replace("@@NAV_LINKS", $nav_links, $out__);
   
   // the table closing tag
   if ($counter >= 1) {

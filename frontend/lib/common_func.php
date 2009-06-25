@@ -112,7 +112,7 @@ OUT;
     $out__ = <<<OUT
     
   </head>
-  <body id="$id">
+  <body id="$id"><span id="navtop"></span>
 OUT;
 
     return $out__;
@@ -334,5 +334,20 @@ OUT;
     show_sys_msg($sysmsg__);
 
   } //get_db_conn()
+  
+  
+  function build_nav_links($first_char) {
+    $out__ = '<a href="#nav' . $first_char . '">' . $first_char . '</a>&nbsp;';
+    
+    return $out__;
+  
+  } //build_nav_links()
+
+  function build_group_header($first_char) {
+    $out__ = '<tr><td colspan="5" class="group-set"><span id="nav' . $first_char . '">' . $first_char . '</span><a title="back to top" href="#navtop">' . TOP_LINK . '</a></td></tr>';
+    
+    return $out__;
+  
+  } //build_group_header()
   
 ?>

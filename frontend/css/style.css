@@ -34,9 +34,17 @@
 
   tr.even:hover { background-color: #ff6; }
 
-  table#main-list td.group-set {
+  table#main-list td.group-set span {
     font-size: 16px;
     font-weight: bold;
+    float: left;
+  }
+
+  table#main-list td.group-set a {
+    font-size: 10px;
+    font-weight: normal;
+    float: right;
+    line-height: 1.75em;
   }
   
   h1.update { 

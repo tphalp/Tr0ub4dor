@@ -41,19 +41,26 @@
     $out__ .= '<p>No passwords found. Click <a href="insert.php">here</a> to enter one.</p>';
   }
 
+  // initialize some vars
   $counter = 0;
   $first_char = '';
+  $nav_links = '';
+  
   while( list($ID, $itemname) = each($header_array)) {
     $counter++;
     $list = $db->out_result_object('call get_wallet_entry(' . $ID . ');');
     $entries = $list->fetch_object();
 
-    // write out the table header during the first loop
-    if ($counter == 1) {
+    // write out the table header during the first loop, 
+    // taking into consideration the grouping.
+    if ($counter == 1) {      
+      $out__ .= '<center><table id="main-list" summary="view table">';
+      
       if ( defined('GROUP_BY') ) {
-        $out__ .= '<center><table id="main-list" summary="view table">' . HEADER_HIDDEN;
+        // @@NAV_LINKS will be replaced with the nav links for groups
+        $out__ .= HEADER_HIDDEN . '<tr><td colspan="5">Jump to: @@NAV_LINKS</td></tr>';
       } else {
-        $out__ .= '<center><table id="main-list" summary="view table">' . HEADER_DEFAULT;
+        $out__ .= HEADER_DEFAULT;
       }
     }
 
@@ -65,19 +72,23 @@
             case TRUE: 
               if ( $first_char != '0-9' ) {
                 $first_char = '0-9';
-                $out__ .= '<tr><td colspan="5" class="group-set">' . $first_char . '</td></tr>' . HEADER_DEFAULT;
+                $out__ .= build_group_header($first_char);
+                $out__ .= HEADER_DEFAULT;
+                $nav_links .= build_nav_links($first_char);
               }
               break;
             case FALSE:
               if ( strtoupper( substr($itemname, 0, 1)) != $first_char ) {
                 $first_char = strtoupper( substr($itemname, 0, 1) );
-                $out__ .= '<tr><td colspan="5" class="group-set">' . $first_char . '</td></tr>' . HEADER_DEFAULT;
+                $out__ .= build_group_header($first_char);
+                $out__ .= HEADER_DEFAULT;
+                $nav_links .= build_nav_links($first_char);
               }
               break;
               
           } // switch ( is_numeric(substr($itemname, 0, 1)) )
           break;
-          
+        
       } // switch (GROUP_BY)
       
     } // isset(GROUP_BY)
@@ -102,6 +113,8 @@
 OUT;
 
   } //while loop
+  
+  $out__ = str_replace("@@NAV_LINKS", $nav_links, $out__);
   
   // the table closing tag
   if ($counter >= 1) {

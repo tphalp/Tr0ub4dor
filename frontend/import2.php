@@ -115,7 +115,7 @@ OUT;
       }
       
       //$out__ .= "Go back to <a href=\"main.php\">Main Menu</a> without importing the contents of the file.</center>\n</form>\n";
-      $out__ .= write_footer_main_link("without importing the contents of the file");
+      $out__ .= write_footer_main_link("without importing the contents of the file.");
       
     } else {
       // error while uploading

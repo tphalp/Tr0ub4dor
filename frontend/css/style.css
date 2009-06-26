@@ -76,19 +76,23 @@
     padding: 5px;
     color: #fff;
     background-color: #678;
-    border: 1px solid #fff; 
+    border: 1px #678;
+    border-style: solid solid none solid;
     text-decoration: none;
     font-weight: bold; 
     font-size: 10px; 
+    margin-right: 2px;
   }
 
   .header-menu a:hover {
     color: #678; 
     background-color: #fff;
-    border: 1px solid #678; 
   }
 
-  .menu-wrap {text-align: left;}
+  .menu-wrap {
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
 
   .menu-wrap .menu-container {margin: 0;}
   /*-- END: Header Menus --*/

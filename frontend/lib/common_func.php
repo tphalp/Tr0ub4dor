@@ -336,15 +336,24 @@ OUT;
   } //get_db_conn()
   
   
-  function build_nav_links($first_char) {
-    $out__ = '<a href="#nav' . $first_char . '">' . $first_char . '</a>&nbsp;';
+  function build_nav_links($text = 'Jump to: ') {
+    $out__ = '<tr><td colspan="5" id="navlinks">' . $text . '@@NAV_LINKS</td></tr>';
     
     return $out__;
   
   } //build_nav_links()
+  
+  
+  function build_nav_link_anchor($first_char) {
+    $out__ = '<a href="#nav' . $first_char . '">' . $first_char . '</a>&nbsp;';
+    
+    return $out__;
+  
+  } //build_nav_link_anchor()
 
-  function build_group_header($first_char) {
-    $out__ = '<tr><td colspan="5" class="group-set"><span id="nav' . $first_char . '">' . $first_char . '</span><a title="back to top" href="#navtop">' . TOP_LINK . '</a></td></tr>';
+
+  function build_group_header($first_char, $top_link = TOP_LINK) {
+    $out__ = '<tr><td colspan="5" class="group-set"><span id="nav' . $first_char . '">' . $first_char . '</span><a title="back to top" href="#navtop">' . $top_link . '</a></td></tr>';
     
     return $out__;
   

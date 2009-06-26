@@ -57,8 +57,8 @@
       $out__ .= '<center><table id="main-list" summary="view table">';
       
       if ( defined('GROUP_BY') ) {
-        // @@NAV_LINKS will be replaced with the nav links for groups
-        $out__ .= HEADER_HIDDEN . '<tr><td colspan="5" id="navlinks">Jump to: @@NAV_LINKS</td></tr>';
+        // include the navlinks for groups
+        $out__ .= HEADER_HIDDEN . build_nav_links();
       } else {
         $out__ .= HEADER_DEFAULT;
       }
@@ -74,7 +74,7 @@
                 $first_char = '0-9';
                 $out__ .= build_group_header($first_char);
                 $out__ .= HEADER_DEFAULT;
-                $nav_links .= build_nav_links($first_char);
+                $nav_links .= build_nav_link_anchor($first_char);
               }
               break;
             case FALSE:
@@ -82,7 +82,7 @@
                 $first_char = strtoupper( substr($itemname, 0, 1) );
                 $out__ .= build_group_header($first_char);
                 $out__ .= HEADER_DEFAULT;
-                $nav_links .= build_nav_links($first_char);
+                $nav_links .= build_nav_link_anchor($first_char);
               }
               break;
               
@@ -114,6 +114,8 @@ OUT;
 
   } //while loop
   
+  // replace the placeholder @NAV_LINKS with the actual 
+  // string that was built during the loop above.
   $out__ = str_replace("@@NAV_LINKS", $nav_links, $out__);
   
   // the table closing tag

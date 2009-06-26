@@ -58,7 +58,7 @@
       
       if ( defined('GROUP_BY') ) {
         // @@NAV_LINKS will be replaced with the nav links for groups
-        $out__ .= HEADER_HIDDEN . '<tr><td colspan="5">Jump to: @@NAV_LINKS</td></tr>';
+        $out__ .= HEADER_HIDDEN . '<tr><td colspan="5" id="navlinks">Jump to: @@NAV_LINKS</td></tr>';
       } else {
         $out__ .= HEADER_DEFAULT;
       }

@@ -141,7 +141,7 @@
   #main-list a,
   #footer a { text-decoration: none; }
 
-  #main-list .first { width: 140px; }
+  #main-list .first { width: 200px; }
 
   #main-list .mt1 { width: 32px; }
 
@@ -170,6 +170,8 @@
     padding: 4px;
     line-height: 1.5em;
   }
+  
+  #navlinks { text-align: center; }
   /*-- END: ID elements --*/
 
   /*-- BEGIN: Class elements --*/

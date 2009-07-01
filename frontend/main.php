@@ -54,7 +54,7 @@
     // write out the table header during the first loop, 
     // taking into consideration the grouping.
     if ($counter == 1) {      
-      $out__ .= '<center><table id="main-list" summary="view table">';
+      $out__ .= '<table id="main-list" summary="view table">';
       
       if ( defined('GROUP_BY') ) {
         // include the navlinks for groups
@@ -120,7 +120,7 @@ OUT;
   
   // the table closing tag
   if ($counter >= 1) {
-    $out__ .= "</table></center>\n";
+    $out__ .= "</table>\n";
   }
   
   unset($header_array, $itemname);

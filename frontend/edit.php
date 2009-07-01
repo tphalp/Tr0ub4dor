@@ -23,24 +23,23 @@
   $out__ .= <<<OUT
   
     <form method="post" action="$FRM_ACTION">
+      <center>
       <input type="hidden" name="action" value="editsave" />
       <input type="hidden" name="ID" value="${_GET['id']}" />
-      <center>
-        <table class="action-table" summary="edit entry">
-          <tr><th colspan="2">Edit Wallet entry</th></tr>
-          <tr><td class="odd">Entryname: </td><td class="even"><input type="text" name="itemname" size="40" value="${wal_item["name"]}" /></td></tr>
-          <tr><td class="odd">Host/URL: </td><td class="even"><input type="text" name="host" size="40" value="${wal_item["host"]}" /></td></tr>
-          <tr><td class="odd">Login: </td><td class="even"><input type="text" name="login" size="40" value="${wal_item["login"]}" /></td></tr>
-          <tr><td class="odd">Password: </td><td class="even"><input type="text" name="password" size="40" value="${wal_item["pw"]}" /></td></tr>
-          <tr><td class="odd">Comment: </td><td class="even"><textarea name="comment" cols="40" rows="6">${wal_item["comment"]}</textarea></td></tr>
-        </table>
-        <input type="submit" value="Save" />
-        <p><a href="view.php?id=${wal_item["id"]}">view</a> | <a href="delete.php?id=${wal_item["id"]}">delete</a></p>
+      <table class="action-table" summary="edit entry">
+        <tr><th colspan="2">Edit Wallet entry</th></tr>
+        <tr><td class="odd">Entryname: </td><td class="even"><input type="text" name="itemname" size="40" value="${wal_item["name"]}" /></td></tr>
+        <tr><td class="odd">Host/URL: </td><td class="even"><input type="text" name="host" size="40" value="${wal_item["host"]}" /></td></tr>
+        <tr><td class="odd">Login: </td><td class="even"><input type="text" name="login" size="40" value="${wal_item["login"]}" /></td></tr>
+        <tr><td class="odd">Password: </td><td class="even"><input type="text" name="password" size="40" value="${wal_item["pw"]}" /></td></tr>
+        <tr><td class="odd">Comment: </td><td class="even"><textarea name="comment" cols="40" rows="6">${wal_item["comment"]}</textarea></td></tr>
+      </table>
+      <input type="submit" value="Save" />
+      <p><a href="view.php?id=${wal_item["id"]}">view</a> | <a href="delete.php?id=${wal_item["id"]}">delete</a></p>
 OUT;
 
   $out__ .= write_footer_main_link("without saving.");
-  $out__ .= "</center></form>";
-  //$out__ .= write_footer_onload('init();');
+  $out__ .= '</center></form>';
   $out__ .= write_footer_timeout_init();
   $out__ .= write_footer_common();  
 

@@ -23,28 +23,25 @@
   $out__ .= <<<OUT
 
     <form method="post" action="$FRM_ACTION">
+      <center>
       <input type="hidden" name="action" value="reallydelete" />
       <input type="hidden" name="ID" value="${_GET['id']}" />
-      <center>
-        <table class="action-table" summary="delete entry">
-          <tr><th colspan="2">Delete Wallet entry</th></tr>
-          <tr><td class="odd">Entryname: </td><td class="even">${wal_item["name"]}</td></tr>
-          <tr><td class="odd">Host/URL: </td><td class="even">${wal_item["host"]}</td></tr>
-          <tr><td class="odd">Login: </td><td class="even">${wal_item["login"]}</td></tr>
-          <!--<tr><th colspan="2">Really delete this entry?</th></tr>-->
-        </table>
-        <span id="confirm-del" class="important">Really delete this entry?</span>
-        <br />
-        <input type="submit" value="Confirm Delete" /> | <a href="#" onclick="javascript:go_to('main.php');">Cancel</a>
-        <p><a href="view.php?id=${_GET['id']}">view</a> | <a href="edit.php?id=${_GET['id']}">edit</a></p>
+      <table class="action-table" summary="delete entry">
+        <tr><th colspan="2">Delete Wallet entry</th></tr>
+        <tr><td class="odd">Entryname: </td><td class="even">${wal_item["name"]}</td></tr>
+        <tr><td class="odd">Host/URL: </td><td class="even">${wal_item["host"]}</td></tr>
+        <tr><td class="odd">Login: </td><td class="even">${wal_item["login"]}</td></tr>
+        <!--<tr><th colspan="2">Really delete this entry?</th></tr>-->
+      </table>
+      <span id="confirm-del" class="important">Really delete this entry?</span>
+      <br />
+      <input type="submit" value="Confirm Delete" /> | <a href="#" onclick="javascript:go_to('main.php');">Cancel</a>
+      <p><a href="view.php?id=${_GET['id']}">view</a> | <a href="edit.php?id=${_GET['id']}">edit</a></p>
 OUT;
 
   $out__ .= write_footer_main_link("without deleting.");
   
-  $out__ .= <<<OUT
-      </center>
-    </form>
-OUT;
+  $out__ .= '</center></form>';
   
   $out__ .= write_footer_timeout_init();
   $out__ .= write_footer_common();  

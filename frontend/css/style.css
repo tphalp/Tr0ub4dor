@@ -1,7 +1,7 @@
   body {
     font-family: verdana,arial;
     font-size: 10px;
-    margin: 10px;
+    margin: 40px 10px 10px;
   }
 
   td {  
@@ -55,9 +55,8 @@
   /*-- END: Tag elements --*/
 
   /*-- BEGIN: Header Menus --*/
-  .header-menu {display: inline-block;}
-  .header-menu {display: inline;}
-  .menu-container {display: table;}
+  .header-menu { display: inline; }
+  .menu-container { display: table; }
 
   .header-menu {
     display: table-row;
@@ -67,7 +66,7 @@
     white-space: nowrap; 
   }
 
-  .header-menu li {display: inline;}
+  .header-menu li { display: inline; }
 
   .header-menu a, 
   .header-menu a:visited {
@@ -76,7 +75,7 @@
     padding: 5px;
     color: #fff;
     background-color: #678;
-    border: 1px #678;
+    border: 1px #ccc;
     border-style: solid solid none solid;
     text-decoration: none;
     font-weight: bold; 
@@ -94,7 +93,7 @@
     border-bottom: 1px solid #ccc;
   }
 
-  .menu-wrap .menu-container {margin: 0;}
+  .menu-wrap .menu-container {margin: 0 0 0 5px;}
   /*-- END: Header Menus --*/
 
   /*-- BEGIN: ID elements --*/
@@ -102,6 +101,13 @@
     margin: 10px 0 5px;
   }
 
+  #timeout {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    border: 2px solid #fff;
+  }
+	
   #timeout, 
   #frmmsg { 
     visibility: hidden;
@@ -141,7 +147,7 @@
     table-layout: fixed;
     width: 100%;
   }
-
+  
   #main-list a,
   #footer a { text-decoration: none; }
 
@@ -156,14 +162,6 @@
 
   #popup { visibility: hidden; }
 
-  .important {
-    display: inline-block;
-    background-color: red;
-    color: #fff;
-    font-weight: bold;
-    padding: 4px;
-  }
-
   #frmmsg {
     background-color: green;
     color: #fff;
@@ -175,10 +173,18 @@
     line-height: 1.5em;
   }
   
-  #navlinks { text-align: center; }
+  #navlinks { text-align: center; }  
   /*-- END: ID elements --*/
 
   /*-- BEGIN: Class elements --*/
+  .important {
+    display: inline-block;
+    background-color: red;
+    color: #fff;
+    font-weight: bold;
+    padding: 4px;
+  }
+
   .frm-msg {
     display: none;
     color: red;
@@ -196,4 +202,7 @@
     line-height: 0px;
   }
   
+  .note {
+    font-weight: bold;
+  }
   /*-- END: Class elements --*/

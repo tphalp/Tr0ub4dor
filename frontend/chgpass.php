@@ -18,9 +18,9 @@
   $out__ .= <<<OUT
   
     <form method="post" action="$FRM_ACTION">
+      <center>
       <input type="hidden" id="action" name="action" value="changepw" />
       <div class="frm-msg"></div>
-      <center>
       <table class="action-table" summary="change master pw">
       <tr><th colspan="2">$sys_name Master Password Change</th></tr>
       <tr><td class="odd">Old Master Password: </td><td class="even"><input type="password" id="pw" name="pw" size="20" /> <span id="pw-msg" class="frm-msg">*</span></td></tr>

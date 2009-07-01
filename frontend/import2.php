@@ -16,43 +16,36 @@
 
     if(is_uploaded_file($_FILES['csvfile']['tmp_name'])) {
       // upload successful
-      copy($_FILES['csvfile']['tmp_name'], TMP_PATH."w3pw.csv");
+      copy($_FILES['csvfile']['tmp_name'], TMP_PATH . "w3pw.csv");
       
       // consistency checks - check number of semicolons in each line
       $linecounter = 0;
       $nr_of_delims = 0;
-      $errorlines = "";
+      $row = 1;
+      $error_msg = '';
       
+      // fix for Mac files
+      ini_set('auto_detect_line_endings', TRUE);
+      
+      // open the file
       $fd = fopen(TMP_PATH."w3pw.csv", "r");
       
-      while (!feof($fd)) {
-        $buffer = fgets($fd, 4096);
-        $linecounter++;
-        
-        if (strlen($buffer)>1)
-        {
-          // use number of semicolons in the first line as reference
-          if ($linecounter == 1)
-          {
-            $nr_of_delims = substr_count($buffer, ";");
+      // check file
+      while (($data = fgetcsv($fd, 4096, CSV_DELIM)) !== FALSE) {
+          $num = count($data);
+          
+          if ($num < 5) {
+            $error_msg .= '- Row ' . $row . ' has only ' . $num . ' field(s).<br />';
           }
-          else
-          {
-            $nr_of_delims_thisline = substr_count($buffer, ";");
-
-            if (($nr_of_delims_thisline != $nr_of_delims) || ($nr_of_delims_thisline > 5))
-            {
-              $errorlines .= $linecounter . ",";
-            }
-          }
-        }
+          
+          $row++;
       }
-      
+
       fclose ($fd);
       
-      if ($errorlines) {
+      if (strlen($error_msg) > 0) {
         // data inconsistency
-        $sysmsg__ = "Data Inconsistency: Not enough/Too many delimiters in following lines: ". rtrim($errorlines, ",") .".<br /><a href=\"javascript:history.back();\">Try again</a>.";
+        $sysmsg__ = "There were data inconsistencies:<br /><br />" . $error_msg . "<br /><a href=\"javascript:history.back();\">Try again</a>.";
         show_sys_msg($sysmsg__);
         
       } else {
@@ -62,11 +55,11 @@
         $out__ .= <<<OUT
         
           <form method="post" action="$FRM_ACTION">
-            <input type="hidden" name="action" value="import" />
             <center>
-              <table class="action-table" summary="import table">
-                <tr><th colspan="5">Make field assignments</th></tr>
-                <tr class="odd">
+            <input type="hidden" name="action" value="import" />
+            <table class="action-table" summary="import table">
+              <tr><th colspan="5">Make field assignments</th></tr>
+              <tr class="odd">
 OUT;
         
         for ($x=0; $x <= 4; $x++) {
@@ -90,12 +83,12 @@ OUT;
         // show first two lines of uploaded data
         $linecounter=0;
       
-        $fd = fopen (TMP_PATH."w3pw.csv", "r");
+        $fd = fopen (TMP_PATH . "w3pw.csv", "r");
 
         while ($data = fgetcsv ($fd, 4096, ";")) {
           $linecounter++;
 
-          if ($linecounter <= 2) {
+          if ($linecounter <= 4) {  //only the first 4 lines
             $out__ .= "<tr class=\"even\">";
             
             for ($x=0; $x <= 4; $x++) {
@@ -107,11 +100,11 @@ OUT;
         }
         
         fclose ($fd);
-        
+        unset($data, $fd, $field_headers);
         $out__ .= "</table>\n";
         $out__ .= "<input type=\"submit\" value=\"Save\" /><br /><br />\n";
         
-        $out__ .= "<b>Only the first two lines of your file are shown here!</b><br />\n";
+        $out__ .= '<span class="note">Note: Only the first four lines of your file are shown here!</span><br />';
       }
       
       //$out__ .= "Go back to <a href=\"main.php\">Main Menu</a> without importing the contents of the file.</center>\n</form>\n";
@@ -128,8 +121,7 @@ OUT;
       show_sys_msg($sysmsg__);          
   }
   
-  $out__ .= "</center></form>";
-  //$out__ .= write_footer_onload('init();');
+  $out__ .= '</center></form>';
   $out__ .= write_footer_timeout_init();
   $out__ .= write_footer_common();    
   

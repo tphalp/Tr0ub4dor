@@ -112,7 +112,8 @@ OUT;
     $out__ = <<<OUT
     
   </head>
-  <body id="$id"><span id="navtop"></span>
+  <body id="$id">
+    <span id="navtop"></span>
 OUT;
 
     return $out__;

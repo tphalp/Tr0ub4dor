@@ -96,7 +96,7 @@ OUT;
     
     $out__ = <<<OUT
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" id="navtop">
   <head>
     <title>$pg_title | $sys_name</title>
     <link type="text/css" rel="stylesheet" href="$style" />
@@ -113,7 +113,6 @@ OUT;
     
   </head>
   <body id="$id">
-    <span id="navtop"></span>
 OUT;
 
     return $out__;

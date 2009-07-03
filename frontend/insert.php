@@ -12,7 +12,7 @@
   $out__ .= write_header_end();
   $out__ .= write_header_counter();
   
-  $initial_pw = create_rand_pw($RANDOM_PW_LENGTH);
+  $initial_pw = htmlspecialchars(create_rand_pw(RANDOM_PW_LENGTH));
   //$initial_pw = "";
   
   $out__ .= <<<OUT

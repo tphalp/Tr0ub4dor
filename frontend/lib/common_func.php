@@ -345,6 +345,7 @@ OUT;
   
   
   function build_nav_link_anchor($first_char) {
+    // adds $first_char to the nav links at the top of the page.
     $out__ = '<a href="#nav' . $first_char . '">' . $first_char . '</a>&nbsp;';
     
     return $out__;

@@ -13,6 +13,7 @@
   
     <p>If the $sys_name Login page does not open in a new window immediately, click <a onclick="javascript:starter();return false;" href="#">here</a>. After that, you may close this window.</p>
     <p>Or, click <a href="index.php">here</a> to go back to the normal login.</p>
+    <p class="note">Note: If you are trying to get to the normal login screen, but you're brought back to this page, check your AUTO_POPUP setting in the config file.</p>
     <script type="text/javascript">
       /* <![CDATA[ */
       function starter() {

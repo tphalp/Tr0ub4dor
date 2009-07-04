@@ -31,6 +31,15 @@ Version 1.50
 - Menus are now built from settings in the config file, including 
   the ability to specify which items should appear at the top or 
   bottom, or both.
+- Default behavior at login is not to pop up the login page into 
+  another window, but rather remain in the initial browser 
+  window. The ability to open w3pw into a pop-up window is still 
+  available, either as a link on the login page, or as a setting 
+  in the config file. If the AUTO_POPUP is set to 1, then you 
+  will always get the program in a pop-up window. If set to 0, 
+  the default will be to remain in the initial window, but you 
+  also have the ability to open w3pw in a pop-up window by 
+  clicking a link on the login page.
 
 Version 1.40
 - password field is filled with randomly generated string when

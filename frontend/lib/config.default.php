@@ -44,10 +44,6 @@ define("HEADER_DEFAULT", '<tr class="header"><td class="first">Entry Name</td><t
 define("HEADER_HIDDEN", '<tr class="invis"><th class="first">&nbsp;</th><th>&nbsp;</th><th class="mt1">&nbsp;</th><th class="mt1">&nbsp;</th><th class="mt2">&nbsp;</th></tr>');
 define("CSV_DELIM", ";");
 
-// Auto Pop-up: controls whether the system utilizes 
-// the functionality provided in starter.php. 1=true, 0=false
-define("AUTO_POPUP", 0);
-
 // Path to directory for temporary files. From the POV of the OS.
 // Be sure that the webserver process has write access!
 define("TMP_PATH", "/tmp/");

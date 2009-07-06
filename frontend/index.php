@@ -52,7 +52,7 @@ OUT;
 OUT;
   }
 
-  $out__ .= write_footer_onload('$("#password").focus();checkpop(self.name, "' . AUTO_POPUP . '");');
+  $out__ .= write_footer_onload('$("#password").focus();checkpop(self.name);');
   $out__ .= write_footer_end();
 
   echo $out__;

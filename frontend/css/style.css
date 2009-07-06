@@ -55,7 +55,7 @@
   /*-- END: Tag elements --*/
 
   /*-- BEGIN: Header Menus --*/
-  .header-menu { display: inline; }
+  .header-menu { display: inline-block; }
   .menu-container { display: table; }
 
   .header-menu {

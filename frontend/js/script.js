@@ -32,13 +32,9 @@ function counter(timeout_, showit_) {
   };
 }
 
-function checkpop(winname_, auto_pop) {
+function checkpop(winname_) {
   if (winname_ != popup_name) {
-    $("#popup").css("visibility", "visible");
-    
-    if (auto_pop == 1) {
-      go_to("starter.php");
-    }
+    $("#popup").css("visibility", "visible");    
   }
 }
 

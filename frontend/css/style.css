@@ -9,7 +9,7 @@
   }
   
   th, tr.header {
-    background-color: #000000;
+    background-color: #333;
     color: #ffffff;
     font-size: 10px;
     font-weight: bold;
@@ -38,6 +38,7 @@
     font-size: 16px;
     font-weight: bold;
     float: left;
+    color: green;
   }
 
   table#main-list td.group-set a {
@@ -74,7 +75,7 @@
     float: left;
     padding: 5px;
     color: #fff;
-    background-color: #678;
+    background-color: #666;
     border: 1px #ccc;
     border-style: solid solid none solid;
     text-decoration: none;
@@ -84,7 +85,7 @@
   }
 
   .header-menu a:hover {
-    color: #678; 
+    color: #666; 
     background-color: #fff;
   }
 
@@ -126,7 +127,7 @@
     margin-top: 15px;
     padding-top: 5px;
   }
-
+  
   #footer p.l {
     float: left;
     text-align: left;
@@ -143,6 +144,10 @@
     padding: 0 0 10px;
   }
 
+  #footer #sysinfo {
+    color: #222;
+  }
+  
   #main-list { 
     table-layout: fixed;
     width: 100%;

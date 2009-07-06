@@ -220,7 +220,7 @@ OUT;
     
     <div id="footer">
       <p class="l">${menu__}</p>
-      <p class="r">${sys_name} | v${_SESSION['version']}</p>
+      <p class="r" id="sysinfo">${sys_name} | v${_SESSION['version']}</p>
     </div>
 OUT;
 

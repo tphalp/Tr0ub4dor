@@ -40,7 +40,11 @@
           $_SESSION['version']=$entries->version;
 
           //Forward to main page
-          go_to_url("../main.php");
+          if (isset($_GET["upgrade"])) {
+            go_to_url("../_upgrade.php");
+          } else {
+            go_to_url("../" . PAGE_MAIN);
+          }
         }
         else
         {      
@@ -69,6 +73,6 @@
       show_sys_msg($sysmsg__);
     }
   } else {
-    go_to_url("../main.php");
+    go_to_url("../" . PAGE_MAIN);
   }
 ?>

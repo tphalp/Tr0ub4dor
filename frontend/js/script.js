@@ -22,7 +22,7 @@ function counter(timeout_, showit_) {
   count--;
   
   if ($("#timeout").length > 0 && count <= showit_) {
-    $("#timeout").html(count + " seconds left until forced logout | <a onclick=\"javascript:init(" + timeout_ + ", " + showit_ + ");\" href=\"#\">reset<\/a>");
+    $("#timeout").html(count + " seconds left until forced logout | <a onclick=\"javascript:init(" + timeout_ + ", " + showit_ + ");\" href=\"javascript:void(0);\">reset<\/a>");
     $("#timeout").css("visibility", "visible");
   }
   

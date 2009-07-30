@@ -107,7 +107,6 @@ OUT;
         $out__ .= '<span class="note">Note: Only the first four lines of your file are shown here!</span><br />';
       }
       
-      //$out__ .= "Go back to <a href=\"main.php\">Main Menu</a> without importing the contents of the file.</center>\n</form>\n";
       $out__ .= write_footer_main_link("without importing the contents of the file.");
       
     } else {

@@ -30,7 +30,7 @@
   
   // Loop through to create the array of Entry Names
   while ($entries = $list->fetch_object()) {
-    $header_array[$entries->ID] = de_crypt($entries->itemname, $_SESSION['key']);
+    $header_array[$entries->ID] = htmlentities(de_crypt($entries->itemname, $_SESSION['key']));
   }
   
   unset($list);
@@ -42,6 +42,7 @@
   }
 
   // initialize some vars
+  $tot_count = count($header_array);
   $counter = 0;
   $first_char = '';
   $nav_links = '';
@@ -72,17 +73,17 @@
             case TRUE: 
               if ( $first_char != '0-9' ) {
                 $first_char = '0-9';
-                $out__ .= build_group_header($first_char);
+                $out__ .= build_group_header($ID, $first_char);
                 $out__ .= HEADER_DEFAULT;
-                $nav_links .= build_nav_link_anchor($first_char);
+                $nav_links .= build_nav_link_anchor($ID, $first_char);
               }
               break;
             case FALSE:
               if ( strtoupper( substr($itemname, 0, 1)) != $first_char ) {
-                $first_char = strtoupper( substr($itemname, 0, 1) );
-                $out__ .= build_group_header($first_char);
+                $first_char = htmlentities(strtoupper( substr($itemname, 0, 1) ));
+                $out__ .= build_group_header($ID, $first_char);
                 $out__ .= HEADER_DEFAULT;
-                $nav_links .= build_nav_link_anchor($first_char);
+                $nav_links .= build_nav_link_anchor($ID, $first_char);
               }
               break;
               
@@ -101,10 +102,10 @@
     }
 
     // set variables with additional record info
-    $host = create_web_link(de_crypt($entries->host, $_SESSION['key']));
-    $login = de_crypt($entries->login, $_SESSION['key']);
-    $pw = de_crypt($entries->pw, $_SESSION['key']);
-    $comment = de_crypt($entries->comment, $_SESSION['key']);
+    $host = create_web_link(htmlentities(de_crypt($entries->host, $_SESSION['key'])));
+    $login = htmlentities(de_crypt($entries->login, $_SESSION['key']));
+    $pw = htmlentities(de_crypt($entries->pw, $_SESSION['key']));
+    $comment = htmlentities(de_crypt($entries->comment, $_SESSION['key']));
     
     // output the table cells with the record info created above
     $out__ .= <<<OUT
@@ -120,7 +121,7 @@ OUT;
   
   // the table closing tag
   if ($counter >= 1) {
-    $out__ .= "</table>\n";
+    $out__ .= '</table>' . "\n" . '<div id="wallet-count">Wallet Entries: ' . $tot_count . '</div>';
   }
   
   unset($header_array, $itemname);

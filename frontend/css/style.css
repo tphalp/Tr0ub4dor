@@ -48,10 +48,8 @@
     line-height: 1.75em;
   }
   
-  h1.update { 
-    color: #a8a8a8; 
-    font-size: 48px; 
-    font-weight: bold; 
+  h1.upgrade { 
+    color: #a8a8a8;
   }
   /*-- END: Tag elements --*/
 
@@ -178,7 +176,18 @@
     line-height: 1.5em;
   }
   
-  #navlinks { text-align: center; }  
+  #navlinks { text-align: center; }
+
+  #wallet-count { 
+    padding-top: 4px;
+    color: green;
+    text-align: right;
+  }
+  
+  #upgrade-controls input, 
+  #upgrade-controls label{
+    margin: 5px;
+  }
   /*-- END: ID elements --*/
 
   /*-- BEGIN: Class elements --*/

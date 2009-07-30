@@ -91,8 +91,8 @@ OUT;
   
   function write_header_begin($pg_title) {
     $sys_name = SYS_NAME;
-    $style = DEFAULT_STYLE;
-    $script = DEFAULT_JS;
+    $style = STYLE_DEFAULT;
+    $script = JS_DEFAULT;
     
     $out__ = <<<OUT
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -232,20 +232,20 @@ OUT;
   function write_footer_main_link($end_text = '') {
     $end_text = strlen($end_text) > 0 ? " " . $end_text : ".";
     
-    return "<p>Go back to <a href=\"/main.php\">Main List</a>$end_text</p>";
+    return '<p>Go back to <a href="/' . PAGE_MAIN . '">Main List</a>' . $end_text . '</p>';
   } //write_footer_main_link
   
-  
-  function get_params() {
+/*  
+  function get_param($id) {
     $db = new Data;
     
     // Call the stored proc
-    $param = $db->in_query_out_array("call get_paramss();", DB_HOST, DB_NAME, DB_USER, DB_PASS);
+    $param = $db->out_array("call get_params($id);");
 
     unset($db);
   
-  } //get_params()
-  
+  } //get_param()
+*/
   
   function set_https() {
     $port = "http";
@@ -268,11 +268,11 @@ OUT;
   function build_item_array($obj, $br = FALSE) {
 
     $out__ = array( "id"      => $obj->ID,
-                    "name"    => html_entity_decode(de_crypt($obj->itemname, $_SESSION['key'])),
-                    "host"    => html_entity_decode(de_crypt($obj->host, $_SESSION['key'])),
-                    "login"   => html_entity_decode(de_crypt($obj->login, $_SESSION['key'])),
-                    "pw"      => html_entity_decode(de_crypt($obj->pw, $_SESSION['key'])),
-                    "comment" => html_entity_decode(de_crypt($obj->comment, $_SESSION['key']))
+                    "name"    => htmlentities(de_crypt($obj->itemname, $_SESSION['key'])),
+                    "host"    => htmlentities(de_crypt($obj->host, $_SESSION['key'])),
+                    "login"   => htmlentities(de_crypt($obj->login, $_SESSION['key'])),
+                    "pw"      => htmlentities(de_crypt($obj->pw, $_SESSION['key'])),
+                    "comment" => htmlentities(de_crypt($obj->comment, $_SESSION['key']))
                   );
 
     //------------------------------------------
@@ -344,17 +344,17 @@ OUT;
   } //build_nav_links()
   
   
-  function build_nav_link_anchor($first_char) {
+  function build_nav_link_anchor($ID, $first_char) {
     // adds $first_char to the nav links at the top of the page.
-    $out__ = '<a href="#nav' . $first_char . '">' . $first_char . '</a>&nbsp;';
+    $out__ = '<a href="#nav' . $ID . '">' . $first_char . '</a>&nbsp;';
     
     return $out__;
   
   } //build_nav_link_anchor()
 
 
-  function build_group_header($first_char, $top_link = TOP_LINK) {
-    $out__ = '<tr><td colspan="5" class="group-set"><span id="nav' . $first_char . '">' . $first_char . '</span><a title="back to top" href="#navtop">' . $top_link . '</a></td></tr>';
+  function build_group_header($ID, $first_char, $top_link = TOP_LINK) {
+    $out__ = '<tr><td colspan="5" class="group-set"><span id="nav' . $ID . '">' . $first_char . '</span><a title="back to top" href="#navtop">' . $top_link . '</a></td></tr>';
     
     return $out__;
   

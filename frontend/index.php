@@ -5,9 +5,10 @@
   require_once("lib/common_func.php");
   
   if (test_session(TRUE)) {
-    go_to_url("main.php");
+    go_to_url(PAGE_MAIN);
   }
   
+  $do_upgrade = isset($_GET["upgrade"]) ? '?upgrade' : '';
   $out__ = write_header_begin("Login");
   $out__ .= write_header_jquery();
   $out__ .= write_header_meta();
@@ -23,24 +24,20 @@
   // check if mcrypt libraries are installed
   if (MCRYPT_MODE_ECB == "ecb") {
     // check if updatescript is readable
-    if (is_readable("update.php")) {
-      include("update.php");
-    }	else {
-      $sys_name = constant("SYS_NAME");
-      $out__ .= <<<OUT
-      
-      <form method="post" action="$FRM_LOGIN">
-        <center>
-          <table class="action-table" summary="login interface">
-            <tr><th colspan="2">$sys_name Login</th></tr>
-            <tr><td class="odd">Password: </td><td class="even"><input type="password" name="password" id="password" size="20" /></td></tr>
-          </table>
-          <input type="submit" value="Login" />
-          <p id="popup">Click <a href="starter.php">here</a> to launch $sys_name in a pop-up window.</p>
-        </center>
-      </form>
+    $sys_name = SYS_NAME;
+    $out__ .= <<<OUT
+    
+    <form method="post" action="$FRM_LOGIN$do_upgrade">
+      <center>
+        <table class="action-table" summary="login interface">
+          <tr><th colspan="2">$sys_name Login</th></tr>
+          <tr><td class="odd">Password: </td><td class="even"><input type="password" name="password" id="password" size="20" /></td></tr>
+        </table>
+        <input type="submit" value="Login" />
+        <p id="popup">Click <a href="starter.php">here</a> to launch $sys_name in a pop-up window.</p>
+      </center>
+    </form>
 OUT;
-    }
   }	else {
     $out__ .= <<<OUT
     

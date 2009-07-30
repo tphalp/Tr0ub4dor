@@ -31,13 +31,13 @@
         <tr><td class="odd">Entryname: </td><td class="even">${wal_item["name"]}</td></tr>
         <tr><td class="odd">Host/URL: </td><td class="even">${wal_item["host"]}</td></tr>
         <tr><td class="odd">Login: </td><td class="even">${wal_item["login"]}</td></tr>
-        <!--<tr><th colspan="2">Really delete this entry?</th></tr>-->
       </table>
       <span id="confirm-del" class="important">Really delete this entry?</span>
       <br />
-      <input type="submit" value="Confirm Delete" /> | <a href="#" onclick="javascript:go_to('main.php');">Cancel</a>
-      <p><a href="view.php?id=${_GET['id']}">view</a> | <a href="edit.php?id=${_GET['id']}">edit</a></p>
 OUT;
+
+  $out__ .= '<input type="submit" value="Confirm Delete" /> | <a href="#" onclick="javascript:go_to(\'' . PAGE_MAIN . '\');">Cancel</a>
+    <p><a href="view.php?id=' . $_GET['id'] . '">view</a> | <a href="edit.php?id=' . $_GET['id'] . '">edit</a></p>';
 
   $out__ .= write_footer_main_link("without deleting.");
   

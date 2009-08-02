@@ -71,8 +71,8 @@
           // do grouping
           switch ( is_numeric(substr($itemname, 0, 1)) ) {
             case TRUE: 
-              if ( $first_char != '0-9' ) {
-                $first_char = '0-9';
+              if ( $first_char != '#' ) {
+                $first_char = '#';
                 $out__ .= build_group_header($ID, $first_char);
                 $out__ .= HEADER_DEFAULT;
                 $nav_links .= build_nav_link_anchor($ID, $first_char);

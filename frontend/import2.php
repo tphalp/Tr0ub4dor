@@ -102,9 +102,9 @@ OUT;
         fclose ($fd);
         unset($data, $fd, $field_headers);
         $out__ .= "</table>\n";
-        $out__ .= "<input type=\"submit\" value=\"Save\" /><br /><br />\n";
+        $out__ .= "<input type=\"submit\" value=\"Finish Import\" /><br /><br />\n";
         
-        $out__ .= '<span class="note">Note: Only the first four lines of your file are shown here!</span><br />';
+        $out__ .= '<span class="note">Note: Only the first four lines of your file are shown here, <br />though the entire file will be imported.</span><br />';
       }
       
       $out__ .= write_footer_main_link("without importing the contents of the file.");

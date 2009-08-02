@@ -14,9 +14,9 @@ class Data_MySQLi {
   public $conn;
 
 
-  private function __construct($host, $user, $pass, $name) {
+  private function __construct($host, $user, $pass, $name, $port) {
     try {
-      $this->conn = new mysqli($host, $user, $pass, $name);
+      $this->conn = new mysqli($host, $user, $pass, $name, $port);
 
       if (mysqli_connect_error()) {
         //throw new Exception('Database error:' . mysqli_connect_error());
@@ -28,10 +28,10 @@ class Data_MySQLi {
   } //__construct
 
   
-	public static function get_instance($host, $user, $pass, $name) {
+	public static function get_instance($host, $user, $pass, $name, $port) {
     if (!isset(self::$instance)) {
       $class = __CLASS__;
-      self::$instance = new $class($host, $user, $pass, $name);
+      self::$instance = new $class($host, $user, $pass, $name, $port);
     }
     return self::$instance;
   } //get_instance()

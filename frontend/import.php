@@ -21,7 +21,7 @@
         <tr><th colspan="2">Upload CSV File with Wallet entries</th></tr>
         <tr><td class="odd">Filename: </td><td class="even"><input type="file" name="csvfile" size="40" /></td></tr>
       </table>
-      <input type="submit" value="Upload" />
+      <input type="submit" value="Begin" />
 OUT;
 
   $out__ .= write_footer_main_link("without importing.");

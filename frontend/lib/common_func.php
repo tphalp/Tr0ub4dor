@@ -324,7 +324,7 @@ OUT;
 	
   
   function get_db_conn() {
-    $db = Data_MySQLi::get_instance(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    $db = Data_MySQLi::get_instance(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
     
     if ($db) {
       return $db;

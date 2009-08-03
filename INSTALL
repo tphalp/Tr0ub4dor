@@ -4,82 +4,131 @@
 **                       Version 1.50                         **
 ****************************************************************
 
-For an update of a previous version, please refer to the "UPDATE" Chapter 
-of this Document!
+If you are updating from a previous version, please refer to the 
+"UPGRADE" section of this Document!
 
 REQUIREMENTS:
 =============
-- A Webserver (w3pw was tested with Apache); for secure transfer, SSL is 
-  strongly recommended.
-- PHP with MySQLi support enabled, and the MCrypt libraries.
-  You can find the mcrypt libraries here for linux installations: 
-  http://mcrypt.sourceforge.net/. 
-  For a Windows installation, the required binaries can be downloaded from 
-  http://ftp.emini.dk/pub/php/win32/mcrypt/.
-- A MySQL Database.
+- A Webserver (w3pw was tested with Apache); for secure transfer, SSL 
+  is strongly recommended.
+  
+- PHP (http://php.net) with MySQLi support enabled, and the MCrypt libraries.
+  You can find the mcrypt libraries for linux installations here: 
+  
+    http://mcrypt.sourceforge.net/. 
+  
+  For a Windows installation, the required binaries can be downloaded 
+  here:
+
+    http://ftp.emini.dk/pub/php/win32/mcrypt/.
+    
+- A MySQL (http://myql.com) Database.
 
 INSTALLATION
 ============
+1. DOWNLOAD w3pw:
 
-Unpack the distribution packet:
-	tar xzf w3pw-1.50.tgz
+  Download the latest package from:
+  
+    http://sourceforge.com/projects/w3pw/files/
+    
+  Once you have downloaded the package, unpack the distribution 
+  package:
 
-change to the directory w3pw-1.50
+    tar xzf w3pw-x.x.x.tgz
 
-create a database called "w3pw" (or any other name): 
-	mysql -u <your_mysql_user> -p -e "CREATE DATABASE w3pw"
+  Change to the directory w3pw-x.x.x
 
-import the database structure: 
-	mysql -u <your_mysql_user> -p w3pw < w3pw.sql. If you use another 
-	database name change the 
-	first w3pw to your choosen DB-Name.
+2. CREATE THE DATABASE 
+  
+  w3pw requires access to a mysql database in order to run 
+  properly. Create a database called "w3pw" (or any other name 
+  of your choosing): 
 
-delete the w3pw.sql file (for security reasons)
+    mysql -u <your_mysql_user> -p -e "CREATE DATABASE w3pw"
 
-set your password for accessing w3pw:
-	mysql -u <your_mysql_user> -p w3pw -e "UPDATE main set \
-	pw=SHA1(\"<yourpassword>\")"
-	Standard Password that comes with the installation package 
-	is "secret".
+  Import the database structure: 
+  
+    mysql -u <your_mysql_user> -p w3pw < ./backend/install.sql. 
+  
+  If you use another database name, change 'w3pw' to your chosen 
+  database name. Also change the default password to one that you 
+  would like to use, or see the step below. Do this prior to the 
+  import shown above.
+  
+  Delete the install.sql file (for security reasons)
+
+  Set your password for accessing w3pw:
+
+    mysql -u <your_mysql_user> -p w3pw -e "UPDATE main set \
+      pw=SHA1(\"<yourpassword>\")"
 	
-edit the file include/config.php
-	change the variables $dbuser, $database, $hostname, $dbpasswd, $port
-	and $tmppath to match your system values. 
-	Windows Users: Don't use a backslash in the $tmppath variable. Instead
-	use a simple slash "/".
-	If you would like to set another timeout value, change the variable
-	$session_timeout also. If you would like w3pw to generate a random 
-	password if you create a new entry, change the variable 
-	$random_pw_length to the desired password length. If you want't do 
-	disable this feature, set this variable to 0.
+  The standard password that comes with the installation package 
+	is "secret". Replace "w3pw" with your database name, if different.
+
+3. SETUP THE CONFIG FILE
 	
-copy the directory w3pw-1.50 to your webserver htdocs directory
-	cp -r w3pw-1.50 /usr/local/httpd/htdocs
+  w3pw comes with a config.default.php file in the frontend/lib
+  directory. You must create a file named config.php. You may do so
+  by making a copy of default.settings.php (or create an empty file with
+  this name in the same directory). For example, (from the installation
+  directory) make a copy of the default.settings.php file with the command:
+
+    cp frontend/lib/config.default.php frontend/lib/config.php  
+
+  Once you have done this, edit your config file in order to change the 
+  constants, DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT and TMP_PATH 
+  to match your system values.
+  
+	Windows Users: Don't use a backslash in the TMP_PATH variable. 
+  Instead use a simple slash "/".
+  
+	If you would like to set another timeout value, change the constant
+	TIMEOUT also. 
+  
+  If you would like w3pw to generate a random password if you create 
+  a new entry, change the constant RANDOM_PW_LENGTH to the desired 
+  password length. If you want't do disable this feature, set this 
+  constant to 0.
+
+4. SETUP WEB FRONTEND
+  
+  Copy the contents of the "frontend" directory to your webserver 
+  htdocs directory. Here is an example command:
+  
+    cp -r frontend/* /usr/local/httpd/htdocs
   
   This will change depending on how you want to setup your w3pw website.
 
-UPDATE
+UPGRADE
 ======
+IMPORTANT: If you want to upgrade from a version earlier than 1.40, 
+please upgrade to that version first, then upgrade to 1.5.0.
+
+DOUBLY IMPORTANT: Create a BACKUP of your current w3pw database!
 
 Follow all of the steps described in the section above, but be sure to create 
-a NEW database and a NEW path. DO NOT OVERWRITE YOUR PREVIOUS INSTALLATION! 
-Point the database variables in your new 1.50 installation to the new database!
+a backup (see warning above) of your existing w3pw database. This will allow 
+you to recover from a failed upgrade.
 
-Go to the new 1.50 directory in your webservers htdocs directory and rename the
-file "_update.php" to "update.php".
+Point the database variables in your new config file to the database, as 
+well as any other customization of the config.php file that you require.
 
-Start the program in your webbrowser as described in the usage section below 
-and follow the update instructions. After the succcessful import of your old 
-database, delete the file "update.php" from your webservers directory.
+Point your browser to: 
+
+  http(s)://<your server>/_upgrade.php
+
+and follow the update instructions. After a succcessful upgrade, delete the 
+file "_update.php" from your w3pw directory.
 
 
 USAGE
 =====
 Open your favorite webbrowser and access this URL: 
 
-         https://<your server>/w3pw/starter.php (Alternatively, use "http://..." 
+  https://<your server>/w3pw/index.php
 
-if you prefer an unsecure connection).
+(Alternatively, use "http://..." if you prefer to use an unsecure connection).
 
 The forced logoff feature will not work without javascript enabled.
 

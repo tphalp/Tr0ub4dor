@@ -17,7 +17,7 @@ DEFAULT CHARACTER SET = latin1;
 
 -- Insert data into 'main'
 -- USER DO: Change 'secret' to whatever pw you want to use as your main pw.
-INSERT INTO `main` VALUES ('1.5.0-beta3', sha1('secret'));
+INSERT INTO `main` VALUES ('1.5.0-rc1', sha1('secret'));
 
 
 -- -----------------------------------------------------

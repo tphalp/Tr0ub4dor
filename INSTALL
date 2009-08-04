@@ -1,0 +1,90 @@
+****************************************************************
+**           w3pw - a web based password console.             **
+**                       Version 1.40                         **
+****************************************************************
+
+For an update of a previous version, please refer to the "UPDATE" Chapter 
+of this Document!
+
+REQUIREMENTS:
+=============
+- A Webserver (w3pw was tested with Apache); for secure transfer, SSL is 
+  strongly recommended.
+- PHP with Mysql support enabled and mcrypt libraries.
+  You can find the mcrypt libraries here for linux installations: 
+  http://mcrypt.sourceforge.net/. 
+  For a Windows installation, the required binaries can be downloaded from 
+  http://ftp.emini.dk/pub/php/win32/mcrypt/.
+- A Mysql Database.
+
+INSTALLATION
+============
+
+Unpack the distribution packet:
+	tar xzf w3pw-1.40.tgz
+
+change to the directory w3pw-1.40
+
+create a database called "w3pw" (or any other name): 
+	mysql -u <your_mysql_user> -p -e "CREATE DATABASE w3pw"
+
+import the database structure: 
+	mysql -u <your_mysql_user> -p w3pw < w3pw.sql. If you use another 
+	database name change the 
+	first w3pw to your choosen DB-Name.
+
+delete the w3pw.sql file (for security reasons)
+
+set your password for accessing w3pw:
+	mysql -u <your_mysql_user> -p w3pw -e "UPDATE main set \
+	pw=SHA1(\"<yourpassword>\")"
+	Standard Password that comes with the installation package 
+	is "secret".
+	
+edit the file include/config.php
+	change the variables $dbuser, $database, $hostname, $dbpasswd, $port
+	and $tmppath to match your system values. 
+	Windows Users: Don't use a backslash in the $tmppath variable. Instead
+	use a simple slash "/".
+	If you would like to set another timeout value, change the variable
+	$session_timeout also. If you would like w3pw to generate a random 
+	password if you create a new entry, change the variable 
+	$random_pw_length to the desired password length. If you want't do 
+	disable this feature, set this variable to 0.
+	
+copy the directory w3pw-1.40 to your webserver htdocs directory
+	cp -r w3pw-1.40 /usr/local/httpd/htdocs
+
+UPDATE
+======
+
+Follow all of the steps described in the section above, but be sure to create 
+a NEW database and a NEW path. DO NOT OVERWRITE YOUR PREVIOUS INSTALLATION! 
+Point the database variables in your new 1.40 installation to the new database!
+
+Go to the new 1.40 directory in your webservers htdocs directory and rename the
+file "_update.php" to "update.php".
+
+Start the program in your webbrowser as described in the usage section below 
+and follow the update instructions. After the succcessful import of your old 
+database, delete the file "update.php" from your webservers directory.
+
+
+USAGE
+=====
+Open your favorite webbrowser and access this URL: 
+
+         https://127.0.0.1/w3pw/starter.html (Alternatively, use "http://..." 
+
+if you prefer an unsecure communication).
+
+A hint for Firefox Users: Firefox disables by default that Javascript can 
+change the text of the status bar. w3pw has a built in counter for automatic 
+logoffs if there is no user interaction after a specific amount of time. 
+This feature by itself will work also with this option disabled, but you will 
+see a counter on the statusbar if you allow Javascript to change the text on 
+the statusbar.
+
+Without Javascript, the automatic logoff feature will not work!
+
+Project Homepage: http://w3pw.sourceforge.net

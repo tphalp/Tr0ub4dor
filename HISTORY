@@ -1,0 +1,33 @@
+Version History / Changes
+
+Version 1.40
+- password field is filled with randomly generated string when
+  adding a new entry.
+- switch from encrypt() to sha1() and md5() as the password and entry
+  encoding functions, since SHA 1 exists on all platforms. Update script
+  from version 1.30 is provided.
+- Multiple line comments are displayed now correctly
+- highlighting of the current row in the list view
+  (thanks to KoS for this feature!)
+- check for installed mcrypt libraries
+
+Version 1.30:
+- bugfix: $PHP_SELF variable changed to $_SERVER['PHP_SELF']
+- bugfix: reassigning the order of fields for uploaded files
+- bugfix: use global variable iv in config.inc
+- cosmetic changes to the list view (fixed width of table columns)
+
+Version 1.20:
+- rewrote variable assignments, so that register_globals could now
+  be safely turned off in php.ini
+- some minor changes in the CSS
+- fixed some typos
+Special thanks to Nathan Grennan who did most of the work for this update!
+
+Version 1.10:
+- added a link from Host-Field in Detail view
+- Statusbar with counter ("seconds until forced logoff")
+
+Version 1.00:
+- Initial Relase
+

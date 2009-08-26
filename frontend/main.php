@@ -1,4 +1,10 @@
 <?php
+/* SVN FILE: $Id$ */
+/*
+$Rev::               $:  Revision of last commit
+$Author::            $:  Author of last commit
+$Date::              $:  Date of last commit
+*/
   session_cache_limiter('nocache');
   session_start();
 
@@ -38,7 +44,7 @@
   reset($header_array);
 
   if (count($header_array) == 0) {
-    $out__ .= '<p>No passwords found. Click <a href="insert.php">here</a> to enter one.</p>';
+    $out__ .= '<p>No entries found. Use the <a href="insert.php">Insert</a> or <a href="import.php">Import</a> functions to add some.</p>';
   }
 
   // initialize some vars

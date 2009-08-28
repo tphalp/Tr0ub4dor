@@ -1,4 +1,5 @@
 <?php 
+/* $Id$ */
   session_cache_limiter('nocache');
   session_start();
 

@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
   $currscript = "crypt.php";
   require("no_direct.php"); 
 

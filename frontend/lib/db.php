@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 //----------------------------------------------------------
 // Description: MySQLi connector class for w3pw
 // Author: tphalp (tphalp at ring0ffire dot com)

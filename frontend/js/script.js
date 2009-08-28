@@ -1,3 +1,4 @@
+/* $Id$ */
 var count;
 var active;
 var popup_name = "w3pwwin";

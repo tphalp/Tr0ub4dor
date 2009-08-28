@@ -1,10 +1,5 @@
 <?php
-/* SVN FILE: $Id$ */
-/*
-$Rev::               $:  Revision of last commit
-$Author::            $:  Author of last commit
-$Date::              $:  Date of last commit
-*/
+/* $Id$ */
   session_cache_limiter('nocache');
   session_start();
 

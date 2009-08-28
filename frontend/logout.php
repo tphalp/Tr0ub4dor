@@ -1,5 +1,6 @@
 <?php
-  session_start();
+/* $Id$ */
+  session_start(c );
 
   require_once("lib/config.php");
   require_once("lib/common_func.php");

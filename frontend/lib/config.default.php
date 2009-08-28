@@ -1,4 +1,5 @@
 <?php
+/* $Id$ */
 $CURR_SCRIPT = "config.php";
 require("no_direct.php"); 
 

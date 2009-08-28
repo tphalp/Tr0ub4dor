@@ -1,5 +1,5 @@
 <?php
-
+/* $Id$ */
   require_once("lib/config.php");
   require_once("lib/common_func.php");
 

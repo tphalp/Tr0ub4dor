@@ -233,7 +233,7 @@ OUT;
   function write_footer_main_link($end_text = '') {
     $end_text = strlen($end_text) > 0 ? " " . $end_text : ".";
     
-    return '<p>Go back to <a href="/' . PAGE_MAIN . '">Main List</a>' . $end_text . '</p>';
+    return '<p>Go back to <a href="' . PAGE_MAIN . '">Main List</a>' . $end_text . '</p>';
   } //write_footer_main_link
   
 /*  

@@ -8,7 +8,7 @@
   if (isset($_GET['q']) && strlen($_GET['q']) > 0) {
     $sysmsg__ = base64_decode(urldecode($_GET['q']));
   } else {
-    go_home();
+    go_to_url(PAGE_LOGIN);
   }
 
   $out__ = write_header_begin("System Message");

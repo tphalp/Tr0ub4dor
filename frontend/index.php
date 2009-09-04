@@ -30,6 +30,7 @@
     
     <form method="post" action="$FRM_LOGIN$do_upgrade">
       <center>
+        <div><img src="images/logo-linear.png" alt="w3pw logo" /></div>
         <table class="action-table" summary="login interface">
           <tr><th colspan="2">$sys_name Login</th></tr>
           <tr><td class="odd">Password: </td><td class="even"><input type="password" name="password" id="password" size="20" /></td></tr>
@@ -42,11 +43,11 @@ OUT;
   }	else {
     $out__ .= <<<OUT
     
-    <b>mcrypt libraries are not installed!</b>
+    <b>MCrypt libraries are not installed!</b>
     <br />
-    Download libmcrypt-x.x.tar.gz from <a href="http://mcrypt.sourceforge.net/">http://mcrypt.sourceforge.net/</a>, for a linux installation, and follow the included installation instructions.
+    Download mcrypt from <a href="http://mcrypt.sourceforge.net/">http://mcrypt.sourceforge.net/</a>, and follow the included installation instructions.
     <br />
-    Windows users will find all the needed compiled mcrypt binaries at <a href="http://ftp.emini.dk/pub/php/win32/mcrypt/">http://ftp.emini.dk/pub/php/win32/mcrypt/</a>.
+    Both Linux and Windows binaries are usually available at the above link.
 OUT;
   }
 

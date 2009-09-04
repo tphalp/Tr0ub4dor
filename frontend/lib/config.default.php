@@ -23,6 +23,7 @@ define("DB_PORT", 3306);
 define("STYLE_DEFAULT", "css/style.css");
 define("JS_DEFAULT", "js/script.js");
 define("PAGE_MAIN", "main.php");
+define("PAGE_LOGIN", "index.php");
 $FRM_ACTION = "lib/process_action.php";
 $FRM_LOGIN = "lib/process_login.php";
 

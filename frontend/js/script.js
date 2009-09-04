@@ -45,10 +45,6 @@ function go_to(page_) {
   }
 }
 
-function go_home() {
-  go_to("/");
-}
-
 /*
 function checkForm_Required(req_, req_desc_) {
   var err__ = new Array();

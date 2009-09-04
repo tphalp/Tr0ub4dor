@@ -10,7 +10,7 @@
   if (!isset($_SESSION['logged_in'])){
 
       // Require POST
-    if ($_SERVER['REQUEST_METHOD'] !== 'POST') { go_home(); }
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') { go_to_url('../' . PAGE_LOGIN); }
 
     // no session active - check pw
     if ($conn = mysql_connect(DB_HOST, DB_USER, DB_PASS))	{
@@ -51,7 +51,7 @@
         {      
           session_unset();
           session_destroy();
-          $sysmsg__ = '<b>Invalid credentials</b>....Please <a href="/">try again</a>.';
+          $sysmsg__ = '<b>Invalid credentials</b>....Please <a href="index.php">try again</a>.';
           show_sys_msg($sysmsg__);
         }
       }
@@ -60,7 +60,7 @@
         // can't connect to database
         session_unset();
         session_destroy();	
-        $sysmsg__ = '<br />Ooops - <b>Can\'t connect to the database</b>....Please <a href="/">try again</a>.';
+        $sysmsg__ = '<br />Ooops - <b>Can\'t connect to the database</b>....Please <a href="index.php">try again</a>.';
         show_sys_msg($sysmsg__);
       }
       mysql_close($conn);
@@ -70,7 +70,7 @@
       // can't connect to the server
       session_unset();
       session_destroy();
-      $sysmsg__ = '<br />Ooops - <b>Can\'t connect to the database-server</b>...Please <a href="/">try again</a>.';
+      $sysmsg__ = '<br />Ooops - <b>Can\'t connect to the database-server</b>...Please <a href="index.php">try again</a>.';
       show_sys_msg($sysmsg__);
     }
   } else {

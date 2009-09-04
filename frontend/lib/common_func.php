@@ -11,11 +11,6 @@
   } //show_sys_msg()
   
   
-  function go_home() {
-    go_to_url("/");
-  } //go_home()
-
-  
   function go_to_url($url) {
     header("Location:$url");
   } //do_to_url()
@@ -26,7 +21,7 @@
     
     if ((!isset($_SESSION['logged_in'])) || (!$_SESSION['logged_in'] == 1))	{
       if ($test_only == 0) {
-        go_home();
+        go_to_url('../' . PAGE_LOGIN);
       }
     } else {
       $out__ = 1;
@@ -44,14 +39,14 @@
     }
 
     if ($bad) {
-      go_home();
+      go_to_url('../' . PAGE_LOGIN);
     }
   } //check_referrer()
   
   
   function no_direct() {
     if (eregi($_SERVER['REQUEST_URI'], $_SERVER['PHP_SELF'])) {
-      go_home();
+      go_to_url('../' . PAGE_LOGIN);
     }
   } //no_direct()
 

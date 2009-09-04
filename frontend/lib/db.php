@@ -15,7 +15,7 @@ class Data_MySQLi {
   public $conn;
 
 
-  private function __construct($host, $user, $pass, $name, $port) {
+  private function __construct($host, $user, $pass, $name, $port = 3306) {
     try {
       $this->conn = new mysqli($host, $user, $pass, $name, $port);
 
@@ -29,7 +29,7 @@ class Data_MySQLi {
   } //__construct
 
   
-	public static function get_instance($host, $user, $pass, $name, $port) {
+	public static function get_instance($host, $user, $pass, $name, $port = 3306) {
     if (!isset(self::$instance)) {
       $class = __CLASS__;
       self::$instance = new $class($host, $user, $pass, $name, $port);

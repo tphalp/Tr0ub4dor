@@ -16,7 +16,7 @@
   $db = get_db_conn();
   
   // Call the stored proc
-  $entries = $db->out_row_object("call get_wallet_entry(". $_GET['id'] .");");
+  $entries = $db->out_row_object("SELECT * FROM wallet WHERE ID=" . $_GET['id'] . ";");
   unset($db);
   
   $wal_item = build_item_array($entries);

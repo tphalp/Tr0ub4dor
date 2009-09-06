@@ -102,7 +102,7 @@ OUT;
 							$key_140 = md5("%dJ9&".strtolower($_POST['pw'])."(/&k.=".strtoupper($_POST['pw'])."1x&%");
 							
 							// now, read & decrypt wallet from previous installation
-							$list = mysql_query ("call get_all_from_wallet();", $conn);
+							$list = mysql_query ("select * from wallet;", $conn);
 							while ($entries = mysql_fetch_object($list)) {
 								// and insert into new db
 								$result = mysql_query("INSERT INTO wallet VALUES (".

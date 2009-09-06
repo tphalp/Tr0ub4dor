@@ -27,7 +27,7 @@
   $db = get_db_conn();
 
   // Call the stored proc
-  $list = $db->out_result_object("call get_all_from_wallet();");
+  $list = $db->out_result_object("select * from wallet;");
   $header_array = array();
   
   // Loop through to create the array of Entry Names

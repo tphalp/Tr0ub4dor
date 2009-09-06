@@ -40,7 +40,7 @@ function init(timeout_, showit_) {
   });
   // OnClick
   $("#info").click(function() {
-    $("#info").hide();
+    $("#info").hide("fast");
   });
   
   return;
@@ -111,12 +111,12 @@ function set_info(msg, show, len) {
       if (len== undefined) {len = 10000;}
       
       $("#info").text(msg);
-      $("#info").show();
+      $("#info").show("fast");
       tmp_int = window.setInterval("set_info('', 0);window.clearInterval(tmp_int);", len);
     }
   } else {
     // Hide the element.
-    $("#info").hide();
+    $("#info").hide("fast");
   }
 
 }

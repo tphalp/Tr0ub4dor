@@ -23,6 +23,7 @@
   //Output the menu
   $out__ .= write_header_menu();
 
+  // Establish teh DB connection
   $db = get_db_conn();
 
   // Call the stored proc
@@ -34,10 +35,12 @@
     $header_array[$entries->ID] = htmlentities(de_crypt($entries->itemname, $_SESSION['key']));
   }
   
+  // Unset, Sort, and then Reset
   unset($list);
   natcasesort($header_array);
   reset($header_array);
 
+  // Message that shows if no entries are found
   if (count($header_array) == 0) {
     $out__ .= '<p>No entries found. Use the <a href="insert.php">Insert</a> or <a href="import.php">Import</a> functions to add some.</p>';
   }
@@ -66,6 +69,7 @@
       }
     }
 
+    // Begin the Grouping algorithm. This is very basic at the moment.
     if ( defined('GROUP_BY') ) {
       switch (GROUP_BY) {
         case 'ALPHA':
@@ -127,7 +131,10 @@ OUT;
   
   unset($header_array, $itemname);
   unset($db);
-
+  
+  $msg = decode_msg($_GET["msg"]);
+  
+  $out__ .= write_footer_onload('set_info("' . $msg . '", 1);');
   $out__ .= write_footer_timeout_init();
   $out__ .= write_footer_common();
 

@@ -6,7 +6,7 @@
   require_once("lib/common_func.php");
 
   if (isset($_GET['q']) && strlen($_GET['q']) > 0) {
-    $sysmsg__ = base64_decode(urldecode($_GET['q']));
+    $sysmsg__ = decode_msg($_GET['q']);
   } else {
     go_to_url(PAGE_LOGIN);
   }

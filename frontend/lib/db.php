@@ -173,12 +173,12 @@ class Data_MySQLi {
     }
     
     $db_link->query($query) or die($db_link->error);
+    $num_rows = $db_link->affected_rows;
     
     //------------------------------------------------------
     // Clean up
     //------------------------------------------------------
     $this->clear_results($db_link);
-    $num_rows = $db_link->affected_rows;
   
     unset($db_link);
     

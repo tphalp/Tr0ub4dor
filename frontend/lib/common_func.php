@@ -7,10 +7,19 @@
   
   function show_sys_msg($txt) {
     //Forward to sysmessage page
-    go_to_url("../sysmsg.php?q=". urlencode(urlencode(base64_encode($txt))));
+    go_to_url("../sysmsg.php?q=". encode_msg($txt));
   } //show_sys_msg()
   
+  function encode_msg($txt) {
+    //Encode with base64 and then urlencode
+    return urlencode(urlencode(base64_encode($txt)));
+  } //encode_msg()
   
+  function decode_msg($txt) {
+    //urldecode and then decode base64
+    return base64_decode(urldecode($txt));
+  } //decode_msg()
+    
   function go_to_url($url) {
     header("Location:$url");
   } //do_to_url()
@@ -77,7 +86,7 @@ OUT;
   function write_header_counter() {
     $out__ = <<<OUT
     
-    <span id="timeout" class="important">&nbsp;</span> <span id="frmmsg"></span>
+    <span id="timeout" class="important">&nbsp;</span><span id="info" title="click to close">&nbsp;</span>
 OUT;
 
     return $out__;
@@ -216,7 +225,7 @@ OUT;
     
     <div id="footer">
       <p class="l">${menu__}</p>
-      <p class="r" id="sysinfo">${sys_name} | v${_SESSION['version']}</p>
+      <p class="r" id="sysinfo">${sys_name} | v${_SESSION['version']} <a href="http://w3pw.sourceforge.net/" target="_blank"><img src="images/logo-icon-20.png" alt="lock icon" title="w3pw on SourceForge" id="logo-icon" /></a></p>
     </div>
 OUT;
 
@@ -264,11 +273,11 @@ OUT;
   function build_item_array($obj, $br = FALSE) {
 
     $out__ = array( "id"      => $obj->ID,
-                    "name"    => htmlentities(de_crypt($obj->itemname, $_SESSION['key'])),
-                    "host"    => htmlentities(de_crypt($obj->host, $_SESSION['key'])),
-                    "login"   => htmlentities(de_crypt($obj->login, $_SESSION['key'])),
-                    "pw"      => htmlentities(de_crypt($obj->pw, $_SESSION['key'])),
-                    "comment" => htmlentities(de_crypt($obj->comment, $_SESSION['key']))
+                    "name"    => stripslashes( htmlentities( de_crypt($obj->itemname, $_SESSION['key'] ) ) ),
+                    "host"    => stripslashes( htmlentities( de_crypt($obj->host, $_SESSION['key'] ) ) ),
+                    "login"   => stripslashes( htmlentities( de_crypt($obj->login, $_SESSION['key'] ) ) ),
+                    "pw"      => stripslashes( htmlentities( de_crypt($obj->pw, $_SESSION['key'] ) ) ),
+                    "comment" => stripslashes( htmlentities( de_crypt( $obj->comment, $_SESSION['key'] ) ) )
                   );
 
     //------------------------------------------

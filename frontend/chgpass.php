@@ -22,6 +22,7 @@
       <center>
       <input type="hidden" id="action" name="action" value="changepw" />
       <div class="frm-msg"></div>
+      <p class="important">Please <a href="export.php">export</a> your wallet entries prior to changing your master password!</p>
       <table class="action-table" summary="change master pw">
       <tr><th colspan="2">$sys_name Master Password Change</th></tr>
       <tr><td class="odd">Old Master Password: </td><td class="even"><input type="password" id="pw" name="pw" size="20" /> <span id="pw-msg" class="frm-msg">*</span></td></tr>

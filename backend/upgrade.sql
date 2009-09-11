@@ -7,6 +7,7 @@ USE w3pw;
 ALTER TABLE `main` CHANGE COLUMN `version` `version` VARCHAR(25) CHARACTER SET 'latin1' COLLATE 'latin1_general_ci' NOT NULL DEFAULT '';
 UPDATE `main` SET version = '1.5.0-rc1';
 
+/*
 DELIMITER //
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_all_from_wallet`()
@@ -28,6 +29,7 @@ BEGIN
 
 END//
 DELIMITER ;
+*/
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

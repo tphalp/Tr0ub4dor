@@ -3,7 +3,7 @@ var count;
 var active;
 var popup_name = "w3pwwin";
 var page_logout = "logout.php";
-var infomsg = "";
+var default_info_length = 7000;
 
 function init(timeout_, showit_) {
 //----------------------------------------------
@@ -69,13 +69,13 @@ function counter(timeout_, showit_) {
   }
 }
 
-function checkpop(winname_) {
+function checkpop(winname_, override_) {
 //----------------------------------------------
 // Checks to see if the current window is the
 // popup windows. If it is not, then is makes
 // the popup notification visible.
 //----------------------------------------------
-  if (winname_ != popup_name) {
+  if (winname_ != popup_name && override_ != 0) {
     $("#popup").css("visibility", "visible");    
   }
 }
@@ -107,8 +107,8 @@ function set_info(msg, show, len) {
   // Test for show bit.
   if (show == 1) {
     if (msg.length > 0) {
-      // Set the default value for len (10 seconds).
-      if (len== undefined) {len = 10000;}
+      // Set the default value for len.
+      if (len == undefined) {len = default_info_length;}
       
       $("#info").text(msg);
       $("#info").show("fast");

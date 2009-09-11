@@ -9,7 +9,14 @@
     go_to_url(PAGE_MAIN);
   }
   
-  $do_upgrade = isset($_GET["upgrade"]) ? '?upgrade' : '';
+  // -----------------------------------------------------------
+  // Simple querystring section. Used for handling some 
+  // querystrings that are used on the login page.
+  // -----------------------------------------------------------
+  // $do_upgrade is used by the install/upgrade pages
+  $do_upgrade = isset($_GET["upgrade"]) ? '?upgrade' : '';  
+  // -----------------------------------------------------------
+  
   $out__ = write_header_begin("Login");
   $out__ .= write_header_jquery();
   $out__ .= write_header_meta();
@@ -51,7 +58,7 @@ OUT;
 OUT;
   }
 
-  $out__ .= write_footer_onload('$("#password").focus();checkpop(self.name);');
+  $out__ .= write_footer_onload('$("#password").focus();checkpop(self.name, ' . SHOW_POP . ');');
   $out__ .= write_footer_end();
 
   echo $out__;

@@ -99,21 +99,19 @@ function do_logout() {
   go_to(page_logout);
 }
 
-function set_info(msg, show, len) {
+function set_info(msg, len) {
 //----------------------------------------------
 // Sets the info span that is used for 
 // system messages.
 //----------------------------------------------
-  // Test for show bit.
-  if (show == 1) {
-    if (msg.length > 0) {
-      // Set the default value for len.
-      if (len == undefined) {len = default_info_length;}
-      
-      $("#info").text(msg);
-      $("#info").show("fast");
-      tmp_int = window.setInterval("set_info('', 0);window.clearInterval(tmp_int);", len);
-    }
+  // if length > 0, show msg, otherwise, hide it.
+  if (msg.length > 0) {
+    // Set the default value for len.
+    if (len == undefined) {len = default_info_length;}
+    
+    $("#info").text(msg);
+    $("#info").show("fast");
+    tmp_int = window.setInterval("set_info('');window.clearInterval(tmp_int);", len);
   } else {
     // Hide the element.
     $("#info").hide("fast");

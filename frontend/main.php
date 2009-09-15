@@ -42,7 +42,7 @@
 
   // Message that shows if no entries are found
   if (count($header_array) == 0) {
-    $out__ .= '<p>No entries found. Use the <a href="insert.php">Insert</a> or <a href="import.php">Import</a> functions to add some.</p>';
+    $out__ .= '<p>No entries found. Use <a href="insert.php">Insert</a> or <a href="import.php">Import</a> to add some.</p>';
   }
 
   // initialize some vars
@@ -120,24 +120,31 @@ OUT;
 
   } //while loop
   
+  //--------------------------------------------------------
   // replace the placeholder @NAV_LINKS with the actual 
   // string that was built during the loop above.
+  //--------------------------------------------------------
   $out__ = str_replace("@@NAV_LINKS", $nav_links, $out__);
+  //--------------------------------------------------------
   
   // the table closing tag
   if ($counter >= 1) {
     $out__ .= '</table>' . "\n" . '<div id="wallet-count">Wallet Entries: ' . $tot_count . '</div>';
   }
   
-  unset($header_array, $itemname);
-  unset($db);
+  unset($header_array, $itemname, $db);
   
-  $msg = decode_msg($_GET["msg"]);
+  // Check session for msg var
+  if ( isset($_SESSION['msg']) ) {
+    //Get infomsg from session, then unset the session var
+    $msg = $_SESSION['msg'];
+    unset($_SESSION['msg']);  
+    $out__ .= write_footer_onload('set_info("' . $msg . '");');
+  }
   
-  $out__ .= write_footer_onload('set_info("' . $msg . '", 1);');
   $out__ .= write_footer_timeout_init();
   $out__ .= write_footer_common();
-
+  
   //Output the contents
   echo $out__;
 ?>

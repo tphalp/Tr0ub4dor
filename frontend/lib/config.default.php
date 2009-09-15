@@ -57,11 +57,15 @@ define("TOP_LINK", "{ top }");
 // Once other grouping options are available (categories, etc), this will be modified.
 define("HEADER_DEFAULT", '<tr class="header"><td class="first">Entry Name</td><td>Host/URL</td><td class="mt1">&nbsp;</td><td class="mt1">&nbsp;</td><td class="mt2">&nbsp;</td></tr>');
 define("HEADER_HIDDEN", '<tr class="invis"><th class="first">&nbsp;</th><th>&nbsp;</th><th class="mt1">&nbsp;</th><th class="mt1">&nbsp;</th><th class="mt2">&nbsp;</th></tr>');
-// Delimiter used for import/export
+// Delimiter used for export
+// Changing this is NOT advised, as using another delimiter may cause problems
 define("CSV_DELIM", ";");
-// Whether or not to show the message about popping w3pw into a separate, smaller window.
+// Show/Hide the message on the login screen about popping w3pw into a separate, 
+// smaller window.
 // 1 = show, 0 = do not show
 define("SHOW_POP", 1);
+// Whow/Hide the username and password on the View page (1 = Yes, 0 = No).
+define("USE_MASK", 1);
 
 // Path to directory for temporary files. From the POV of the OS.
 // Be sure that the webserver process has write access!

@@ -29,9 +29,14 @@
 OUT;
 
   $out__ .= create_web_link($wal_item["host"]);
-
   $out__ .= "</td></tr>\n";
-
+  
+  // Check for USE_MASK
+  if (USE_MASK == 1) {
+    $wal_item["login"] = mask_data($wal_item["login"]);
+    $wal_item["pw"] = mask_data($wal_item["pw"]);
+  }
+  
   $out__ .= <<<OUT
       <tr><td class="odd">Login: </td><td class="even">${wal_item["login"]}</td></tr>
       <tr><td class="odd">Password: </td><td class="even">${wal_item["pw"]}</td></tr>

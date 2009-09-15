@@ -89,9 +89,7 @@ class Data_MySQLi {
     // Clean up
     //------------------------------------------------------
     $this->clear_results($db_link);
-    unset($rs);
-    unset($row);
-    unset($db_link);
+    unset($rs, $row, $db_link);
     
     return $arr;
   } //out_array()
@@ -122,10 +120,7 @@ class Data_MySQLi {
     // Clean up
     //------------------------------------------------------
     $this->clear_results($db_link);
-    unset($qry_res);
-    unset($rs);
-    unset($row);
-    unset($db_link);
+    unset($qry_res, $rs, $row, $db_link);
     
     return $out__;
   } //out_row_object()
@@ -153,9 +148,7 @@ class Data_MySQLi {
     // Clean up
     //------------------------------------------------------
     $this->clear_results($db_link);
-    unset($qry);
-    unset($row);
-    unset($db_link);
+    unset($qry, $row, $db_link);
     
     return $out__;
   } //out_result_object()

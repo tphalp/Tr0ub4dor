@@ -24,6 +24,9 @@ Version 1.50
 - A new system message system has been implemented to make 
   various messages (such as incorrect login credentials) more 
   uniform.
+- Small info message appears in the top right-hand corner of the 
+  application after certain actions, such as saving, inserting, 
+  deleting, etc.
 - Added a text-link menu at the bottom of each page, included in 
   the new footer. Includes version info also.
 - Added helpful links on the "view", "edit", and "delete" pages 

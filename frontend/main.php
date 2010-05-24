@@ -53,7 +53,7 @@
   
   while( list($ID, $itemname) = each($header_array)) {
     $counter++;
-    $list = $db->out_result_object('call get_wallet_entry(' . $ID . ');');
+    $list = $db->out_result_object('select * from wallet where ID = ' . $ID . ';');
     $entries = $list->fetch_object();
 
     // write out the table header during the first loop, 

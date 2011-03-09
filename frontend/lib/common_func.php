@@ -43,7 +43,7 @@
   function test_session($test_only = FALSE)	{
   //------------------------------------------------------------------
   // Tests whether the session exists, and is valid. If not, back to 
-  // the login page. If $test_only is 1, then we return 1 is valid, 
+  // the login page. If $test_only is 1, then we return 1 if valid, 
   // and 0 if invalid. Some areas of the system only need a test 
   // for session validity, not a forward to the login page after.
   //------------------------------------------------------------------  
@@ -70,8 +70,8 @@
   // the login page.
   //------------------------------------------------------------------  
     $bad = TRUE;
-    
-    if (isset($_SERVER['HTTP_REFERER']) && eregi($base_domain, $_SERVER['HTTP_REFERER'])) {
+
+    if (isset($_SERVER['HTTP_REFERER']) && !stripos($_SERVER['HTTP_REFERER'], $base_domain) === FALSE) {
       $bad = FALSE;
     }
 
@@ -85,7 +85,7 @@
   //------------------------------------------------------------------
   // Redirects if page is called directly.
   //------------------------------------------------------------------  
-    if (eregi($_SERVER['REQUEST_URI'], $_SERVER['PHP_SELF'])) {
+    if (!stripos($_SERVER['PHP_SELF'], $_SERVER['REQUEST_URI']) === FALSE) {
       go_to_url('../' . PAGE_LOGIN);
     }
   } //no_direct()

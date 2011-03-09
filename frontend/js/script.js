@@ -59,7 +59,7 @@ function counter(timeout_, showit_) {
   
   // Check for proper params before showing the timeout element.
   if ($("#timeout").length > 0 && count <= showit_) {
-    $("#timeout").html(count + " seconds left until forced logout | <a onclick=\"javascript:init(" + timeout_ + ", " + showit_ + ");\" href=\"javascript:void(0);\">reset<\/a>&nbsp;&nbsp;<a onclick=\"javascript:do_logout();\" href=\"javascript:void(0);\">logout<\/a>");
+    $("#timeout").html(count + " seconds until forced logout | <a onclick=\"javascript:init(" + timeout_ + ", " + showit_ + ");\" href=\"javascript:void(0);\">reset<\/a>&nbsp;&nbsp;<a onclick=\"javascript:do_logout();\" href=\"javascript:void(0);\">logout<\/a>");
     $("#timeout").show();
   }
   

@@ -64,7 +64,7 @@ define("CSV_DELIM", ";");
 // smaller window.
 // 1 = show, 0 = do not show
 define("SHOW_POP", 1);
-// Whow/Hide the username and password on the View page (1 = Yes, 0 = No).
+// Show/Hide the username and password on the View page (1 = Yes, 0 = No).
 define("USE_MASK", 1);
 
 // Path to directory for temporary files. From the POV of the OS.

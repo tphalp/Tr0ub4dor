@@ -109,10 +109,16 @@ OUT;
   function write_header_jquery() {
   //------------------------------------------------------------------
   // Returns markup for jquery script inclusion.
-  //------------------------------------------------------------------  
+  //------------------------------------------------------------------
+    if (USE_GOOG_JQUERY == 0) {
+      $src = 'js/jquery-min.js';
+    } else {
+      $src = set_https() . '://ajax.googleapis.com/ajax/libs/jquery/' . GOOG_JQUERY_VER .'/jquery.min.js';
+    }
+
     $out__ = <<<OUT
-    
-    <script type="text/javascript" src="js/jquery-min.js"></script>
+  
+    <script type="text/javascript" src="$src"></script>
 OUT;
     
     return $out__;
@@ -341,7 +347,7 @@ OUT;
   //------------------------------------------------------------------
     $port = "http";
     
-    if ($_SERVER['HTTPS'] = "on") {
+    if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == SSL_PORT) {
       $port .= "s";
     }
   

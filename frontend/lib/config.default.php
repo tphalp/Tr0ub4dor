@@ -64,8 +64,17 @@ define("CSV_DELIM", ";");
 // smaller window.
 // 1 = show, 0 = do not show
 define("SHOW_POP", 1);
-// Show/Hide the username and password on the View page (1 = Yes, 0 = No).
+// Show/Hide the username and password on the View page (1 = true, 0 = false).
 define("USE_MASK", 1);
+// Set this to 1 to use the google-hosted jquery code, or 0 to use the provided jquery code.
+// See http://code.google.com/apis/libraries/devguide.html#jquery for more info
+define("USE_GOOG_JQUERY", 0);
+// ONLY USED IF USE_GOOG_JQUERY == 1.
+// If using the google-hosted jquery, which version to use? (Make sure it is hosted by the google api before using.)
+// See http://code.google.com/apis/libraries/devguide.html#jquery for more info
+define("GOOG_JQUERY_VER", 1.5.1);
+// SSL port you are using, if applicable
+define("SSL_PORT", 443);
 
 // Path to directory for temporary files. From the POV of the OS.
 // Be sure that the webserver process has write access!

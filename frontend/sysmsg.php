@@ -29,7 +29,12 @@
 OUT;
   
   if (test_session(TRUE)) {
-    $out__ .= write_footer_main_link();
+    if ($_GET['s'] == '1') {
+      $out__ .= write_back_link('javascript:history.back();', '&laquo; Go back');
+    } else {
+      $out__ .= write_footer_main_link();
+    }
+    
     $out__ .= write_footer_timeout_init();
   }
   

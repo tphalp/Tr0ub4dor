@@ -5,12 +5,14 @@
   require_once("db.php");
 
   
-  function show_sys_msg($txt) {
+  function show_sys_msg($txt, $simple=FALSE) {
   //------------------------------------------------------------------
   // Forward to system message page, passing message text found 
   // in $txt param.
   //------------------------------------------------------------------  
-    go_to_url("../sysmsg.php?q=". encode_msg($txt));
+    $url_end = ($simple) ? '&s=1' : '';
+  
+    go_to_url('../sysmsg.php?q='. encode_msg($txt) . $url_end);
   } //show_sys_msg()
   
   
@@ -66,8 +68,8 @@
   function check_referrer($base_domain) {
   //------------------------------------------------------------------
   // Checks for valid referrer. Must be referred from $base_domain, 
-  // which is located in the config file. If not, then goes back to 
-  // the login page.
+  // which is located in the config file. If not, then gives 
+  // an error message.
   //------------------------------------------------------------------  
     $bad = TRUE;
 
@@ -76,7 +78,7 @@
     }
 
     if ($bad) {
-      go_to_url('../' . PAGE_LOGIN);
+      show_sys_msg('<span class="note">Invalid referrer</span><br /><br />Please check BASE_DOMAIN in your config file. It must match the domain that you are using hosting this instance of ' . SYS_NAME . '.', TRUE);
     }
   } //check_referrer()
   
@@ -86,7 +88,7 @@
   // Redirects if page is called directly.
   //------------------------------------------------------------------  
     if (!stripos($_SERVER['PHP_SELF'], $_SERVER['REQUEST_URI']) === FALSE) {
-      go_to_url('../' . PAGE_LOGIN);
+      show_sys_msg('Page can\'t be called directly');
     }
   } //no_direct()
 
@@ -98,7 +100,7 @@
     $out__ = <<<OUT
     
     <meta name="robots" content="noindex, nofollow" />
-    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <meta charset=UTF-8" />
 OUT;
 
     return $out__;
@@ -152,8 +154,8 @@ OUT;
     $script = JS_DEFAULT;
     
     $out__ = <<<OUT
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" id="navtop">
+<!doctype html>
+<html lang="en" id="navtop">
   <head>
     <title>$pg_title | $sys_name</title>
     <link type="text/css" rel="stylesheet" href="$style" />
@@ -326,7 +328,7 @@ OUT;
   //------------------------------------------------------------------  
     $end_text = strlen($end_text) > 0 ? " " . $end_text : ".";
     
-    return '<p>Go back to <a href="' . PAGE_MAIN . '">Main List</a>' . $end_text . '</p>';
+    return write_back_link(PAGE_MAIN, 'Main List', 'Go back to', $end_text);
   } //write_footer_main_link
   
 /*  
@@ -340,6 +342,16 @@ OUT;
   
   } //get_param()
 */
+
+  function write_back_link($href, $link_text, $begin='', $end='') {
+  //------------------------------------------------------------------
+  // Creates a "back" link with the given params.
+  //------------------------------------------------------------------  
+    $end_text = strlen($end_text) > 0 ? " " . $end_text : ".";
+    
+    return '<p>' . $begin . ' <a href="' . $href . '">' . $link_text . '</a>' . $end . '</p>';
+	} //write_back_link()
+
   
   function set_https() {
   //------------------------------------------------------------------

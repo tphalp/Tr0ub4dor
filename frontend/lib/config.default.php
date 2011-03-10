@@ -45,7 +45,7 @@ define("MENU_SHOW_FOOT", "0 1 2 3 4 5");
 // Misc ---
 // System name that you would like to use. Will show anywhere "w3pw" normally is displayed on the web interface.
 define("SYS_NAME", "w3pw");
-// Used when detecting the referrer, for added security
+// Used when detecting the referrer, for added security. Must match the domain used to host this insteance of w3pw.
 define("BASE_DOMAIN", "host.yourdomain.com");
 // Temp file names
 define("TMP_IMPORT_FILE", "w3pw.csv");

@@ -7,7 +7,7 @@
 ****************************************************************
 
 If you are updating from a previous version, please refer to the 
-"UPGRADE" section of this Document!
+"UPGRADE" section of this document!
 
 REQUIREMENTS:
 =============
@@ -17,7 +17,7 @@ REQUIREMENTS:
 - PHP (http://php.net) with MySQLi support enabled, and the MCrypt libraries.
   You can find the mcrypt libraries for linux installations here: 
   
-    http://mcrypt.sourceforge.net/. 
+    http://mcrypt.sourceforge.net/ 
   
   For a Windows installation, the required binaries can be downloaded 
   here:
@@ -72,18 +72,18 @@ INSTALLATION
 	
   w3pw comes with a config.default.php file in the frontend/lib
   directory. You must create a file named config.php. You may do so
-  by making a copy of default.settings.php (or create an empty file with
-  this name in the same directory). For example, (from the installation
+  by making a copy of default.settings.php (or create an empty file called
+  config.php in the same directory). For example, (from the installation
   directory) make a copy of the default.settings.php file with the command:
 
     cp frontend/lib/config.default.php frontend/lib/config.php  
 
   Once you have done this, edit your config file in order to change the 
-  constants, DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT and TMP_PATH 
-  to match your system values.
+  constants, DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT,TMP_PATH, and 
+  BASE_DOMAIN to match your system values.
   
 	Windows Users: Don't use a backslash in the TMP_PATH variable. 
-  Instead use a simple slash "/".
+  Instead use a forward slash "/".
   
 	If you would like to set another timeout value, change the constant
 	TIMEOUT also. 

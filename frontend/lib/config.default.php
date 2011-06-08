@@ -69,11 +69,11 @@ define("USE_MASK", 1);
 // Set this to 1 to use the google-hosted jquery code, or 0 to use the provided jquery code.
 // See http://code.google.com/apis/libraries/devguide.html#jquery for more info
 define("USE_GOOG_JQUERY", 0);
-// ONLY USED IF USE_GOOG_JQUERY == 1.
-// If using the google-hosted jquery, which version to use? (Make sure it is hosted by the google api before using.)
+// GOOG_JQUERY_VER should ONLY BE USED IF USE_GOOG_JQUERY (above) is equal to 1.
+// If using the google-hosted jquery, tells the system which version to use? (Make sure it is hosted by the google api before using.)
 // See http://code.google.com/apis/libraries/devguide.html#jquery for more info
 define("GOOG_JQUERY_VER", 1.5.1);
-// SSL port you are using, if applicable
+// SSL port you are using, if applicable. Will be ignored if you are not using SSL.
 define("SSL_PORT", 443);
 
 // Path to directory for temporary files. From the POV of the OS.

@@ -4,7 +4,7 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
 DECLARE @db varchar(100);
-SET @db = 'w3pw'
+SET @db = 'w3pw';
 
 CREATE SCHEMA IF NOT EXISTS @db;
 USE @db;
@@ -12,11 +12,11 @@ USE @db;
 -- -----------------------------------------------------
 -- Table `@db`.`main`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `main` (
-  `version` VARCHAR(25) CHARACTER SET 'latin1' COLLATE 'latin1_general_ci' NOT NULL ,
-  `pw` VARCHAR(255) CHARACTER SET 'latin1' COLLATE 'latin1_general_ci' NOT NULL DEFAULT '' )
+CREATE TABLE IF NOT EXISTS `main` (
+  `version` VARCHAR(25) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL ,
+  `pw` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL DEFAULT '' )
 ENGINE = MyISAM
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 
 -- Insert data into 'main'
@@ -36,32 +36,8 @@ CREATE  TABLE IF NOT EXISTS `wallet` (
   `comment` MEDIUMBLOB NOT NULL ,
   PRIMARY KEY (`ID`) )
 ENGINE = MyISAM
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
-
-/*
-DELIMITER //
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_all_from_wallet`()
-BEGIN
-
-        select *
-        from wallet;
-
-END//
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `get_wallet_entry`(
-in id_in int
-)
-BEGIN
-
-        select *
-        from wallet
-        where ID = id_in;
-
-END//
-DELIMITER ;
-*/
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

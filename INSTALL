@@ -79,8 +79,11 @@ INSTALLATION
     cp frontend/lib/config.default.php frontend/lib/config.php  
 
   Once you have done this, edit your config file in order to change the 
-  constants, DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT,TMP_PATH, and 
+  constants, DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT, TMP_PATH, and 
   BASE_DOMAIN to match your system values.
+  
+  BASE_DOMAIN must be set to the domain where you will be hosting your 
+  installation of w3pw.
   
 	Windows Users: Don't use a backslash in the TMP_PATH variable. 
   Instead use a forward slash "/".
@@ -103,7 +106,7 @@ INSTALLATION
   This will change depending on how you want to setup your w3pw website.
 
 UPGRADE
-======
+=======
 IMPORTANT: If you want to upgrade from a version earlier than 1.40, 
 please upgrade to that version first, then upgrade to 1.5.0.
 

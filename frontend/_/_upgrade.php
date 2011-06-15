@@ -3,16 +3,17 @@
 session_cache_limiter('nocache');
 session_start();
 
-require_once("lib/config.php");
-require_once("lib/common_func.php");
+require_once("../lib/config.php");
+require_once("../lib/common_func.php");
 
 if (!test_session(TRUE)) {
-  show_sys_msg('You must login to run the upgrade script. Please <a href="index.php?upgrade">login</a>.');
+  show_sys_msg('You must login to run the upgrade script. Please <a href="../index.php?upgrade">login</a>.');
 }
 
 $new_ver = "1.5.0";
 $sys_name = SYS_NAME;
 $support = "w3pw.sf.net";
+$page_login = PAGE_LOGIN;
 
 if ((isset($_POST['step2'])) && ($_POST['step2'] == "true")) {
   // STEP 2 -------------------------------------------------------
@@ -128,7 +129,7 @@ OUT;
 						}
             
 						if ($copy_db_error == 0) {
-							$out__ .= '<p>Upgrade was successful. Please remove the file <b>_upgrade.php</b> from the Document Root and <a href="index.php">restart $sys_name</a>.</p>';
+							$out__ .= '<p>Upgrade was successful. Please remove the file <b>_upgrade.php</b> from the Document Root and <a href="../'. $page_login .'">restart $sys_name</a>.</p>';
 						}	else {
 							$out__ .= '<p>Upgrade failed. Please try again.';
 							
@@ -187,7 +188,7 @@ ini_set('display_errors', 1);
     case 3:
       $out__ .= <<<OUT
        <hr />
-       <p>If you <span class="emph">do not</span> want to upgrade $sys_name, please delete the file <span class="emph">_upgrade.php</span> in the document root of this $sys_name installation, and then click <a href="index.php">here</a>.</p>
+       <p>If you <span class="emph">do not</span> want to upgrade $sys_name, please delete the file <span class="emph">_upgrade.php</span> in the document root of this $sys_name installation, and then click <a href="../$page_login">here</a>.</p>
         <p>If you <span class="emph">do</span> want to upgrade your existing installation, please check the box next to the database name, then click "Begin Upgrade".</p>
         <form action="_upgrade.php" method="post">
           <div id="upgrade-controls">
@@ -204,7 +205,7 @@ OUT;
       $out__ .= <<<OUT
         <p>According to the database, the version you are running is newer than the upgrade. There may be something terribly wrong with your install. Please backup your database and contact support at $support.</p>
         <hr />
-        <p>Click <a href="index.php">here</a> to go back to $sys_name.</p>
+        <p>Click <a href="../$page_login">here</a> to go back to $sys_name.</p>
 OUT;
       break;
     case 1:
@@ -212,14 +213,14 @@ OUT;
         <p>The version you are running is the same as the upgrade. No need to upgrade.</p>
         <hr />
         <p>Since you do not need to upgrade, please delete the file <strong>_upgrade.php</strong> in the document root of this $sys_name installation.</p>
-        <p>Click <a href="index.php">here</a> to go back to $sys_name.</p>
+        <p>Click <a href="../$page_login">here</a> to go back to $sys_name.</p>
 OUT;
       break;
     case 0:
       $out__ .= <<<OUT
         <p>Unable to compare versions. Unable to upgrade. Please contact support at $support</p>
         <hr />
-        <p>Click <a href="index.php">here</a> to go back to $sys_name.</p>
+        <p>Click <a href="../$page_login">here</a> to go back to $sys_name.</p>
 OUT;
       break;
   }

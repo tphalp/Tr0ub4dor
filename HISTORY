@@ -2,13 +2,13 @@ $Id$
 
 Version History / Changes
 
-Version 1.50
+Version 1.5.0
 - Added the ability to change the master password from the 
   main interface.
 - Added the ability to export existing wallet entries to a 
   semi-colon-delimited flat file.  
 - Timeout event status is moved from the browser status bar to a 
-  div at the top left of the browser window. This div is red to 
+  div at the top right of the browser window. This div is red to 
   call attention to the fact that a forced logout is imminent. 
   It also only shows up after a specified time (default is 30 
   seconds prior to forced logout). This value can be set in 
@@ -38,6 +38,10 @@ Version 1.50
 - Menus are now built from settings in the config file, including 
   the ability to specify which items should appear at the top or 
   bottom, or both.
+- Added ability to use JQuery from Google's CDN 
+  See http://code.google.com/apis/libraries/devguide.html#jquery
+- Optional Log File added to lib/config.php for writing out of 
+  messages, errors, etc.
 
 Version 1.40
 - password field is filled with randomly generated string when

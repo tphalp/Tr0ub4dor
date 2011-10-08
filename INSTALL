@@ -93,7 +93,7 @@ INSTALLATION
   
   If you would like w3pw to generate a random password if you create 
   a new entry, change the constant RANDOM_PW_LENGTH to the desired 
-  password length. If you want't do disable this feature, set this 
+  password length. If you wan't to disable this feature, set this 
   constant to 0.
 
 4. SETUP WEB FRONTEND
@@ -103,7 +103,8 @@ INSTALLATION
   
     cp -r frontend/* /usr/local/httpd/htdocs
   
-  This will change depending on how you want to setup your w3pw website.
+  This will change depending on how you want to setup your w3pw website, 
+  and which distro you are using, etc.
 
 UPGRADE
 =======

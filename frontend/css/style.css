@@ -4,6 +4,10 @@ body {
   font-size: 10px;
   margin: 20px 10px 10px;
 }
+body#upgrade p {
+  width: 400px;
+  line-height: 1.6em;
+}
 
 td {  
   font-size: 10px;
@@ -55,6 +59,12 @@ h1.upgrade {
 
 img {
   border: 0;
+}
+
+input[type="text"],
+input[type="password"] {
+  border: solid 1px #aaa;
+  padding: 2px;
 }
 /*-- END: Tag elements --*/
 
@@ -122,7 +132,7 @@ img {
 #timeout,
 #info {
   display: none;
-  border: 2px solid #fff;
+  border-radius: 3px;
 }
 
 #info {
@@ -190,9 +200,46 @@ img {
   text-align: right;
 }
 
-#upgrade-controls input, 
-#upgrade-controls label{
-  margin: 5px;
+body#upgrade p {
+  margin-bottom: 10px;
+}
+
+body#upgrade hr {
+  height: 0;
+  border: 1px solid #CCC;
+  border-style: solid none none none;
+  width: 90%;
+  margin: 10px 0 7px;
+}
+
+body#upgrade #upgrade-controls input {
+  margin: 10px 0 4px;
+}
+
+body#upgrade #upgrade-controls label {
+  color: red;
+  display: block;
+  margin: 5px 0 0;
+}
+ 
+body#upgrade #upgrade-controls input[type="text"] {
+  border: 1px solid #ccc;
+  background-color: #ededed;
+  padding: 2px 4px 3px;
+  margin: 0 0 5px;
+}
+
+body#upgrade #upgrade-controls input[type="submit"] {
+  margin: 10px 5px 0 0;
+}
+
+body#upgrade h3 {
+  color: red;
+}
+
+body#upgrade span.emph {
+  font-weight: bold;
+  font-size: 12px;
 }
 
 #logo-icon {
@@ -228,5 +275,17 @@ color: #fff;
 
 .note {
   font-weight: bold;
-}  
+}
+
+.informative {
+  color: blue;
+}
+
+.negative {
+  color: red;
+}
+
+.positive {
+  color: green;
+}
 /*-- END: Class elements --*/

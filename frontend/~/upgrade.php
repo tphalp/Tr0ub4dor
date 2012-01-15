@@ -5,14 +5,13 @@ session_start();
 
 require_once("../lib/config.php");
 require_once("../lib/common_func.php");
+require_once("func.php");
 
 if (!test_session(TRUE)) {
   show_sys_msg('You must login to run the upgrade script. Please <a href="../index.php?upgrade">login</a>.');
 }
 
-$new_ver = "1.5.0";
 $sys_name = SYS_NAME;
-$support = "w3pw.sf.net";
 $page_login = PAGE_LOGIN;
 
 $out__ = write_header_begin("Upgrade Wizard", 1);

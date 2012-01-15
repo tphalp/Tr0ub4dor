@@ -2,9 +2,10 @@
 /* $Id: _install.php 93 2009-09-06 22:06:44Z tphalp $ */
 session_cache_limiter('nocache');
 session_start();
+error_reporting(-1);
 
-require_once("lib/config.php");
-require_once("lib/common_func.php");
+require_once("../lib/config.php");
+require_once("../lib/common_func.php");
 
 if ((isset($_POST['step2'])) && ($_POST['step2'] == "true")) {
   // STEP 2 -------------------------------------------------------

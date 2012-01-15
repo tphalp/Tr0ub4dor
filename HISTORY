@@ -19,8 +19,7 @@ Version 1.5.0
   connections, with all database connections using this class.
   This class also utilizes a "singleton" method for class 
   initialization.
-- Output is compliant with the XHTML 1.0 Transitional 
-  specification.
+- Output is compliant with the HTML5/CSS3 specification.
 - A new system message system has been implemented to make 
   various messages (such as incorrect login credentials) more 
   uniform.

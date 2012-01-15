@@ -47,8 +47,11 @@
 
     // Delete the original password
 		$db->in_sql_no_data("DELETE FROM main");
+    write_to_log($db->error);
+
     // Insert the new password
 		$result = $db->in_sql_no_data("INSERT INTO main VALUES ('" . $ver . "','" . $new_crypt_pw . "')");
+    write_to_log($db->error);
     
 		if ($result == 0) {
 			$success = 0;
@@ -69,7 +72,7 @@
   // BEGIN: Main logic block
   //------------------------------------------
   // Require POST
-  if ($_SERVER['REQUEST_METHOD'] !== 'POST') { go_to_url('../' . PAGE_LOGIN); }
+  if ($_SERVER['REQUEST_METHOD'] !== 'POST') { go_to_url(PAGE_LOGIN, 1); }
   
   // Any actions to perform?
   if (isset($_POST['action'])) {
@@ -93,7 +96,8 @@
           if ($list > 0) {
           $msg__ = 'Entry inserted successfully';
         } else {
-          $msg__ = 'Entry not inserted';
+          $msg__ = 'Entry not inserted';          
+          write_to_log($db->error);
         }          
         
         unset($db, $_POST['itemname'], $_POST['host'], $_POST['login'], $_POST['password'], $_POST['comment']);
@@ -118,6 +122,7 @@
           $msg__ = 'Entry updated successfully';
         } else {
           $msg__ = 'Entry not updated';
+          write_to_log($db->error);
         }          
         break;  //editsave
       
@@ -135,6 +140,7 @@
           $msg__ = 'Entry deleted successfully';
         } else {
           $msg__ = 'Entry not deleted';
+          write_to_log($db->error);
         }
         break;  //delete
 
@@ -163,6 +169,7 @@
             }
             $mysql_string .= ")";
             $rows = $db->in_sql_no_data($mysql_string);
+            write_to_log($db->error);
             
             if ($rows > 0) {
               $insert_count++;
@@ -177,6 +184,7 @@
           $msg__ = 'Import finished successfully';
         } else {
           $msg__ = 'Import failed';
+          // No need for write_to_log, as it is written above, in loop
         }
 
         unset($row, $data, $db);
@@ -290,7 +298,7 @@
     
   } // check $_POST['action']
   
-  go_to_url('../' . PAGE_MAIN);  
+  go_to_url(PAGE_MAIN, 1);  
   //------------------------------------------
   // END: Main logic block
   //------------------------------------------    

@@ -1,7 +1,7 @@
 <?php
-/* $Id$ */
+
 $CURR_SCRIPT = "config.php";
-require("no_direct.php"); 
+require("no_direct.php");
 
 // Don't report Database-Errors on Frontend
 error_reporting(E_ERROR);
@@ -61,14 +61,14 @@ define("TMP_IMPORT_FILE", "w3pw.csv");
 define("GROUP_BY", "ALPHA");
 // This is the link that is used with grouping to take you to the top of the page. Change this to whatever you want.
 define("TOP_LINK", "{ top }");
-// Headers used in the main list when grouping. Not the best solution, but is okay for now. 
+// Headers used in the main list when grouping. Not the best solution, but is okay for now.
 // Once other grouping options are available (categories, etc), this will be modified.
 define("HEADER_DEFAULT", '<tr class="header"><td class="first">Entry Name</td><td>Host/URL</td><td class="mt1">&nbsp;</td><td class="mt1">&nbsp;</td><td class="mt2">&nbsp;</td></tr>');
 define("HEADER_HIDDEN", '<tr class="invis"><th class="first">&nbsp;</th><th>&nbsp;</th><th class="mt1">&nbsp;</th><th class="mt1">&nbsp;</th><th class="mt2">&nbsp;</th></tr>');
 // Delimiter used for export
 // Changing this is NOT advised, as using another delimiter may cause problems
 define("CSV_DELIM", ";");
-// Show/Hide the message on the login screen about popping w3pw into a separate, 
+// Show/Hide the message on the login screen about popping w3pw into a separate,
 // smaller window.
 // 1 = show, 0 = do not show
 define("SHOW_POP", 1);

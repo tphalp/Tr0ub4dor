@@ -1,5 +1,5 @@
-<?php 
-/* $Id$ */
+<?php
+
   session_start();
 
   require_once("lib/config.php");
@@ -9,12 +9,12 @@
   test_session();
   $out__ = write_header_begin("Export Wallet Entries");
   $out__ .= write_header_jquery();
-  $out__ .= write_header_common(); 
+  $out__ .= write_header_common();
   $out__ .= write_header_end();
   $out__ .= write_header_counter();
-    
+
   $out__ .= <<<OUT
-  
+
     <form enctype="multipart/form-data" action="$FRM_ACTION" method="post">
       <center>
       <input type="hidden" name="action" value="export" />
@@ -25,11 +25,11 @@
 OUT;
 
   $out__ .= write_footer_main_link("without exporting.");
-        
+
   $out__ .= '</center></form>';
-  
+
   $out__ .= write_footer_timeout_init();
-  $out__ .= write_footer_common();  
+  $out__ .= write_footer_common();
 
   echo $out__;
 

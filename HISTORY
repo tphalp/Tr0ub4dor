@@ -1,52 +1,50 @@
-$Id$
-
 Version History / Changes
 
 Version 1.5.0
-- Added the ability to change the master password from the 
+- Added the ability to change the master password from the
   main interface.
-- Added the ability to export existing wallet entries to a 
-  semi-colon-delimited flat file.  
-- Timeout event status is moved from the browser status bar to a 
-  div at the top right of the browser window. This div is red to 
-  call attention to the fact that a forced logout is imminent. 
-  It also only shows up after a specified time (default is 30 
-  seconds prior to forced logout). This value can be set in 
-  the config file. The timeout status also has a link to reset 
+- Added the ability to export existing wallet entries to a
+  semi-colon-delimited flat file.
+- Timeout event status is moved from the browser status bar to a
+  div at the top right of the browser window. This div is red to
+  call attention to the fact that a forced logout is imminent.
+  It also only shows up after a specified time (default is 30
+  seconds prior to forced logout). This value can be set in
+  the config file. The timeout status also has a link to reset
   the timer to prevent the forced logout.
 - Each page has been reworked to use more modular code.
-- A common database class has been included for simpler db 
+- A common database class has been included for simpler db
   connections, with all database connections using this class.
-  This class also utilizes a "singleton" method for class 
+  This class also utilizes a "singleton" method for class
   initialization.
 - Output is compliant with the HTML5/CSS3 specification.
-- A new system message system has been implemented to make 
-  various messages (such as incorrect login credentials) more 
+- A new system message system has been implemented to make
+  various messages (such as incorrect login credentials) more
   uniform.
-- Small info message appears in the top right-hand corner of the 
-  application after certain actions, such as saving, inserting, 
+- Small info message appears in the top right-hand corner of the
+  application after certain actions, such as saving, inserting,
   deleting, etc.
-- Added a text-link menu at the bottom of each page, included in 
+- Added a text-link menu at the bottom of each page, included in
   the new footer. Includes version info also.
-- Added helpful links on the "view", "edit", and "delete" pages 
+- Added helpful links on the "view", "edit", and "delete" pages
   that link to the other associated pages for the current item.
 - Various visual changes.
-- Moved all css markup to the style.css file. This allows 
-  theoretical use of custom styles for completely different 
+- Moved all css markup to the style.css file. This allows
+  theoretical use of custom styles for completely different
   looks to the system.
-- Menus are now built from settings in the config file, including 
-  the ability to specify which items should appear at the top or 
+- Menus are now built from settings in the config file, including
+  the ability to specify which items should appear at the top or
   bottom, or both.
-- Added ability to use JQuery from Google's CDN 
+- Added ability to use JQuery from Google's CDN
   See http://code.google.com/apis/libraries/devguide.html#jquery
-- Optional Log File added to lib/config.php for writing out of 
+- Optional Log File added to lib/config.php for writing out of
   messages, errors, etc.
 
 Version 1.40
 - password field is filled with randomly generated string when
   adding a new entry.
 - switch from encrypt() to sha1() and md5() as the password and entry
-  encoding functions, since SHA 1 exists on all platforms. Update 
+  encoding functions, since SHA 1 exists on all platforms. Update
   script from version 1.30 is provided.
 - Multiple line comments are displayed now correctly
 - highlighting of the current row in the list view

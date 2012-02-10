@@ -1,5 +1,5 @@
 <?php
-/* $Id$ */
+
   // Necessary includes
   require_once("crypt.php");
   require_once("db.php");

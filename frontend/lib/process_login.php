@@ -1,9 +1,9 @@
 <?php
-/* $Id$ */
+
 session_start();
 
 require_once("config.php");
-require_once("common_func.php");  
+require_once("common_func.php");
 check_referrer(BASE_DOMAIN);
 
 // Session is active
@@ -38,7 +38,7 @@ if ($crypt_pw == $db_pw) {
   // delete cleartext pw in memory
   unset($cleartext_pw);
   unset($entries, $db);
-  
+
   //Forward to main page
   if (isset($_GET["upgrade"])) {
     go_to_url('~/upgrade.php', 1);
@@ -50,13 +50,13 @@ if ($crypt_pw == $db_pw) {
   unset($db);
   session_unset();
   session_destroy();
-  
+
   // Pass upgrade bit, if applicable
   $qs = '';
   if (isset($_GET["upgrade"])) {
     $qs = '?upgrade';
   }
-  
+
   $sysmsg__ = '<b>Invalid credentials</b>....Please <a href="' . PAGE_LOGIN . $qs . '">try again</a>.';
   show_sys_msg($sysmsg__);
 }

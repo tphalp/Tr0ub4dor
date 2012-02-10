@@ -1,4 +1,3 @@
-/* $Id$ */
 body {
   font-family: verdana,arial;
   font-size: 10px;
@@ -9,7 +8,7 @@ body#upgrade p {
   line-height: 1.6em;
 }
 
-td {  
+td {
   font-size: 10px;
 }
 
@@ -27,7 +26,7 @@ tr.odd, td.odd { background-color: #a3a3a3; }
 
 tr.even, td.even { background-color: #dddddd; }
 
-tr.odd, td.odd, 
+tr.odd, td.odd,
 tr.even, td.even {
   color: #000000;
   text-align: left;
@@ -53,7 +52,7 @@ table#main-list td.group-set a {
   line-height: 1.75em;
 }
 
-h1.upgrade { 
+h1.upgrade {
   color: #a8a8a8;
 }
 
@@ -77,12 +76,12 @@ input[type="password"] {
   padding: 0;
   margin: 0;
   list-style-type: none;
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 
 .header-menu li { display: inline; }
 
-.header-menu a, 
+.header-menu a,
 .header-menu a:visited {
   display: block;
   float: left;
@@ -92,13 +91,13 @@ input[type="password"] {
   border: 1px #ccc;
   border-style: solid solid none solid;
   text-decoration: none;
-  font-weight: bold; 
-  font-size: 10px; 
+  font-weight: bold;
+  font-size: 10px;
   margin-right: 2px;
 }
 
 .header-menu a:hover {
-  color: #666; 
+  color: #666;
   background-color: #ddd;
 }
 
@@ -160,10 +159,10 @@ input[type="password"] {
 
 #footer p.r {
   float: right;
-  text-align: right; 
+  text-align: right;
 }
 
-#footer p.l, 
+#footer p.l,
 #footer p.r {
   margin: 0;
   padding: 0 0 10px;
@@ -173,7 +172,7 @@ input[type="password"] {
   color: #222;
 }
 
-#main-list { 
+#main-list {
   table-layout: fixed;
   width: 100%;
 }
@@ -187,14 +186,14 @@ input[type="password"] {
 
 #main-list .mt2 { width: 45px; }
 
-#main-list td, 
+#main-list td,
 .action-table td { padding: 3px; }
 
 #popup { visibility: hidden; }
 
 #navlinks { text-align: center; }
 
-#wallet-count { 
+#wallet-count {
   padding-top: 4px;
   color: green;
   text-align: right;
@@ -221,7 +220,7 @@ body#upgrade #upgrade-controls label {
   display: block;
   margin: 5px 0 0;
 }
- 
+
 body#upgrade #upgrade-controls input[type="text"] {
   border: 1px solid #ccc;
   background-color: #ededed;
@@ -268,7 +267,7 @@ body#upgrade span.emph {
 color: #fff;
 }
 
-.invis { 
+.invis {
   visibility: hidden;
   line-height: 0px;
 }

@@ -1,5 +1,5 @@
-<?php 
-/* $Id$ */
+<?php
+
   session_cache_limiter('nocache');
   session_start();
 
@@ -10,14 +10,14 @@
   test_session();
   $out__ = write_header_begin("Master Password Change");
   $out__ .= write_header_jquery();
-  $out__ .= write_header_common(); 
+  $out__ .= write_header_common();
   $out__ .= write_header_end();
   $out__ .= write_header_counter();
 
   $sys_name = constant("SYS_NAME");
 
   $out__ .= <<<OUT
-  
+
     <form method="post" action="$FRM_ACTION">
       <center>
       <input type="hidden" id="action" name="action" value="changepw" />
@@ -39,7 +39,7 @@ OUT;
       return checkChangePW();
     });*/');
   $out__ .= write_footer_timeout_init();
-  $out__ .= write_footer_common();  
+  $out__ .= write_footer_common();
 
   echo $out__;
 ?>

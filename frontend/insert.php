@@ -1,5 +1,5 @@
-<?php 
-/* $Id$ */
+<?php
+
   session_start();
 
   require_once("lib/config.php");
@@ -9,15 +9,15 @@
   test_session();
   $out__ = write_header_begin("Insert New Wallet Entry");
   $out__ .= write_header_jquery();
-  $out__ .= write_header_common(); 
+  $out__ .= write_header_common();
   $out__ .= write_header_end();
   $out__ .= write_header_counter();
-  
+
   $initial_pw = htmlspecialchars(create_rand_pw(RANDOM_PW_LENGTH));
   //$initial_pw = "";
-  
+
   $out__ .= <<<OUT
-  
+
     <form method="post" action="$FRM_ACTION">
       <center>
       <input type="hidden" name="action" value="save" />
@@ -31,9 +31,9 @@
       </table>
       <input type="submit" value="Save" />
 OUT;
-  
+
   $out__ .= write_footer_main_link("without inserting a new entry.");
-  
+
   $out__ .= '</center></form>';
 
   $out__ .= write_footer_onload('$("#itemname").focus();');

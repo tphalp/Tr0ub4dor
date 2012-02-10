@@ -1,5 +1,5 @@
 <?php
-/* $Id$ */
+
   session_start();
 
   require_once("lib/config.php");
@@ -12,32 +12,32 @@
   }
 
   $out__ = write_header_begin("System Message");
-  
+
   if (test_session(TRUE)) {
     $out__ .= write_header_jquery();
     $out__ .= write_header_common();
   }
-  
+
   $out__ .= write_header_meta();
   $out__ .= write_header_end("sysmsg");
   $out__ .= write_header_counter();
-  
+
   $out__ .= <<<OUT
-  
+
     <h2>System Message</h2>
     <p>$sysmsg__</p>
 OUT;
-  
+
   if (test_session(TRUE)) {
     if ($_GET['s'] == '1') {
       $out__ .= write_back_link('javascript:history.back();', '&laquo; Go back');
     } else {
       $out__ .= write_footer_main_link();
     }
-    
+
     $out__ .= write_footer_timeout_init();
   }
-  
+
   $out__ .= write_footer_end();
 
   echo $out__;

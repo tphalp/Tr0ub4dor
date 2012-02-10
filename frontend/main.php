@@ -1,25 +1,25 @@
 <?php
-/* $Id$ */
+
   session_cache_limiter('nocache');
   session_start();
 
   require_once("lib/config.php");
   require_once("lib/common_func.php");
-  
+
   // test if session is ok
   test_session();
   $out__ = write_header_begin("Main List");
   $out__ .= write_header_jquery();
-  $out__ .= write_header_common(); 
+  $out__ .= write_header_common();
   $out__ .= write_header_end();
   $out__ .= write_header_counter();
-  
+
   //-----------------------------------------------------------------
   // Delete existing tmp files. This can happen if timout is
   // reached between the upload steps.
   //-----------------------------------------------------------------
   delete_stray_temp_files(TMP_PATH);
-  
+
   //Output the menu
   $out__ .= write_header_menu();
 
@@ -29,12 +29,12 @@
   // Call the stored proc
   $list = $db->out_result_object("select * from wallet;");
   $header_array = array();
-  
+
   // Loop through to create the array of Entry Names
   while ($entries = $list->fetch_object()) {
     $header_array[$entries->ID] = htmlentities(de_crypt($entries->itemname, $_SESSION['key']));
   }
-  
+
   // Unset, Sort, and then Reset
   unset($list);
   natcasesort($header_array);
@@ -50,17 +50,17 @@
   $counter = 0;
   $first_char = '';
   $nav_links = '';
-  
+
   while( list($ID, $itemname) = each($header_array)) {
     $counter++;
     $list = $db->out_result_object('select * from wallet where ID = ' . $ID . ';');
     $entries = $list->fetch_object();
 
-    // write out the table header during the first loop, 
+    // write out the table header during the first loop,
     // taking into consideration the grouping.
-    if ($counter == 1) {      
+    if ($counter == 1) {
       $out__ .= '<table id="main-list" summary="view table">';
-      
+
       if ( defined('GROUP_BY') ) {
         // include the navlinks for groups
         $out__ .= HEADER_HIDDEN . build_nav_links();
@@ -75,7 +75,7 @@
         case 'ALPHA':
           // do grouping
           switch ( is_numeric(substr($itemname, 0, 1)) ) {
-            case TRUE: 
+            case TRUE:
               if ( $first_char != '#' ) {
                 $first_char = '#';
                 $out__ .= build_group_header($ID, $first_char);
@@ -91,14 +91,14 @@
                 $nav_links .= build_nav_link_anchor($ID, $first_char);
               }
               break;
-              
+
           } // switch ( is_numeric(substr($itemname, 0, 1)) )
           break;
-        
+
       } // switch (GROUP_BY)
-      
+
     } // isset(GROUP_BY)
-      
+
     // do odd/even depending on modulus
     if ($counter % 2 == 0) {
       $out__ .= '<tr class="even">';
@@ -111,40 +111,40 @@
     $login = htmlentities(de_crypt($entries->login, $_SESSION['key']));
     $pw = htmlentities(de_crypt($entries->pw, $_SESSION['key']));
     $comment = htmlentities(de_crypt($entries->comment, $_SESSION['key']));
-    
+
     // output the table cells with the record info created above
     $out__ .= <<<OUT
-    
+
               <td>$itemname</td><td>$host</td><td class="link"><a href="view.php?id=$ID">view</a></td><td class="link"><a href="edit.php?id=$ID">edit</a></td><td class="link"><a href="delete.php?id=$ID">delete</a></td></tr>
 OUT;
 
   } //while loop
-  
+
   //--------------------------------------------------------
-  // replace the placeholder @NAV_LINKS with the actual 
+  // replace the placeholder @NAV_LINKS with the actual
   // string that was built during the loop above.
   //--------------------------------------------------------
   $out__ = str_replace("@@NAV_LINKS", $nav_links, $out__);
   //--------------------------------------------------------
-  
+
   // the table closing tag
   if ($counter >= 1) {
     $out__ .= '</table>' . "\n" . '<div id="wallet-count">Wallet Entries: ' . $tot_count . '</div>';
   }
-  
+
   unset($header_array, $itemname, $db);
-  
+
   // Check session for msg var
   if ( isset($_SESSION['msg']) ) {
     //Get infomsg from session, then unset the session var
     $msg = $_SESSION['msg'];
-    unset($_SESSION['msg']);  
+    unset($_SESSION['msg']);
     $out__ .= write_footer_onload('set_info("' . $msg . '");');
   }
-  
+
   $out__ .= write_footer_timeout_init();
   $out__ .= write_footer_common();
-  
+
   //Output the contents
   echo $out__;
 ?>

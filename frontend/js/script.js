@@ -1,4 +1,4 @@
-/* $Id$ */
+
 var count;
 var active;
 var popup_name = "w3pwwin";
@@ -8,7 +8,7 @@ var default_info_length = 7000;
 function init(timeout_, showit_) {
 //----------------------------------------------
 // the init function, which starts the timeout
-// counter, and handles the initial visibility 
+// counter, and handles the initial visibility
 // of the timeout message.
 //----------------------------------------------
   if (timeout_ == void(0) || showit_ == void(0)) {
@@ -17,14 +17,14 @@ function init(timeout_, showit_) {
     window.clearInterval(active);
     return;
   }
-  
+
   if ($("#timeout").length > 0) {
     count = timeout_;
     window.clearInterval(active);
     active = window.setInterval("counter(" + timeout_ + ", " + showit_ + ")", 1000);
     $("#timeout").hide();
   }
-  
+
   // Setup the message, mouseover, and click bits
   // MouseOver
   $("#info").mouseover(function() {
@@ -42,27 +42,27 @@ function init(timeout_, showit_) {
   $("#info").click(function() {
     $("#info").hide("fast");
   });
-  
+
   return;
 }
 
 function counter(timeout_, showit_) {
 //----------------------------------------------
 // The counter function that is called in the
-// setInterval method during the init() 
+// setInterval method during the init()
 // function. This function handles the timeout
-// message that appears, and also handles the 
+// message that appears, and also handles the
 // actual logout, if the timeout timer expires.
 //----------------------------------------------
   // Decrement the counter.
   count--;
-  
+
   // Check for proper params before showing the timeout element.
   if ($("#timeout").length > 0 && count <= showit_) {
     $("#timeout").html(count + " seconds until forced logout | <a onclick=\"javascript:init(" + timeout_ + ", " + showit_ + ");\" href=\"javascript:void(0);\">reset<\/a>&nbsp;&nbsp;<a onclick=\"javascript:do_logout();\" href=\"javascript:void(0);\">logout<\/a>");
     $("#timeout").show();
   }
-  
+
   // If the countdown has expired, then log the user out.
   if (count == 0) {
     do_logout();
@@ -76,7 +76,7 @@ function checkpop(winname_, override_) {
 // the popup notification visible.
 //----------------------------------------------
   if (winname_ != popup_name && override_ != 0) {
-    $("#popup").css("visibility", "visible");    
+    $("#popup").css("visibility", "visible");
   }
 }
 
@@ -101,14 +101,14 @@ function do_logout() {
 
 function set_info(msg, len) {
 //----------------------------------------------
-// Sets the info span that is used for 
+// Sets the info span that is used for
 // system messages.
 //----------------------------------------------
   // if length > 0, show msg, otherwise, hide it.
   if (msg.length > 0) {
     // Set the default value for len.
     if (len == undefined) {len = default_info_length;}
-    
+
     $("#info").text(msg);
     $("#info").show("fast");
     tmp_int = window.setInterval("set_info('');window.clearInterval(tmp_int);", len);
@@ -138,7 +138,7 @@ function checkForm_Required(req_, req_desc_) {
       $("#" + req_[i] + "-msg").css("display", "none");
     }
   } //for loop
-  
+
   return err__;
 } //checkForm_Required()
 
@@ -163,9 +163,9 @@ alert(i)
         $("#" + req_[i] + "-msg").css("display", "none");
       }
     }
-    
+
   } //for loop
-  
+
   return err__;
 } //checkForm_Match()
 
@@ -181,11 +181,11 @@ function checkChangePW() {
 
   if (ret1__.length > 0 || ret2__.length) {
     return false;
-    
+
   } else {
     return confirm(msg_good__);
-    
+
   }
-  
+
 }
 END BACKUP */

@@ -1,5 +1,5 @@
-<?php 
-/* $Id$ */
+<?php
+
   session_cache_limiter('nocache');
   session_start();
 
@@ -10,19 +10,19 @@
   test_session();
   $out__ = write_header_begin("View Wallet Entry");
   $out__ .= write_header_jquery();
-  $out__ .= write_header_common(); 
+  $out__ .= write_header_common();
   $out__ .= write_header_end();
   $out__ .= write_header_counter();
   $db = get_db_conn();
-  
+
   // Call the stored proc
   $entries = $db->out_row_object("SELECT * FROM wallet WHERE ID=" . $_GET['id'] . ";");
   unset($db);
-  
+
   $wal_item = build_item_array($entries);
-  
+
   $out__ .= <<<OUT
-  
+
     <form method="post" action="$FRM_ACTION">
       <center>
       <input type="hidden" name="action" value="editsave" />
@@ -42,7 +42,7 @@ OUT;
   $out__ .= write_footer_main_link("without saving.");
   $out__ .= '</center></form>';
   $out__ .= write_footer_timeout_init();
-  $out__ .= write_footer_common();  
+  $out__ .= write_footer_common();
 
   echo $out__;
 ?>

@@ -1,7 +1,7 @@
 <?php
-/* $Id$ */
+
   $currscript = "crypt.php";
-  require("no_direct.php"); 
+  require("no_direct.php");
 
   function en_crypt($data, $key) {
     if (strlen($data) > 0) {
@@ -12,10 +12,10 @@
       mcrypt_generic_deinit($td);
       mcrypt_module_close($td);
     }
-      
+
     return $data;
   }
-  
+
   function de_crypt($data, $key) {
     if (strlen($data) > 0) {
       $td = mcrypt_module_open('rijndael-256', '', 'ecb', '');
@@ -25,7 +25,7 @@
       mcrypt_generic_deinit($td);
       mcrypt_module_close($td);
     }
-    
+
     return $data;
   }
 ?>

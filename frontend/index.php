@@ -1,5 +1,5 @@
-<?php 
-/* $Id$ */
+<?php
+
 session_start();
 
 require_once("lib/config.php");
@@ -14,11 +14,11 @@ if (test_session(TRUE)) {
 }
 
 // -----------------------------------------------------------
-// Simple querystring section. Used for handling some 
+// Simple querystring section. Used for handling some
 // querystrings that are used on the login page.
 // -----------------------------------------------------------
 // $do_upgrade is used by the install/upgrade pages
-$do_upgrade = isset($_GET["upgrade"]) ? '?upgrade' : '';  
+$do_upgrade = isset($_GET["upgrade"]) ? '?upgrade' : '';
 // -----------------------------------------------------------
 
 $out__ = write_header_begin("Login");
@@ -38,7 +38,7 @@ if (MCRYPT_MODE_ECB == "ecb") {
   // check if updatescript is readable
   $sys_name = SYS_NAME;
   $out__ .= <<<OUT
-  
+
   <form method="post" action="$FRM_LOGIN$do_upgrade">
     <center>
       <div><img src="images/logo-linear.png" alt="w3pw logo" /></div>
@@ -53,7 +53,7 @@ if (MCRYPT_MODE_ECB == "ecb") {
 OUT;
 }	else {
   $out__ .= <<<OUT
-  
+
   <b>MCrypt libraries are not installed!</b>
   <br />
   Download mcrypt from <a href="http://mcrypt.sourceforge.net/">http://mcrypt.sourceforge.net/</a>, and follow the included installation instructions.

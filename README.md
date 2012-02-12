@@ -39,24 +39,29 @@ Installation
 ============
 
 
-Download Tr0ub4dor
+Acquire Tr0ub4dor
 ------------------
+
+  Clone the repo:
+
+      git clone git@github.com:tphalp/Tr0ub4dor.git
+
+### __OR__
 
   Download the latest package from:
 
-  http://sourceforge.com/projects/Tr0ub4dor/files/
+      https://github.com/tphalp/Tr0ub4dor/downloads
 
   Once you have downloaded the package, unpack the distribution package:
 
       tar xzf tr0ub4dor-x.x.x.tgz
 
-  Change to the directory Tr0ub4dor-x.x.x
+  Change to the directory tr0ub4dor-x.x.x
 
 Setup the database
 ------------------
 
-  Tr0ub4dor requires access to a mysql database in order to run properly. Create a database called "Tr0ub4dor" (or any other name
-  of your choosing):
+  Tr0ub4dor requires access to a mysql database in order to run properly. Create a database called "tr0ub4dor" (or any other name of your choosing):
 
       mysql -u <your_mysql_user> -p -e 'CREATE DATABASE tr0ub4dor'
 
@@ -133,3 +138,18 @@ Project Homepage
 ================
 
 http://github.com/tphalp/Tr0ub4dor
+
+
+Contribute
+==========
+
+1. [Fork it][1].
+2. Create a branch (`git checkout -b my_contrib`)
+3. Commit your changes (`git commit -am "Meaningful Comment"`)
+4. Push to the branch (`git push origin my_contrib`)
+5. Create an [Issue][2] with a link to your branch
+6. __Or__: Create a [Pull Request][3]
+
+[1]: http://help.github.com/fork-a-repo/
+[2]: http://github.com/tphalp/Tr0ub4dor/issues
+[3]: http://help.github.com/send-pull-requests/

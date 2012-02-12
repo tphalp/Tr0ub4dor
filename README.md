@@ -140,8 +140,8 @@ Project Homepage
 http://github.com/tphalp/Tr0ub4dor
 
 
-Contribute
-==========
+Contributing
+============
 
 1. [Fork it][1].
 2. Create a branch (`git checkout -b my_contrib`)

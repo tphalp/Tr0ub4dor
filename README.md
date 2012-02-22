@@ -118,6 +118,12 @@ __DOUBLY IMPORTANT__: Create a BACKUP of your current Tr0ub4dor database!
 
 Follow all of the steps described in the section above, but be sure to create a backup of your existing Tr0ub4dor database. This will allow you to recover from a failed upgrade.
 
+Update the database structure:
+
+    mysql -u <your_mysql_user> -p w3pw < backend/upgrade.sql
+
+>If you use another database name change the first w3pw to your choosen database name.
+
 Point the database variables in your new config file to the database, as well as any other customization of the config.php file that you require.
 
 

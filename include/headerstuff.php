@@ -1,12 +1,12 @@
 <?php
-if (eregi('headerstuff.php', $_SERVER['PHP_SELF']))
-{
-	die ("You can't access this file directly...");
+if (eregi('headerstuff.php', $_SERVER['PHP_SELF'])) {
+    die("You can't access this file directly...");
 }
 ?>
 
-<?php 
+<?php
 // session timout
+/*
 echo "<meta http-equiv=\"refresh\" content=\"".$session_timeout."; URL=logout.php\">\n";
 
 echo "<script type=\"text/javascript\">\n";
@@ -20,5 +20,5 @@ echo "if(count == 1) window.clearInterval(aktive);\n";
 echo "}\n";
 echo "//-->\n";
 echo "</script>\n";
-
+*/
 ?>

@@ -1,5 +1,8 @@
 Version History / Changes
 
+Version 1.41 catedit - needs a number...
+- include categories for entries
+
 Version 1.40
 - password field is filled with randomly generated string when
   adding a new entry.

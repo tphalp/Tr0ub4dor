@@ -21,7 +21,7 @@ define("DB_USER", "xxxx");
 define("DB_PASS", "xxxx");
 define("DB_PORT", 3306);
 
-// Used when detecting the referrer, for added security. Must match the domain used to host this insteance of w3pw.
+// Used when detecting the referrer, for added security. Must match the domain used to host this instance of w3pw.
 // Do not include sub-directory, if used. e.g. - host.yourdomain.com/w3pw
 define("BASE_DOMAIN", "host.yourdomain.com");
 ////// END USER CONFIG ---

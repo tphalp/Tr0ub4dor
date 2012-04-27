@@ -10,6 +10,11 @@ Tr0ub4dor is a web-based password manager written in PHP, thatutilizes MySQL, an
 If you are updating from a previous version, please refer to the __Upgrade__ section of this document!
 
 
+What does Tr0ub4dor mean?
+-------------------------
+See: http://xkcd.com/936/ :)
+
+
 Requirements
 ============
 
@@ -120,9 +125,9 @@ Follow all of the steps described in the section above, but be sure to create a 
 
 Update the database structure:
 
-    mysql -u <your_mysql_user> -p w3pw < backend/upgrade.sql
+    mysql -u <your_mysql_user> -p tr0ub4dor < backend/upgrade.sql
 
->If you use another database name change the first w3pw to your choosen database name.
+>If you use another database name, change the first 'tr0ub4dor' to your choosen database name.
 
 Point the database variables in your new config file to the database, as well as any other customization of the config.php file that you require.
 

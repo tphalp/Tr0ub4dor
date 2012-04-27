@@ -19,8 +19,8 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- Insert data into 'main'
--- USER DO: Change 'secret' to whatever pw you want to use as your main pw.
-INSERT INTO main VALUES (null, '1.5.0-rc1', sha1('secret'));
+-- USER DO: Change 'superdooperexamplepassword' to whatever pw you want to use as your main pw.
+INSERT INTO main (version, pw) VALUES ('1.5.0', sha1('superdooperexamplepassword'));
 
 
 -- -----------------------------------------------------

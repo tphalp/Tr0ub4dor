@@ -16,7 +16,7 @@
     <script type="text/javascript">
       /* <![CDATA[ */
       function starter() {
-        var win__ = window.open("index.php", "w3pwwin", "width=650,height=400,left=0,top=0,scrollbars=yes,status=yes,resizable=yes");
+        var win__ = window.open("index.php", "tr0ub4dor_win", "width=650,height=400,left=0,top=0,scrollbars=yes,status=yes,resizable=yes");
       }
 
       starter();

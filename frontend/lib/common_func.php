@@ -316,7 +316,7 @@ OUT;
 
     <div id="footer">
       <p class="l">${menu__}</p>
-      <p class="r" id="sysinfo">${sys_name} | v${_SESSION['version']} <a href="http://w3pw.sourceforge.net/" target="_blank"><img src="images/logo-icon-16.png" alt="lock icon" title="w3pw on SourceForge" id="logo-icon" /></a></p>
+      <p class="r" id="sysinfo">${sys_name} | v${_SESSION['version']} <a href="https://github.com/tphalp/Tr0ub4dor" target="_blank"><img src="images/logo-icon-16.png" alt="lock icon" title="tr0ub4dor on GitHub" id="logo-icon" /></a></p>
     </div>
 OUT;
 

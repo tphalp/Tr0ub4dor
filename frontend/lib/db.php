@@ -1,7 +1,7 @@
 <?php
 
 //----------------------------------------------------------
-// Description: MySQLi connector class for w3pw
+// Description: MySQLi connector class for tr0ub4dor
 // Author: tphalp (tphalp at bitwerks dot net)
 // Original Date: 2009-05-21
 // Modification:

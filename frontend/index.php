@@ -41,7 +41,7 @@ if (MCRYPT_MODE_ECB == "ecb") {
 
   <form method="post" action="$FRM_LOGIN$do_upgrade">
     <center>
-      <div><img src="images/logo-linear.png" alt="w3pw logo" /></div>
+      <div><img src="images/logo-linear.png" alt="tr0ub4dor logo" /></div>
       <table class="action-table" summary="login interface">
         <!--<tr><th colspan="2">$sys_name Login</th></tr>-->
         <tr><td class="odd">Password: </td><td class="even"><input type="password" name="password" id="password" size="20" /></td></tr>

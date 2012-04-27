@@ -1,7 +1,7 @@
 
 var count;
 var active;
-var popup_name = "w3pwwin";
+var popup_name = "tr0ub4dor_win";
 var page_logout = "logout.php";
 var default_info_length = 7000;
 

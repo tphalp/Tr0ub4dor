@@ -2,10 +2,7 @@
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
-DECLARE @db varchar(100);
-SET @db = 'w3pw';
-
-USE @db;
+USE tr0ub4dor;
 ALTER TABLE `main` CHANGE COLUMN `version` `version` VARCHAR(25) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NOT NULL DEFAULT '';
 UPDATE `main` SET version = '1.5.0-rc1';
 

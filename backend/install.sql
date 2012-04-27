@@ -2,11 +2,11 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
-CREATE SCHEMA IF NOT EXISTS w3pw;
-USE w3pw;
+CREATE SCHEMA IF NOT EXISTS tr0ub4dor;
+USE tr0ub4dor;
 
 -- -----------------------------------------------------
--- Table w3pw.main
+-- Table tr0ub4dor.main
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS main (
     ID INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -24,7 +24,7 @@ INSERT INTO main VALUES (null, '1.5.0-rc1', sha1('secret'));
 
 
 -- -----------------------------------------------------
--- Table w3pw.wallet
+-- Table tr0ub4dor.wallet
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS wallet (
   ID INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,

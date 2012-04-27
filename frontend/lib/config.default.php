@@ -16,13 +16,13 @@ header('Pragma: no-cache');
 ////// BEGIN USER CONFIG - USER MUST CONFIGURE THE FOLLOWING ---
 // DATABASE ---
 define("DB_HOST", "localhost");
-define("DB_NAME", "w3pw");
+define("DB_NAME", "tr0ub4dor");
 define("DB_USER", "xxxx");
 define("DB_PASS", "xxxx");
 define("DB_PORT", 3306);
 
-// Used when detecting the referrer, for added security. Must match the domain used to host this instance of w3pw.
-// Do not include sub-directory, if used. e.g. - host.yourdomain.com/w3pw
+// Used when detecting the referrer, for added security. Must match the domain used to host this instance of tr0ub4dor.
+// Do not include sub-directory, if used. e.g. - host.yourdomain.com/tr0ub4dor
 define("BASE_DOMAIN", "host.yourdomain.com");
 ////// END USER CONFIG ---
 
@@ -52,10 +52,10 @@ define("MENU_SHOW_MAIN", "0 1 2 3 5");
 define("MENU_SHOW_FOOT", "0 1 2 3 4 5");
 
 // MISC ---
-// System name that you would like to use. Will show anywhere "w3pw" normally is displayed on the web interface.
-define("SYS_NAME", "w3pw");
+// System name that you would like to use. Will show anywhere "tr0ub4dor" normally is displayed on the web interface.
+define("SYS_NAME", "tr0ub4dor");
 // Temp file names
-define("TMP_IMPORT_FILE", "w3pw.csv");
+define("TMP_IMPORT_FILE", "tr0ub4dor.csv");
 // Used for grouping. ALPHA give you grouping, and an empty string gives you the regular list, with no grouping.
 // ALPHA is currently the only option.
 define("GROUP_BY", "ALPHA");
@@ -68,7 +68,7 @@ define("HEADER_HIDDEN", '<tr class="invis"><th class="first">&nbsp;</th><th>&nbs
 // Delimiter used for export
 // Changing this is NOT advised, as using another delimiter may cause problems
 define("CSV_DELIM", ";");
-// Show/Hide the message on the login screen about popping w3pw into a separate,
+// Show/Hide the message on the login screen about popping tr0ub4dor into a separate,
 // smaller window.
 // 1 = show, 0 = do not show
 define("SHOW_POP", 1);
